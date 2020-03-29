@@ -1,0 +1,98 @@
+<body>
+    <!-- <img [src]=material.imageUrl [alt]=material.imageAlt> -->
+    <!-- <label>Manage your sails database by typing {{material.type}} number and pressing right button.</label> -->
+<div class=crudDiv>
+    <h2>Add new {{material.type}} to database.</h2>
+    <div class=addForm>
+        <input type="text" matTooltip="Number of {{material.type}} is a sticker glue in visible spot."
+            placeholder="{{material.type}} number (i.e. {{material.idExample}})">
+        <button mat-stroked-button matTooltip="Add recieved {{material.type}} to database">Add
+            {{material.type}}</button>
+    </div>
+
+
+
+    <h2>Manage {{material.type}}s already avaible in the center.</h2>
+    <div class=rudForm>
+        <mat-form-field>
+            <mat-label>{{material.type}}s</mat-label>
+            <mat-select #rudField matTooltip='Check one or more {{material.type}}s' [formControl]="items" multiple
+                matBadge="{{(materialList$ | async)?.length}}" matBadgePosition="before" matBadgeOverlap="false">
+                <mat-select-trigger>
+                    {{items.value ? items.value[0] : ''}}
+                    <span *ngIf="items.value?.length > 1" class="mat-selector">
+                        (+{{items.value.length - 1}} {{items.value?.length === 2 ? 'other' : 'others'}})
+                    </span>
+                </mat-select-trigger>
+                <mat-option *ngFor="let item of materialList$ | async" [value]="item.id">{{item.id}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <div class=buttons>
+            <button mat-stroked-button matTooltip="Check {{material.type}} status"
+                (click)="rudField.value?checkItem(rudField.value):openSnack('You must check at least one sail')">Check
+                {{material.type}}</button>
+            <button mat-stroked-button matTooltip="Send {{material.type}} to repair">Repair {{material.type}}</button>
+            <button mat-stroked-button matTooltip="Send {{material.type}} to Megastore">Sell {{material.type}}</button>
+        </div>
+
+    </div>
+
+    <h2>Print list of {{material.type}}s.</h2>
+    <div class='printingForm'>
+        <mat-button-toggle-group value='full' name="List">
+            <mat-button-toggle matTooltip="Print all details about each {{material.type}}" value="full">Full list
+            </mat-button-toggle>
+            <mat-button-toggle matTooltip="Print only serial number to make list shorter." value="only_serials">Only
+                serials</mat-button-toggle>
+        </mat-button-toggle-group>
+        <button mat-stroked-button
+            matTooltip="Printing list of {{material.type}} currently avaible in the center.">Print list of
+            {{material.type}}s</button>
+
+    </div>
+
+
+    <h2>Send email report of {{material.type}} from choosen day or days.</h2>
+    <div class=reportsForm>
+        <div class=buttons>
+        <mat-button-toggle-group value='today' #report="matButtonToggleGroup" name="report">
+            <mat-button-toggle matTooltip="Send report from today." value="today">Today
+            </mat-button-toggle>
+            <mat-button-toggle matTooltip="Send custom report from choosen days." value="custom">Custom
+            </mat-button-toggle>
+        </mat-button-toggle-group>
+        <button mat-stroked-button (click)=testOnClick() matTooltip="Send report to Megastore.">Send</button>
+<!-- testing click!!!!!!!!!! -->
+
+
+    </div>
+        <div class=datePickers *ngIf="report.value == 'custom'">
+
+            <mat-form-field  matTooltip='First day of report.' class="reportPeriod">
+                <mat-label>First day</mat-label>
+                <input matInput #pickerInput (dateInput)=dateFilter2(pickerInput.value)   [max]=today  [matDatepicker]="startPicker">
+                <mat-datepicker-toggle matSuffix [for]="startPicker"></mat-datepicker-toggle>
+                <mat-datepicker  #startPicker></mat-datepicker>
+            </mat-form-field>
+
+<!-- [matDatepickerFilter]="dateFilter" -->
+
+            <mat-form-field  #pickerInput2 matTooltip='Last day of report.' class="reportPeriod">
+
+                <mat-label>Last day</mat-label>
+                <input matInput [min]=lastDate [matDatepicker]="lastPicker">
+                <mat-datepicker-toggle matSuffix [for]="lastPicker"></mat-datepicker-toggle>
+                <mat-datepicker #lastPicker></mat-datepicker>
+            </mat-form-field>
+
+        </div>
+    </div>
+</div>
+
+<div class=displayDiv>
+    <app-display-form *ngIf='singleItem!=null' [material]=material [iconUrl]="material.imageUrl" [items]=singleItem></app-display-form>
+
+</div>
+
+</body>

@@ -1,0 +1,35 @@
+/* You can add global styles to this file, and also import other style files */
+
+$primary: #ffef28; //footer and header
+$secondary:#8adfe7;  /* body color */
+$third: rgba(0,0,0,.87);         /* font color, alt=purple */
+$fourth: black;   
+$fifth: aliceblue;  
+$sixth: ghostwhite; 
+
+html, body { height: max-content;  }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; background: $secondary;}
+header, footer {width: 100%; padding: 0rem; background: $primary;}
+
+
+h1{text-align: center; font-weight: bold;}
+
+@media only screen and (max-width: 992px){
+    *{
+        font-size: 15px;
+    }
+}
+
+@media only screen and (max-width: 600px){
+    header{
+        width: fit-content;
+        
+    }
+    *{
+    font-size: 8px;
+    }
+    body{
+        width:100%;
+    }
+}
+
