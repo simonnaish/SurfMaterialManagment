@@ -30,6 +30,7 @@ body {
                 .sizes {
                     display: flex;
                     flex-direction: column;
+                    
                 }
             }
         }
@@ -52,7 +53,6 @@ body {
                 margin-left: 3rem;
             }
             Input {
-                margin-right: 2rem;
             }
             .model_column {
                 display: flex;
@@ -69,19 +69,43 @@ body {
                     display: flex;
                     flex-direction: row;
                     justify-content: space-between;
-                    input {
-                        background: aliceblue;
-                        padding: 0.5rem;
-                        max-width: 3rem;
-                    }
+                        .difference {
+                            display: inline-flex;
+                            p {
+                                margin:0.5rem;
+                                text-align: start;
+                                width: 1rem;
+                                font-size: 1.2rem;
+                                margin-right: 2rem;
+                            }
+                        }
+                    
                 }
             }
         }
+    }
+    input {
+        background: aliceblue;
+        border: intset;
+        padding: 0.5rem;
+        max-width: 3rem;
     }
     .buttons {
         margin-top: 3rem;
         display: grid;
         grid-auto-flow: column;
+    }
+
+    .positiveDifference {
+        visibility: visible;
+        color: green;
+    }
+    .neutralDifference{
+        visibility: hidden;
+    }
+    .negativeDifference {
+        visibility: visible;
+        color: red;
     }
 
     // @media only screen and (max-width: 600px){

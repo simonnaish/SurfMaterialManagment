@@ -1,53 +1,50 @@
 * {
   font-size: 1rem;
 }
-body{
-  
+body {
   display: flex;
   flex-direction: row;
-  @media only screen and (max-width: 600px){
-  flex-direction: column;
+  @media only screen and (max-width: 600px) {
+    flex-direction: column;
   }
   justify-content: space-evenly;
-  .crudDiv{
+  .crudDiv {
     max-width: 45%;
-    .datePickers{
-      mat-form-field{
-      justify-content: space-around;
-      width: 45%;
-    }}
+    .datePickers {
+      mat-form-field {
+        justify-content: space-around;
+        width: 45%;
+      }
+    }
   }
-  .displayDiv{
+  .displayDiv {
     min-width: 30%;
     max-width: 45%;
   }
 }
 
-.crudDiv{
+.crudDiv {
   background: radial-gradient(transparent, ivory);
-    padding: 2rem;
-    border: outset;
-    border-radius: 2rem;
+  padding: 2rem;
+  border: outset;
+  border-radius: 2rem;
 }
 
-
-h2{
+h2 {
   font-size: 1.2rem;
   text-align: start;
   // padding-left: 1.5rem;
-  padding-bottom:0.5rem;
-  padding-top:1rem;
+  padding-bottom: 0.5rem;
+  padding-top: 1rem;
 }
 .crudDiv {
   display: flex;
   flex-direction: column;
-  
 }
 
-
-input{
+input {
   background: aliceblue;
-  padding:0.5rem;
+  padding: 0.5rem;
 }
 .mat-select {
   opacity: 0.75;
@@ -55,48 +52,48 @@ input{
   text-align: center;
 }
 
-.rudForm{
-  @media only screen and (max-width: 600px){
+.rudForm {
+  @media only screen and (max-width: 600px) {
     display: flex;
     flex-direction: column;
   }
 }
 
 .addForm,
-.rudForm, .printingForm {
-//   border: solid;
+.rudForm,
+.printingForm {
+  //   border: solid;
   display: flex;
   justify-content: space-between;
 }
 
-.reportsForm{
+.reportsForm {
   display: flex;
   flex-direction: column;
-  .buttons{
+  .buttons {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
   }
-  .datePickers{
-    display:flex;
+  .datePickers {
+    display: flex;
     flex-direction: row;
     justify-content: space-evenly;
   }
 }
 
-
-.addForm{
-    margin-bottom: 1rem;
+.addForm {
+  margin-bottom: 1rem;
 }
 
-button, .mat-button-toggle{
+button,
+.mat-button-toggle {
   background: aliceblue;
   opacity: 0.75;
   border: aliceblue;
 }
 
-.mat-button-toggle-checked{
-  background:#ffef28;
+.mat-button-toggle-checked {
+  background: #ffef28;
   opacity: 0.9;
 }
-

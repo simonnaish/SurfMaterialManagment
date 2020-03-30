@@ -62,10 +62,10 @@ export class CRUDFormComponent implements OnInit {
 
     id.forEach(element => {
       this.materialList$.forEach(it => it.forEach(item => { if (item.id == element) { temporaryItem.push(item) } }));
-      
+
     });
     this.singleItem = temporaryItem;
-    
+
   }
 
   //helper for sorting

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CRUDServiceService } from '../services/crudservice.service';
 
 @Component({
   selector: 'app-beginners',
@@ -7,14 +8,64 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BeginnersComponent implements OnInit {
 
-  material:any;
+  //Observable with list of equipment and amount
+  equipment: any;
 
-  constructor() { 
-    // this.material={"Boards":{"Starboard Start":["S","M","L"]}, {"Starboard Rio":['S','M','L']}, {"Funster", "Funster Explorer/Sport", "Sails":['Synergry',"Redback", "Unifieber" ]}
-    this.material={"Boards":{"Starboard Start":['S','M','L'], "Starboard Rio":['S','M','L'], "Fanatic Funster":[160,180,205,240], "Fanatic Explorer/Sport":[145,165,195]}, "Sails":{"Synergy":[1.2,2.1, 2.6, 3.1, 3.6, 4.1], "XS":[2.0, 2.5, 3.0]}}
+  //Temporary changes kept before save
+  temporaryChanges: any = {};
+
+
+  constructor(private _http: CRUDServiceService) {
   }
-  
+
   ngOnInit(): void {
+    this.loadEquipment();
   }
+
+  loadEquipment() {
+    let temporary: any[] = [];
+    this._http.getBeginners().forEach(data => temporary.push(data)).finally; {
+      this.equipment = temporary;
+    };
+
+
+  }
+
+
+  amount: number = 0;
+  onAmountChange(materialType: string, model: string, size: string, newAmount: number) {
+    let temporaryName: string = '';
+    let temporaryAmount: number = 0;
+    this.equipment[0][materialType].forEach(item => {
+      if (item.Model == model) {
+        temporaryName += model + size;
+        temporaryAmount = newAmount - item.amount[size];
+      }
+    });
+
+    this.temporaryChanges[temporaryName] = temporaryAmount;
+    // console.log(this.temporaryChanges);
+  }
+
+
+
+  addMaterial(){
+    this.temporaryChanges=[];
+  }
+
+
+  //set color of <p> depend to value
+  getClass(difference: number) {
+    if (difference > 0) {
+      return 'positiveDifference';
+    }
+    else if (difference == 0) {
+      return 'neutralDifference';
+    }
+    else {
+      return 'negativeDifference';
+    }
+  }
+
 
 }

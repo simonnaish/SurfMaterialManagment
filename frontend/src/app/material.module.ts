@@ -18,6 +18,9 @@ import {MatInputModule} from '@angular/material/input';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatListModule} from '@angular/material/list';
 
+import {MatDialogModule} from '@angular/material/dialog';
+
+
 
 @NgModule({
     imports: [
@@ -36,6 +39,7 @@ import {MatListModule} from '@angular/material/list';
         MatInputModule,
         MatDividerModule,
         MatListModule,
+        MatDialogModule
         ],
     exports: [
         FormsModule,
@@ -52,7 +56,8 @@ import {MatListModule} from '@angular/material/list';
         MatNativeDateModule,
         MatInputModule,
         MatDividerModule,
-        MatListModule
+        MatListModule,
+        MatDialogModule
         ]
 })
 export class MaterialModule { }
