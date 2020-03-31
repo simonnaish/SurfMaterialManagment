@@ -2,11 +2,10 @@
     <h1>Beginner material <img src="./assets/img/starboard_start.png" alt="Starboard Start board">
         <img src="./assets/img/synergy.png" alt="Synergry rig">
     </h1>
+    <app-basic-crud *ngIf="equipment" [equipment]=equipment></app-basic-crud>
 
-    <div class=data_input>
+    <!-- <div class=data_input>
 
-
-        <!-- <div class=crud *ngFor="let type of material | keyvalue"> -->
             <div class=crud *ngFor="let type of equipment[0] | keyvalue">
 
             <h2>{{type.key}}</h2>
@@ -18,7 +17,6 @@
                 
                     <div class=difference>
                     <input #amountInput min=0 (change)="onAmountChange(type.key, models.Model, size.key, amountInput.value)" value="{{size.value}}" type='number'>
-                    <!-- <p *ngIf="temporaryChanges[models.Model+size.key] && temporaryChanges[models.Model+size.key]!=0" matBadge={{temporaryChanges[models.Model+size.key]}}></p> -->
                     <p [ngClass]="getClass(temporaryChanges[models.Model+size.key])">{{temporaryChanges[models.Model+size.key]}}</p>
                 </div>
                 </div>
@@ -34,7 +32,7 @@
         <button mat-stroked-button (click)=addMaterial() matTooltip="Add">Add</button>
         <button mat-stroked-button matTooltip="Send to repair">Repair</button>
         <button mat-stroked-button matTooltip="Send to Megastore">Sell</button>
-    </div>
+    </div> -->
 
 
 </body>

@@ -12,101 +12,10 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-    @media only screen and (max-width: 600px) {
-        max-width: 100%;
-        * {
-            font-size: 10px;
-            h2 {
-                font-size: 14px;
-            }
-        }
-        .dataInput {
-            margin: auto;
-            display: flex;
-            flex-direction: column;
-            .model_column {
-                display: flex;
-                flex-direction: column;
-                .sizes {
-                    display: flex;
-                    flex-direction: column;
-                    
-                }
-            }
-        }
-    }
+  
+}
 
-    .data_input {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-evenly;
-
-        .crud {
-            display: flex;
-            flex-direction: row;
-            justify-content: flex-start;
-            h2 {
-                margin-right: 2rem;
-            }
-            label {
-                margin-right: 1rem;
-                margin-left: 3rem;
-            }
-            Input {
-            }
-            .model_column {
-                display: flex;
-                flex-direction: column;
-                margin-top: 2rem;
-                h3 {
-                    justify-content: flex-start;
-                }
-                div {
-                    justify-content: space-between;
-                }
-
-                .sizes {
-                    display: flex;
-                    flex-direction: row;
-                    justify-content: space-between;
-                        .difference {
-                            display: inline-flex;
-                            p {
-                                margin:0.5rem;
-                                text-align: start;
-                                width: 1rem;
-                                font-size: 1.2rem;
-                                margin-right: 2rem;
-                            }
-                        }
-                    
-                }
-            }
-        }
-    }
-    input {
-        background: aliceblue;
-        border: intset;
-        padding: 0.5rem;
-        max-width: 3rem;
-    }
-    .buttons {
-        margin-top: 3rem;
-        display: grid;
-        grid-auto-flow: column;
-    }
-
-    .positiveDifference {
-        visibility: visible;
-        color: green;
-    }
-    .neutralDifference{
-        visibility: hidden;
-    }
-    .negativeDifference {
-        visibility: visible;
-        color: red;
-    }
+    
 
     // @media only screen and (max-width: 600px){
     //     flex-direction: column;
@@ -124,4 +33,4 @@ body {
     //
     //     }}
     // }
-}
+

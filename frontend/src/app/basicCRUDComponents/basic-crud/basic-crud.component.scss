@@ -1,0 +1,77 @@
+body {
+    mat-accordion {
+        mat-expansion-panel {
+            background: radial-gradient(transparent, ivory);
+            mat-expansion-panel-header {
+                mat-panel-title {
+                    justify-content: center;
+                    font-weight: 500;
+                    font-size: 1.5rem;
+                }
+            }
+            .model_column{
+                margin-bottom: 2rem;
+                h3{
+                    margin-left: 3rem;
+                    font-weight: 500;
+                }
+                .rows{
+                    display: inline-flex;
+
+                    .sizes{
+                        display: flex;
+                        flex-direction: column;
+                        font-weight: bold;
+                        // text-align: center;
+                        .difference{
+                            display: flex;
+                            flex-direction: row;
+                            margin-right: 1rem;
+                            p{
+                                margin-left: 0.5rem;
+                            width: 1.5rem;
+                            height: 1.5rem;
+                        }
+                    }
+                    }
+                }
+            }
+        }
+    }
+
+    input {
+        background: aliceblue;
+        border: intset;
+        padding: 0.5rem;
+        max-width: 3rem;
+    }
+    .buttons {
+        margin-top: 3rem;
+        display: grid;
+        grid-auto-flow: column;
+    }
+}
+
+//ngStyle classes
+
+.positiveDifference {
+    visibility: visible;
+    color: green;
+}
+.neutralDifference {
+    visibility: hidden;
+}
+.negativeDifference {
+    visibility: visible;
+    color: red;
+}
+
+.mat-accordion .mat-expansion-panel.firstHeader {
+    border-top-left-radius: 2rem;
+    border-top-right-radius: 2rem;
+}
+
+.mat-accordion .mat-expansion-panel.lastHeader {
+    border-bottom-left-radius: 2rem;
+    border-bottom-right-radius: 2rem;
+}

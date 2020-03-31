@@ -29,14 +29,14 @@ export class CRUDServiceService {
   loadSails(): Observable<Sail[]> {
 
     return this.http.get<Sail[]>(this.localUrl + 'sails.json', this.httpOptions).pipe(tap(
-      data => console.log("Correct"),
+      data => console.log("Sails loaded"),
       error => console.log(error)
     ));
   }
 
   loadBoards(): Observable<Board[]> {
     return this.http.get<Board[]>(this.localUrl + 'boards.json', this.httpOptions).pipe(tap(
-      data => console.log("Correct"),
+      data => console.log("Boards loaded"),
       error => console.log(error)
     ));
   }
@@ -53,8 +53,15 @@ export class CRUDServiceService {
 
   getBeginners(): Observable<any[]> {
     return this.http.get<any[]>(this.localUrl + 'beginners.json', this.httpOptions).pipe(tap(
-      data => console.log("Correct"),
+      data => console.log("Beginner material loaded"),
       error => console.log(error)
     ));
+  }
+
+  getAccessories():Observable<any[]>{
+    return this.http.get<any[]>(this.localUrl+'accessories.json', this.httpOptions).pipe(tap(
+      data=>console.log('Accessories loaded'),
+      error=>console.log(error)
+      ));
   }
 }

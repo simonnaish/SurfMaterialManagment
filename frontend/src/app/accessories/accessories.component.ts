@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { CRUDServiceService } from '../services/crudservice.service';
+import { Observable } from 'rxjs';
+
 
 @Component({
   selector: 'app-accessories',
@@ -7,9 +10,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AccessoriesComponent implements OnInit {
 
-  constructor() { }
+  equipment: any;
 
-  ngOnInit(): void {
+  constructor(private _http: CRUDServiceService) {
+
   }
 
+  ngOnInit(): void {
+    this.loadEquipment();
+    
+  }
+
+
+  loadEquipment() {
+    let temporary: any[] = [];
+    this._http.getAccessories().forEach(data => temporary.push(data)).finally; {
+      this.equipment = temporary;
+    };
+  }
 }

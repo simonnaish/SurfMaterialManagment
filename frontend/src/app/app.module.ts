@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {HttpClientModule} from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -15,10 +15,10 @@ import { AccessoriesComponent } from './accessories/accessories.component';
 import { CRUDFormComponent } from './CRUDComponents/crudform/crudform.component';
 import { DisplayFormComponent } from './CRUDComponents/display-form/display-form.component';
 
+import { MaterialModule } from 'src/app/material.module';
+import { BasicCRUDComponent } from './basicCRUDComponents/basic-crud/basic-crud.component';
 
-import {MaterialModule} from 'src/app/material.module';
-
-import {Material} from 'src/app/models/material';
+// import {Material} from 'src/app/models/material';
 
 
 @NgModule({
@@ -30,8 +30,8 @@ import {Material} from 'src/app/models/material';
     BeginnersComponent,
     AccessoriesComponent,
     CRUDFormComponent,
-    DisplayFormComponent
-  ],
+    DisplayFormComponent,
+    BasicCRUDComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
