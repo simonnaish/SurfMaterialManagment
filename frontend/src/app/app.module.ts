@@ -17,6 +17,7 @@ import { DisplayFormComponent } from './CRUDComponents/display-form/display-form
 
 import { MaterialModule } from 'src/app/material.module';
 import { BasicCRUDComponent } from './basicCRUDComponents/basic-crud/basic-crud.component';
+import { ConfirmationDialogComponent } from './basicCRUDComponents/confirmation-dialog/confirmation-dialog.component';
 
 // import {Material} from 'src/app/models/material';
 
@@ -31,7 +32,9 @@ import { BasicCRUDComponent } from './basicCRUDComponents/basic-crud/basic-crud.
     AccessoriesComponent,
     CRUDFormComponent,
     DisplayFormComponent,
-    BasicCRUDComponent],
+    BasicCRUDComponent,
+    ConfirmationDialogComponent
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,

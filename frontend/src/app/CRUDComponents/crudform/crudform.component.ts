@@ -11,6 +11,8 @@ import { CRUDServiceService } from 'src/app/services/crudservice.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MaterialModule } from 'src/app/material.module';
 
+import { Sort } from '@angular/material/sort';
+
 
 
 @Component({
@@ -53,6 +55,7 @@ export class CRUDFormComponent implements OnInit {
 
   }
   ngOnInit(): void {
+    // this.dynamicSort();
   }
 
   checkItem(id: string[]) {
@@ -69,13 +72,12 @@ export class CRUDFormComponent implements OnInit {
   }
 
   //helper for sorting
-  dynamicSort(property) {
-    return function (a, b) {
-      let result = (a[property] < b[property]) ? -1 : (a[property] > b[property]) ? 1 : 0;
-      return result;
-    }
+  dynamicSort() {
+    // return function (a, b) {
+    // let result = (a[property] < b[property]) ? -1 : (a[property] > b[property]) ? 1 : 0;
+    // return result;
+    // }
   }
-
   openSnack(message: string) { //TODO Change for SnackBar called
     alert(message);
   }

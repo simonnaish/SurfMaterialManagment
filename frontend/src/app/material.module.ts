@@ -12,13 +12,13 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatDatepickerModule } from '@angular/material/datepicker';
-import {MatNativeDateModule} from '@angular/material/core';
-import {MatFormFieldControl} from '@angular/material/form-field';
-import {MatInputModule} from '@angular/material/input';
-import {MatDividerModule} from '@angular/material/divider';
-import {MatListModule} from '@angular/material/list';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatFormFieldControl } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatListModule } from '@angular/material/list';
 
-import {MatExpansionModule} from '@angular/material/expansion';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 
 import {MatDialogModule} from '@angular/material/dialog';
@@ -43,8 +43,9 @@ import {MatDialogModule} from '@angular/material/dialog';
         MatDividerModule,
         MatListModule,
         MatDialogModule,
-        MatExpansionModule
-        ],
+        MatExpansionModule,
+        // MatDialogConfig
+    ],
     exports: [
         FormsModule,
         ReactiveFormsModule,
@@ -62,7 +63,8 @@ import {MatDialogModule} from '@angular/material/dialog';
         MatDividerModule,
         MatListModule,
         MatDialogModule,
-        MatExpansionModule
-        ]
+        MatExpansionModule,
+        // MatDialogConfig
+    ]
 })
 export class MaterialModule { }

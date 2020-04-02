@@ -23,7 +23,7 @@ export class BeginnersComponent implements OnInit {
 
   loadEquipment() {
     let temporary: any[] = [];
-    this._http.getBeginners().forEach(data => temporary.push(data)).finally; {
+    this._http.loadBeginners().forEach(data => temporary.push(data)).finally; {
       this.equipment = temporary;
     };
 

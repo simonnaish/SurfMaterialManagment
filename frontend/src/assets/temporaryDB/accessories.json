@@ -74,7 +74,7 @@
             }
         }
     ],
-    "HarnessLines": [
+    "Harness Lines": [
         {
             "id": 0,
             "Model": "Severne",
@@ -160,7 +160,7 @@
             }
         }
     ],
-    "Mast base": [
+    "Mast Base": [
         {
             "id": 0,
             "Model": "Severne",

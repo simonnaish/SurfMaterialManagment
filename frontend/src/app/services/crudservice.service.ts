@@ -51,17 +51,27 @@ export class CRUDServiceService {
     ));
   }
 
-  getBeginners(): Observable<any[]> {
+  loadBeginners(): Observable<any[]> {
     return this.http.get<any[]>(this.localUrl + 'beginners.json', this.httpOptions).pipe(tap(
       data => console.log("Beginner material loaded"),
       error => console.log(error)
     ));
   }
 
-  getAccessories():Observable<any[]>{
+  loadAccessories():Observable<any[]>{
     return this.http.get<any[]>(this.localUrl+'accessories.json', this.httpOptions).pipe(tap(
       data=>console.log('Accessories loaded'),
       error=>console.log(error)
       ));
+  }
+
+  updateAccessories(object:any){
+
+  }
+
+  addSail(sail:Sail){
+    return this.http.put(this.localUrl+'sails.json/'+sail.id, sail).subscribe(
+      ()=>console.log(sail.id)
+    );
   }
 }

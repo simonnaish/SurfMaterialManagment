@@ -30,7 +30,7 @@
 
             <div class=buttons>
                 <button mat-stroked-button matTooltip="Check {{material.type}} status"
-                    (click)="rudField.value?checkItem(rudField.value):openSnack('You must check at least one sail')">Check
+                    (click)="rudField.value?checkItem(rudField.value):openSnack('You must check at least one '+material.type+'.')">Check
                     {{material.type}}</button>
                 <button mat-stroked-button matTooltip="Send {{material.type}} to repair">Repair
                     {{material.type}}</button>

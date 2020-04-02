@@ -27,6 +27,12 @@ body {
                             display: flex;
                             flex-direction: row;
                             margin-right: 1rem;
+                            input {
+                                background: aliceblue;
+                                border: intset;
+                                padding: 0.5rem;
+                                max-width: 3rem;
+                            }
                             p{
                                 margin-left: 0.5rem;
                             width: 1.5rem;
@@ -39,16 +45,21 @@ body {
         }
     }
 
-    input {
-        background: aliceblue;
-        border: intset;
-        padding: 0.5rem;
-        max-width: 3rem;
-    }
+    
     .buttons {
         margin-top: 3rem;
         display: grid;
         grid-auto-flow: column;
+        button{
+            background: aliceblue;
+            border: aliceblue outset;
+            height: 3.5rem;
+            opacity: 0.75;
+            text-transform: uppercase;
+            // letter-spacing: 0.2rem;
+            font-size: 2rem;    
+        }
+
     }
 }
 

@@ -23,12 +23,16 @@ export class BoardsComponent implements OnInit {
     //single item passed to detail component
     item: Board;
 
-  constructor(private _materialList: CRUDServiceService) { 
+  constructor(private _http: CRUDServiceService) { 
   this.material = { 'type': 'board', 'idExample': 'IG203', 'imageUrl': './assets/img/jp_board.png', 'imageAlt': 'board icon' }
 }
 ngOnInit(): void {
-  this.materialList$=this._materialList.loadBoards();
+  this.loadBoards();
 
+}
+
+loadBoards(){
+  this.materialList$=this._http.loadBoards();
 }
 
 setUpItem(board: Board){

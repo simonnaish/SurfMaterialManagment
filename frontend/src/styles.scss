@@ -8,9 +8,9 @@ $fifth: aliceblue;
 $sixth: ghostwhite; 
 
 html, body { height: max-content;  }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; background: $secondary;}
-header, footer {width: 100%; padding: 0rem; background: $primary;}
-
+body { margin: 0;  font-family: Roboto, "Helvetica Neue", sans-serif; background: $secondary;}
+header, footer {width: 100vw; padding: 0rem; background: $primary;}
+footer{position: sticky; position: -webkit-sticky; /* Safari */}
 
 h1{text-align: center; font-weight: bold;}
 

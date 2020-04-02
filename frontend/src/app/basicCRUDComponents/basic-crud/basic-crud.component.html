@@ -23,8 +23,8 @@
                     <input #amountInput min=0
                         (change)="onAmountChange(type.key, models.Model, size.key, amountInput.value)"
                         value="{{size.value}}" type='number'>
-                    <p [ngClass]="getClass(temporaryChanges[models.Model+size.key])">
-                        {{temporaryChanges[models.Model+size.key]}}</p>
+                    <p [ngClass]="getClass(temporaryChanges.get(models.Model+' '+size.key))">
+                        {{temporaryChanges.get(models.Model+' '+size.key)}}</p>
                 </div>
             </div>
             </div>
@@ -36,8 +36,8 @@
 
 
     <div class=buttons>
-        <button mat-stroked-button (click)=addMaterial() matTooltip="Add">Add</button>
-        <button mat-stroked-button matTooltip="Send to repair">Repair</button>
-        <button mat-stroked-button matTooltip="Send to Megastore">Sell</button>
+        <button mat-stroked-button (click)=addMaterial() matTooltip="Save changes.">Save</button>
+        <!-- <button mat-stroked-button matTooltip="Send to repair">Repair</button> -->
+        <!-- <button mat-stroked-button matTooltip="Send to Megastore">Sell</button> -->
     </div>
 </body>

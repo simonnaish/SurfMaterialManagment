@@ -24,7 +24,7 @@ export class AccessoriesComponent implements OnInit {
 
   loadEquipment() {
     let temporary: any[] = [];
-    this._http.getAccessories().forEach(data => temporary.push(data)).finally; {
+    this._http.loadAccessories().forEach(data => temporary.push(data)).finally; {
       this.equipment = temporary;
     };
   }
