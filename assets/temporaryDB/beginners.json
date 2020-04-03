@@ -1,0 +1,64 @@
+{
+    "Boards": [
+        {
+            "id": 0,
+            "Model": "JP ExplorerSport",
+            "amount": {
+                "145": 2,
+                "165": 1,
+                "195": 6
+            }
+        },
+        {
+            "id": 1,
+            "Model": "JP Funster",
+            "amount": {
+                "160": 1,
+                "180": 6,
+                "205": 1,
+                "240": 3
+            }
+        },
+        {
+            "id": 2,
+            "Model": "Starboard RIO",
+            "amount": {
+                "S": 6,
+                "M": 3,
+                "L": 1
+            }
+        },
+        {
+            "id": 3,
+            "Model": "Starboard Start",
+            "amount": {
+                "S": 3,
+                "M": 1,
+                "L": 6
+            }
+        }
+    ],
+    "Sails": [
+        {
+            "id": 0,
+            "Model": "Synergy",
+            "amount": {
+                "1.2": 4,
+                "2.1": 3,
+                "2.6": 1,
+                "3.1": 6,
+                "3.6": 1,
+                "4.1": 4
+            }
+        },
+        {
+            "id": 1,
+            "Model": "XS",
+            "amount": {
+                "2.0": 1,
+                "2.5": 4,
+                "3.0": 2
+            }
+        }
+    ]
+}
