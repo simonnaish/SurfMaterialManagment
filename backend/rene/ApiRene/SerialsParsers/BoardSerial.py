@@ -13,7 +13,7 @@ def set_category(serial):
         return sport
 
 def set_type(serial):
-    for k,v in BoardConst.types_map:
+    for (k,v) in BoardConst.types_map.items():
         if str(serial[:BoardConst.year_last_index]).lower() in v:
             return k
 
@@ -25,7 +25,7 @@ def set_model(serial):
 
 
 def set_year(serial):
-    if BoardConst.year_index == int(serial[BoardConst.year_last_index]):
+    if BoardConst.previous_year == int(serial[BoardConst.year_last_index]):
         return 2019
     else:
         return 2020

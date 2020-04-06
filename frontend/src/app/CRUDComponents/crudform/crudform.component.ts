@@ -3,15 +3,15 @@ import { Observable } from 'rxjs';
 
 import { FormControl } from '@angular/forms';
 
-import { SailsComponent } from 'src/app/sails/sails.component';
 
 import { Material } from 'src/app/models/material';
 import { Sail } from 'src/app/models/sail';
+import { Board } from 'src/app/models/board';
 import { CRUDServiceService } from 'src/app/services/crudservice.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MaterialModule } from 'src/app/material.module';
+import { tap } from 'rxjs/operators';
 
-import { Sort } from '@angular/material/sort';
 
 
 
@@ -29,16 +29,16 @@ export class CRUDFormComponent implements OnInit {
 
   //List of avaible material in database
   @Input()
+  apiUrl: string;
+
   materialList$: Observable<any[]>;
-
-
-  //datePickeOncChange    //TODO 
-  // @ViewChild("pickerInput2") view1: ElementRef;
-
+  avaibleItems: any[] = [];
+  repairedItems: any[] = [];
+  soldItems: any[] = [];
 
   //single item to display in respond on client action
   @Output()
-  singleItem: any;
+  choosenItems: any;
 
   items = new FormControl();
 
@@ -47,38 +47,69 @@ export class CRUDFormComponent implements OnInit {
 
 
   constructor(private _http: CRUDServiceService) {
-    const currentYear = new Date().getFullYear();
-    const currentMonth = new Date().getMonth();
-    const currentDay = new Date().getUTCDate();
-    this.today = new Date(currentYear, currentMonth, currentDay);
-
-
   }
+
   ngOnInit(): void {
-    // this.dynamicSort();
+    this.loadMaterial();
   }
 
-  checkItem(id: string[]) {
+  ngOnChange() {
+    // this.loadMaterial();
+  }
 
+  loadMaterial() {
+    this.materialList$ = this._http.loadMaterial(this.apiUrl);
+    this._http.loadMaterial(this.apiUrl).forEach(iter => iter.results.forEach(item => {
+      if (item.repair == true) {
+        this.repairedItems.push(item);
+      }
+      else if (item.sold == true) {
+        this.soldItems.push(item)
+      } else {
+        this.avaibleItems.push(item);
+      }
+    }));
+  }
+
+  checkItem(items: string[]) {
     var temporaryItem = [];
-    var temporaryString: string = "";
 
-    id.forEach(element => {
-      // this.materialList$.forEach(it => it.forEach(item => { if (item.id == element) { temporaryItem.push(item) } }));
-      this._http.getBoard(element).subscribe(data=>temporaryItem.push(data));
-
+    items.forEach(element => {
+      this._http.getItem(this.apiUrl, element).subscribe(data => temporaryItem.push(data));
     });
-    this.singleItem = temporaryItem;
+
+    this.choosenItems = temporaryItem;
+  }
+
+  addItem(item: string) {
+    let temporaryList = this.soldItems.concat(this.avaibleItems).concat(this.repairedItems);
+    let found: boolean = false;
+    temporaryList.forEach(iter => {
+      if (iter.id == item) {
+        this._http.recieveUsedItem(this.apiUrl, item);
+        this.loadMaterial();
+        found = true;
+      }
+    });
+    if (found == false) {
+      this._http.addItem(this.apiUrl, item);
+      this.loadMaterial();
+    }
+  }
+
+  repairItem(items: string[]) {
+    items.forEach(item => this._http.repairItem(this.apiUrl, item))
+
+    this.loadMaterial();
 
   }
 
-  //helper for sorting
-  dynamicSort() {
-    // return function (a, b) {
-    // let result = (a[property] < b[property]) ? -1 : (a[property] > b[property]) ? 1 : 0;
-    // return result;
-    // }
+  sellItem(items: string[]) {
+    items.forEach(item => this._http.sellItem(this.apiUrl, item));
+    this.loadMaterial();
+
   }
+
   openSnack(message: string) { //TODO Change for SnackBar called
     alert(message);
   }
@@ -91,6 +122,14 @@ export class CRUDFormComponent implements OnInit {
     console.log(this.lastDate);
 
 
+  }
+
+  getStatusClass(id: any) {
+    if (id.repair == true) {
+      return 'repair'
+    } else if (id.sold == true) {
+      return 'sold'
+    }
   }
 
 

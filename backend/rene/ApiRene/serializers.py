@@ -24,7 +24,7 @@ class beginner_serializer(serializers.ModelSerializer):
     class Meta:
         model=Beginners
         # fields=['id']
-        fields=['id','type', 'category', 'model', 'size','year', 'whenCame', 'whenGone', 'whenSold', 'repair', 'sold']
+        fields=['id','type',  'model', 'size', 'whenCame', 'whenGone', 'gone']
 
 class accessorie_serializer(serializers.ModelSerializer):
     id=serializers.CharField(source='serial')
@@ -32,4 +32,4 @@ class accessorie_serializer(serializers.ModelSerializer):
     class Meta:
         model=Accessoriess
         # fields=['id']
-        fields=['id','type', 'category', 'model', 'size','year', 'whenCame', 'whenGone', 'whenSold', 'repair', 'sold']
+        fields=['id','type', 'model', 'size', 'whenCame', 'whenGone', 'gone']

@@ -11,6 +11,7 @@ import { tap } from 'rxjs/operators';
 export class GeneralComponent implements OnInit {
 
   amounts: Map<string, number>;
+  urls:{};
 
   constructor(private _http: CRUDServiceService) {
 
@@ -18,18 +19,22 @@ export class GeneralComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.urls={sails:'sails/', boards:'boards/'}
     this.amounts = new Map();
     this.setAmounts();
   }
 
   setAmounts() {
-    this._http.loadSails2().subscribe(data => this.amounts.set('sails', data.count));
-    this._http.loadBoards2().subscribe(data => this.amounts.set('boards', data.count));
-
+    for(let key in this.urls){
+        this._http.loadMaterial(this.urls[key]).subscribe(data=>this.amounts.set(key, data.count));
+        // console.log(this.urls[key])
+    }
+    console.log(this.amounts);
   }
 
  
   testing() {
+    this.setAmounts()
     console.log('clicked');
   
   }

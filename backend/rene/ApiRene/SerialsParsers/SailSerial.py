@@ -4,13 +4,13 @@ from . import SailConst
 def set_category(serial):
     prem = "premium"
     wc = "world cup"
-    if serial[:SailConst.serial_last_index].lower() in SailConst.premiumSet:
+    if serial[:SailConst.serial_last_index].lower() in SailConst.premium_set:
         return prem
     else:
         return wc
 
 def set_type(serial):
-    for k,v in SailConst.type_map:
+    for  (k,v) in  SailConst.type_map.items():
         if str(serial[:SailConst.serial_last_index]).lower() in v:
             return k
     return 'other'
@@ -34,7 +34,7 @@ def set_size(serial):
 
 def check_number(serial):
     if (serial[:SailConst.serial_last_index]).lower() in SailConst.models_map.keys():
-        if checkSize(serial[SailConst.serial_last_index:SailConst.size_last_index], set_model(serial)):
+        if check_size(serial[SailConst.serial_last_index:SailConst.size_last_index], set_model(serial)):
             return True
         else:
             return False

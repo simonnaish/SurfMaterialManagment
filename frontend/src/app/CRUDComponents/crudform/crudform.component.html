@@ -4,9 +4,10 @@
     <div class=crudDiv>
         <h2>Add new {{material.type}} to database.</h2>
         <div class=addForm>
-            <input type="text" matTooltip="Number of {{material.type}} is a sticker glue in visible spot."
+            <input #serialInput type="text" matTooltip="Number of {{material.type}} is a sticker glue in visible spot."
                 placeholder="{{material.type}} number (i.e. {{material.idExample}})">
-            <button mat-stroked-button matTooltip="Add recieved {{material.type}} to database">Add
+            <button mat-stroked-button matTooltip="Add recieved {{material.type}} to database"
+                (click)=addItem(serialInput.value)>Add
                 {{material.type}}</button>
         </div>
 
@@ -24,7 +25,10 @@
                             (+{{items.value.length - 1}} {{items.value?.length === 2 ? 'other' : 'others'}})
                         </span>
                     </mat-select-trigger>
-                    <mat-option *ngFor="let item of (materialList$ | async)?.results" [value]="item.id">{{item.id}}</mat-option>
+                    <mat-option *ngFor="let item of (materialList$ | async)?.results" [value]="item.id">
+                        <span [ngClass]=getStatusClass(item)>{{item.id}}</span>
+
+                    </mat-option>
                 </mat-select>
             </mat-form-field>
 
@@ -32,9 +36,10 @@
                 <button mat-stroked-button matTooltip="Check {{material.type}} status"
                     (click)="rudField.value?checkItem(rudField.value):openSnack('You must check at least one '+material.type+'.')">Check
                     {{material.type}}</button>
-                <button mat-stroked-button matTooltip="Send {{material.type}} to repair">Repair
+                <button mat-stroked-button matTooltip="Send {{material.type}} to repair"
+                    (click)=repairItem(rudField.value)>Repair
                     {{material.type}}</button>
-                <button mat-stroked-button matTooltip="Send {{material.type}} to Megastore">Sell
+                <button mat-stroked-button matTooltip="Send {{material.type}} to Megastore" (click)=sellItem(rudField.value)>Sell
                     {{material.type}}</button>
             </div>
 
@@ -94,7 +99,8 @@
     </div>
 
     <div class=displayDiv>
-        <app-display-form *ngIf='singleItem!=null' [material]=material [iconUrl]="material.imageUrl" [items]=singleItem>
+        <app-display-form *ngIf='choosenItems!=null' [material]=material [iconUrl]="material.imageUrl"
+            [items]=choosenItems>
         </app-display-form>
 
     </div>

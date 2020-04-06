@@ -5,4 +5,5 @@ export interface Material {
     idExample: string;
     imageUrl: string;
     imageAlt: string;
+    apiUrl:string;
 }

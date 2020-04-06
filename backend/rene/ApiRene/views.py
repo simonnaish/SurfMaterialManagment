@@ -17,6 +17,31 @@ class sail_view_set(viewsets.ModelViewSet):
                 type=SailSerial.set_type(serial),
                 category=SailSerial.set_category(serial),
                 model=SailSerial.set_model(serial),
-                size=SailSerial.set_volume(serial),
+                size=SailSerial.set_size(serial),
                 year=SailSerial.set_year(serial),
             )
+class board_view_set(viewsets.ModelViewSet):
+    queryset = Board.objects.all().order_by('sold', 'repair',  'serial')
+    serializer_class = board_serializer
+
+    def perform_create(self, serializer):
+        serial = self.request.data["id"]
+        if BoardSerial.check_number(serial):
+            serializer.save(
+                serial=serial.upper(),
+                type=BoardSerial.set_type(serial),
+                category=BoardSerial.set_category(serial),
+                model=BoardSerial.set_model(serial),
+                size=BoardSerial.set_volume(serial),
+                year=BoardSerial.set_year(serial),
+            )
+
+class beginners_view_set(viewsets.ModelViewSet):
+    queryset = Beginners.objects.all().order_by('type', 'model', 'size')
+    serializer_class = beginner_serializer
+
+class accessories_view_set(viewsets.ModelViewSet):
+    queryset = Accessoriess.objects.all().order_by('type', 'model', 'size')
+    serializer_class = accessorie_serializer
+
+

@@ -21,13 +21,13 @@ class Board(models.Model):
     size=models.FloatField(editable=False,auto_created=True)
     year=models.IntegerField(editable=False,auto_created=True)
     whenCame=models.DateField(auto_now_add=True)# default=timezone.now().strftime('%Y-%m-%d'))
-    whenGone=models.DateField(null=True, blank=True)
-    whenSold=models.DateField(null=True, blank=True)
+    whenGone=models.DateField(null=True)
+    whenSold=models.DateField(null=True)
     repair=models.BooleanField(default=False)
     sold=models.BooleanField(default=False)
 
 class Beginners(models.Model):
-    type=models.TextChoices('Sail', 'Board') #Sail || Board
+    type=models.TextField() #Choices('Sail', 'Board') #Sail || Board
     model=models.TextField()
     size=models.FloatField()
     whenCame=models.DateField(auto_now_add=True)

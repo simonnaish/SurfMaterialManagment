@@ -51,7 +51,7 @@ tb_size_set = nc_size_set
 ovd_size_set = {"62", "70", "78", "86"}
 m3_size_set = {"50", "55", "62", "70", "78", "86"}
 
-modelToDict = {
+model_to_dict = {
     "Blade": bl_size_set,
     "Gator": gt_size_set,
     "Fr33k": s1_size_set,

@@ -1,6 +1,7 @@
 # CONST_INDEXES
 year_last_index = -3
 volume_index = -2
+previous_year=9
 
 # Categories maps
 premium_set = {
