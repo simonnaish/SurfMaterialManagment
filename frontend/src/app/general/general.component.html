@@ -1,13 +1,14 @@
 <body>
 <h1>Welcome!</h1>
+    <span *ngIf="amounts">
+<button (click)=testing()>TEST ME</button>
 <div class=container>
 <mat-list>
 <h2>Equipment</h2>
-
-    <mat-list-item>Sails: {{sailsAmount}}</mat-list-item>
+    <mat-list-item>Sails:{{amounts.get('sails')}} </mat-list-item>
     <h3>Premium</h3>
     <h3>World Cup</h3>
-    <mat-list-item>Boards:</mat-list-item>
+    <mat-list-item>Boards: {{amounts.get('boards')}}</mat-list-item>
     <h3>Premium</h3>
 <h3>World Cup</h3>
 <h3>Sport</h3>
@@ -35,4 +36,5 @@
 
 </mat-list>
 </div>
+</span>
 </body>

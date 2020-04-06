@@ -46,7 +46,7 @@ export class CRUDFormComponent implements OnInit {
   lastDate: Date;
 
 
-  constructor(private http: CRUDServiceService) {
+  constructor(private _http: CRUDServiceService) {
     const currentYear = new Date().getFullYear();
     const currentMonth = new Date().getMonth();
     const currentDay = new Date().getUTCDate();
@@ -64,7 +64,8 @@ export class CRUDFormComponent implements OnInit {
     var temporaryString: string = "";
 
     id.forEach(element => {
-      this.materialList$.forEach(it => it.forEach(item => { if (item.id == element) { temporaryItem.push(item) } }));
+      // this.materialList$.forEach(it => it.forEach(item => { if (item.id == element) { temporaryItem.push(item) } }));
+      this._http.getBoard(element).subscribe(data=>temporaryItem.push(data));
 
     });
     this.singleItem = temporaryItem;

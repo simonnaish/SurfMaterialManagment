@@ -1,4 +1,5 @@
 <body>
     <h1>Boards<img [src]=material.imageUrl [alt]=material.imageAlt></h1> 
     <app-crudform *ngIf="material" [material]=material [materialList$]=materialList$></app-crudform>
+    <button (click)=addBoard()>addMe!</button>
     </body>

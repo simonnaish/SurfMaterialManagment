@@ -10,56 +10,27 @@ import { tap } from 'rxjs/operators';
 })
 export class GeneralComponent implements OnInit {
 
-  sails: any;
-  boards: any;
-  beginners: any;
-  accessories: any;
-
-  sailsAmount: number;
-  boardsAmount: number;
-  beginnersBoardsAmount: number;
-  beginnersSailsAmount: number;
-
-  boomsAmount: number;
-  mastsAmount: number;
-  extensionsAmount: number;
-  mastBaseAmount: number;
-  wetsuitsAmount: number;
-  harnessAmount: number;
-  harnessLinesAmount: number;
+  amounts: Map<string, number>;
 
   constructor(private _http: CRUDServiceService) {
-    this.sails=_http.loadSails();
-    this.boards = _http.loadBoards();
-    this.beginners = _http.loadBeginners();
-    this.accessories = _http.loadAccessories();
-    // this.setAmounts();
+
+
   }
 
   ngOnInit(): void {
+    this.amounts = new Map();
     this.setAmounts();
-    
-
   }
-  ngDoCheck():void{
-    // this.setAmounts();
-
-    }
 
   setAmounts() {
-    this.sailsAmount = this.getSailsAmount();
-    // this.boardsAmount = getBoardsAmount();
-    // this.beginnersBoardsAmount = getBeginnerBoardsAmount();
-    console.log(this.sailsAmount);
+    this._http.loadSails2().subscribe(data => this.amounts.set('sails', data.count));
+    this._http.loadBoards2().subscribe(data => this.amounts.set('boards', data.count));
 
   }
 
-  getSailsAmount() {
-    let amount=0;
-    this.sails.forEach(item=>amount+=item.length);
-    //  console.log(this.sails.length);// .forEach(item => console.log(item.length));
+ 
+  testing() {
+    console.log('clicked');
   
-    // console.log(amount);
-    return amount;
   }
 }

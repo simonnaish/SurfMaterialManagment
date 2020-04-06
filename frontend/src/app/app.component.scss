@@ -1,5 +1,8 @@
 //header: LOGIN TODO
-
+@media only screen and (max-width: 992px) {
+*{
+  display: fullscreen;
+}}
 header{
     // display: flex;
 @media only screen and (max-width: 992px) {
@@ -31,7 +34,6 @@ header{
       }
     }
 }
-
 //footer: DONE
 footer{
   @media only screen and (max-width: 992px) {

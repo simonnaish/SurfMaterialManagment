@@ -17,14 +17,14 @@
             <mat-form-field>
                 <mat-label>{{material.type}}s</mat-label>
                 <mat-select #rudField matTooltip='Check one or more {{material.type}}s' [formControl]="items" multiple
-                    matBadge="{{(materialList$ | async)?.length}}" matBadgePosition="before" matBadgeOverlap="false">
+                    matBadge="{{(materialList$ |async)?.count}}" matBadgePosition="before" matBadgeOverlap="false">
                     <mat-select-trigger>
                         {{items.value ? items.value[0] : ''}}
                         <span *ngIf="items.value?.length > 1" class="mat-selector">
                             (+{{items.value.length - 1}} {{items.value?.length === 2 ? 'other' : 'others'}})
                         </span>
                     </mat-select-trigger>
-                    <mat-option *ngFor="let item of materialList$ | async" [value]="item.id">{{item.id}}</mat-option>
+                    <mat-option *ngFor="let item of (materialList$ | async)?.results" [value]="item.id">{{item.id}}</mat-option>
                 </mat-select>
             </mat-form-field>
 
@@ -76,7 +76,7 @@
                     <input matInput #pickerInput (dateInput)=dateFilter2(pickerInput.value) [max]=today
                         [matDatepicker]="startPicker">
                     <mat-datepicker-toggle matSuffix [for]="startPicker"></mat-datepicker-toggle>
-                    <mat-datepicker #startPicker></mat-datepicker>
+                    <mat-datepicker touchUi #startPicker></mat-datepicker>
                 </mat-form-field>
 
                 <!-- [matDatepickerFilter]="dateFilter" -->
@@ -84,9 +84,9 @@
                 <mat-form-field #pickerInput2 matTooltip='Last day of report.' class="reportPeriod">
 
                     <mat-label>Last day</mat-label>
-                    <input matInput [min]=lastDate [matDatepicker]="lastPicker">
+                    <input matInput [min]=lastDate [max]=today [matDatepicker]="lastPicker">
                     <mat-datepicker-toggle matSuffix [for]="lastPicker"></mat-datepicker-toggle>
-                    <mat-datepicker #lastPicker></mat-datepicker>
+                    <mat-datepicker touchUi #lastPicker></mat-datepicker>
                 </mat-form-field>
 
             </div>

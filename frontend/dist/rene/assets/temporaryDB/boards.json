@@ -1,0 +1,47 @@
+[
+    {
+        "id": "SRP201",
+        "type":"freeride",
+        "category": "premium",
+        "model": "Super Ride",
+        "size": 106,
+        "year": 2020,
+        "whenCame":"20.01.2020",
+        "whenGone":"29.02.2020",
+        "repair":false
+    },
+    {
+        "id": "FWC213",
+        "type":"wave",
+        "category": "world cup",
+        "model": "Freestyle-Wave",
+        "size": 94,
+        "year": 2020,
+        "whenCame":"20.01.2020",
+        "whenGone":"29.02.2020",
+        "repair":true
+    },
+    {
+        "id": "MG231",
+        "type":"freeride",
+        "category": "sport",
+        "model": "MagicRide",
+        "size": 119,
+        "year": 2020,
+        "whenCame":"20.01.2020",
+        "whenGone":"29.02.2020",
+        "repair":false
+    },
+    {
+        "id": "DNP201",
+        "type":"wave",
+        "category": "premium",
+        "model": "Dyno",
+        "size": 86,
+        "year": 2020,
+        "whenCame":"20.01.2020",
+        "whenGone":"29.02.2020",
+        "repair":false
+    }
+    
+]

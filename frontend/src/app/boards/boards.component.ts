@@ -29,10 +29,25 @@ export class BoardsComponent implements OnInit {
 ngOnInit(): void {
   this.loadBoards();
 
+ 
+
 }
 
 loadBoards(){
-  this.materialList$=this._http.loadBoards();
+  this.materialList$=this._http.loadBoards2();
+}
+
+addBoard(){
+  let board= <Board>{
+    id:'SRC222', 
+    type:'freeride',
+    category: "world cup",
+    model: 'Super Ride',
+    size: 124,
+    year: 2020
+  };
+  console.log(board.id);
+  this._http.addBoard('SSS333').subscribe(()=>console.log('correct'));
 }
 
 setUpItem(board: Board){
