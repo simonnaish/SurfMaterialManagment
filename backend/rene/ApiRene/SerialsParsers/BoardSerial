@@ -13,7 +13,11 @@ def set_category(serial):
         return sport
 
 def set_type(serial):
-    return BoardConst.types_map[str(serial[:BoardConst.year_last_index]).lower()]
+    for k,v in BoardConst.types_map:
+        if str(serial[:BoardConst.year_last_index]).lower() in v:
+            return k
+
+    return 'other'
 
 
 def set_model(serial):

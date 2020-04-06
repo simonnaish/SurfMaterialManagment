@@ -11,11 +11,12 @@ class sail_view_set(viewsets.ModelViewSet):
 
     def perform_create(self, serializer):
         serial = self.request.data["id"]
-        serializer.save(
-            serial=serial.upper(),
-            type=SailSerial.set_type(serial),
-            category=SailSerial.set_category(serial),
-            model=SailSerial.set_model(serial),
-            size=SailSerial.set_volume(serial),
-            year=SailSerial.set_year(serial),
-        )
+        if SailSerial.check_number(serial):
+            serializer.save(
+                serial=serial.upper(),
+                type=SailSerial.set_type(serial),
+                category=SailSerial.set_category(serial),
+                model=SailSerial.set_model(serial),
+                size=SailSerial.set_volume(serial),
+                year=SailSerial.set_year(serial),
+            )
