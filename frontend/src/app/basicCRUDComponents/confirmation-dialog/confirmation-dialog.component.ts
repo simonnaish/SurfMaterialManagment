@@ -3,6 +3,7 @@ import { Component, OnInit, Input, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 import { CRUDServiceService } from 'src/app/services/crudservice.service';
+import { BasicCRUDComponent } from '../basic-crud/basic-crud.component';
 
 @Component({
   selector: 'app-confirmation-dialog',
@@ -11,7 +12,6 @@ import { CRUDServiceService } from 'src/app/services/crudservice.service';
 })
 export class ConfirmationDialogComponent implements OnInit {
 
-  // @Input()
   listOfChanges: any;
 
   constructor(
@@ -20,20 +20,13 @@ export class ConfirmationDialogComponent implements OnInit {
     this.listOfChanges = data;
   }
 
-  // this.listOfChanges=[1,2,3]
 
 
   ngOnInit(): void {
-    // console.log(this.listOfChanges);
-  }
-
-  onNoClick() {
-    this.dialogRef.close();
   }
 
   onYesClick() {
-
-    this.dialogRef.close();
+    this.dialogRef.close(true);
   }
 
 }

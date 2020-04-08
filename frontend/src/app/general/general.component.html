@@ -1,40 +1,49 @@
 <body>
-<h1>Welcome!</h1>
+    <h1>Welcome!</h1>
     <span *ngIf="amounts">
-<button (click)=testing()>TEST ME</button>
-<div class=container>
-<mat-list>
-<h2>Equipment</h2>
-    <mat-list-item>Sails:{{amounts.get('sails')}} </mat-list-item>
-    <h3>Premium</h3>
-    <h3>World Cup</h3>
-    <mat-list-item>Boards: {{amounts.get('boards')}}</mat-list-item>
-    <h3>Premium</h3>
-<h3>World Cup</h3>
-<h3>Sport</h3>
-<h2>Beginner material</h2>
-<mat-list-item>Boards:</mat-list-item>
-<mat-list-item>Sails:</mat-list-item>
-<h2>Accessories</h2>
-<mat-list-item>Masts:</mat-list-item>
-<mat-list-item>Booms:</mat-list-item>
-<mat-list-item>Extensions:</mat-list-item>
-<mat-list-item>Mast bases:</mat-list-item>
-<mat-list-item>Wetsuits:</mat-list-item>
-<mat-list-item>Harnesses:</mat-list-item>
-<mat-list-item>Harness lines:</mat-list-item>
+        <div class=container>
+            <mat-list>
+                <h2>Equipment</h2>
+                <mat-list-item>Sails: {{amounts.get('sails')}} </mat-list-item>
+                <h3>Premium: {{amounts.get('premiumSails')}}</h3>
+                <h3>World Cup: {{amounts.get('worldCupSails')}}</h3>
+                <mat-list-item>Boards: {{amounts.get('boards')}}</mat-list-item>
+                <h3>Premium: {{amounts.get('premumBoards')}}</h3>
+                <h3>World Cup: {{amounts.get('worldCupBoards')}}</h3>
+                <h3>Sport: {{amounts.get('sportBoards')}}</h3>
+                <h2>Beginner material</h2>
+                <mat-list-item>Boards: {{amounts.get('beginnerBoards')}}</mat-list-item>
+                <mat-list-item>Sails: {{amounts.get('beginnerSails')}}</mat-list-item>
+                <h2>Accessories</h2>
+                <mat-list-item>Masts: {{amounts.get('masts')}}</mat-list-item>
+                <h3>Premium Masts: {{amounts.get('premiumMasts')}}</h3>
+                <h3>World Cup Masts: {{amounts.get('worldCupMasts')}}</h3>
+                <h3>Beginner Masts: {{amounts.get('beginnerMasts')}}</h3>
+                <mat-list-item>Booms: {{amounts.get('booms')}}</mat-list-item>
+                <h3>Premium Booms: {{amounts.get('premiumBooms')}}</h3>
+                <h3>World Cup Booms: {{amounts.get('worldCupBooms')}}</h3>
+                <h3>Beginner Booms: {{amounts.get('beginnerBooms')}}</h3>
+                <mat-list-item>Extensions: {{amounts.get('extensions')}}</mat-list-item>
+                <mat-list-item>Mast bases: {{amounts.get('mastBases')}}</mat-list-item>
+                <mat-list-item>Wetsuits: {{amounts.get('wetsuits')}}</mat-list-item>
+                <h3>Unisex: {{amounts.get('unisexWetsuits')}} </h3>
+                <h3>Man: {{amounts.get('manWetsuits')}}</h3>
+                <h3>Woman: {{amounts.get('womanWetsuits')}}</h3>
+                <h3>Junior: {{amounts.get('kidWetsuits')}}</h3>
+                <mat-list-item>Harnesses: {{amounts.get('harnesses')}}</mat-list-item>
+                <mat-list-item>Harness lines: {{amounts.get('harnesLines')}}</mat-list-item>
 
-</mat-list>
+            </mat-list>
 
 
-<mat-list>
-    <h2>Last movements:</h2>
-    <mat-list-item></mat-list-item>
-    <mat-list-item></mat-list-item>
-    <mat-list-item></mat-list-item>
-    <mat-list-item></mat-list-item>
+            <mat-list>
+                <h2>Last movements:</h2>
+                <mat-list-item>Recently recieved:</mat-list-item>
+                
+                <mat-list-item>Recently sent away:</mat-list-item>
+                
 
-</mat-list>
-</div>
-</span>
+            </mat-list>
+        </div>
+    </span>
 </body>

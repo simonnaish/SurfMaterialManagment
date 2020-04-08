@@ -19,17 +19,13 @@ class board_serializer(serializers.ModelSerializer):
         fields=['id','type', 'category', 'model', 'size','year', 'whenCame', 'whenGone', 'whenSold', 'repair', 'sold']
 
 class beginner_serializer(serializers.ModelSerializer):
-    id=serializers.CharField(source='serial')
 
     class Meta:
         model=Beginners
-        # fields=['id']
         fields=['id','type',  'model', 'size', 'whenCame', 'whenGone', 'gone']
 
 class accessorie_serializer(serializers.ModelSerializer):
-    id=serializers.CharField(source='serial')
 
     class Meta:
         model=Accessoriess
-        # fields=['id']
         fields=['id','type', 'model', 'size', 'whenCame', 'whenGone', 'gone']

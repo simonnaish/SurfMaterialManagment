@@ -8,6 +8,8 @@ body {
         margin-top: 5rem;
         margin-bottom: 5rem;
 
+        font-size: 2rem;
+
         mat-list {
             background: radial-gradient(transparent, ivory);
             padding: 2rem;
@@ -15,6 +17,14 @@ body {
             border-radius: 2rem;
             min-width: 40vh;
             height: fit-content;
+            justify-content: space-between;
+
+            mat-list-item{
+                margin-left: 2rem;
+            }
+            h3{
+                margin-left: 6rem;
+            }
         }
     }
     // @media only screen and (max-width: 600px) {

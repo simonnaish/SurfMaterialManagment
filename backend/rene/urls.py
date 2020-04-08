@@ -8,6 +8,7 @@ router.register(r"sails", views.sail_view_set)
 router.register(r"boards",views.board_view_set)
 router.register(r"beginners", views.beginners_view_set)
 router.register(r"accessories", views.accessories_view_set)
+# router.register(r"recently", views.recently_added_set)
 
 urlpatterns = [
     path('', include(router.urls)),

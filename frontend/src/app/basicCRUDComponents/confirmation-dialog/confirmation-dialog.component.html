@@ -1,5 +1,5 @@
 <h2>List of changes</h2>
-<h3>Check for mistakes and press "Confirm".</h3>
+<h3>Check for mistakes and press "Confirm"  to apply changes.</h3>
 <div *ngFor="let item of listOfChanges |keyvalue ">
     <p>{{item.key}} -> <span *ngIf="item.value>0">+</span>{{item.value}}</p>
     
@@ -7,7 +7,7 @@
 
 
 <div mat-dialog-actions>
-    <button class=reject_button mat-button (click)="onNoClick()">Reject</button>
-    <button class=confirm_button mat-button (click)="onYesClick()">Confirm</button>
+    <button class=reject_button mat-raised-button mat-dialog-close >Reject</button>
+    <button class=confirm_button mat-raised-button (click)="onYesClick()">Confirm</button>
   </div>
 

@@ -2,37 +2,8 @@
     <h1>Beginner material <img src="./assets/img/starboard_start.png" alt="Starboard Start board">
         <img src="./assets/img/synergy.png" alt="Synergry rig">
     </h1>
-    <app-basic-crud *ngIf="equipment" [equipment]=equipment></app-basic-crud>
-
-    <!-- <div class=data_input>
-
-            <div class=crud *ngFor="let type of equipment[0] | keyvalue">
-
-            <h2>{{type.key}}</h2>
-
-            <div class=model_column *ngFor="let models of type.value">
-                <h3 #modelLabel>{{models.Model}}</h3>
-                <div class=sizes *ngFor="let size of models.amount | keyvalue">
-                    <label #sizeLabel for='amount'>{{size.key}}</label>
-                
-                    <div class=difference>
-                    <input #amountInput min=0 (change)="onAmountChange(type.key, models.Model, size.key, amountInput.value)" value="{{size.value}}" type='number'>
-                    <p [ngClass]="getClass(temporaryChanges[models.Model+size.key])">{{temporaryChanges[models.Model+size.key]}}</p>
-                </div>
-                </div>
-                
-
-            </div>
-
-        </div>
-    </div>
-
-
-    <div class=buttons>
-        <button mat-stroked-button (click)=addMaterial() matTooltip="Add">Add</button>
-        <button mat-stroked-button matTooltip="Send to repair">Repair</button>
-        <button mat-stroked-button matTooltip="Send to Megastore">Sell</button>
-    </div> -->
+    <app-basic-crud *ngIf="equipment" [equipment]=equipment [apiUrl]=apiUrl [apiFilterUrl]=apiFilterUrl>
+    </app-basic-crud>
 
 
 </body>

@@ -25,7 +25,7 @@
                             (+{{items.value.length - 1}} {{items.value?.length === 2 ? 'other' : 'others'}})
                         </span>
                     </mat-select-trigger>
-                    <mat-option *ngFor="let item of (materialList$ | async)?.results" [value]="item.id">
+                    <mat-option matTooltip='Black -> AVAILABLE &#013; &#10; Grey -> REPAIR &#013; &#10; Red -> SOLD' *ngFor="let item of (materialList$ | async)?.results" [value]="item.id">
                         <span [ngClass]=getStatusClass(item)>{{item.id}}</span>
 
                     </mat-option>

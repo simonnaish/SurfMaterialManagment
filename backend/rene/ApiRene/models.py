@@ -27,12 +27,14 @@ class Board(models.Model):
     sold=models.BooleanField(default=False)
 
 class Beginners(models.Model):
+    id=models.AutoField(primary_key=True)
     type=models.TextField() #Choices('Sail', 'Board') #Sail || Board
     model=models.TextField()
-    size=models.FloatField()
+    size=models.TextField()
     whenCame=models.DateField(auto_now_add=True)
     whenGone=models.DateField(null=True, blank=True)
     gone=models.BooleanField(default=False)
+
 
 class Accessoriess(models.Model):
     type=models.TextField()     # TODO change for TextChoices when know values

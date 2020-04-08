@@ -1,4 +1,4 @@
-#CONST INDEX
+# CONST INDEX
 
 serial_last_index = -5
 size_last_index = -3
@@ -21,12 +21,12 @@ models_map = {
     "m3": "Mach3",
 }
 
-type_map={
-    'freeride':['gt','gtp'],
-    'freestyle':['fr'],
-    'slalom':['ovd', 'm3'],
-    'freerace':['nc', 'ncp', 'tb'],
-    'wave':['bl', 'blp','s1p', 's1']
+type_map = {
+    "freeride": ["gt", "gtp"],
+    "freestyle": ["fr"],
+    "slalom": ["ovd", "m3"],
+    "freerace": ["nc", "ncp", "tb"],
+    "wave": ["bl", "blp", "s1p", "s1"],
 }
 
 premium_set = {"blp", "s1p", "gtp", "ncp", "tb", "ovd", "fr", "m3"}
