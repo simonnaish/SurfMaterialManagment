@@ -29,3 +29,4 @@ class accessorie_serializer(serializers.ModelSerializer):
     class Meta:
         model=Accessoriess
         fields=['id','type', 'model', 'size', 'whenCame', 'whenGone', 'gone']
+

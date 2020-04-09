@@ -25,12 +25,12 @@ SECRET_KEY = "eoxm)9x(+c(mt+w(ny+(@e&$rkt*%l-_=##g1)-5pa2xn23oky"
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 # CORS
-Access_Control_Allow_Origin = "*"
+Access_Control_Allow_Origin = ['*']
 CORS_ORIGIN_ALLOW_ALL = True
-CORS_ALLOW_CREDENTIALS = True
+# CORS_ALLOW_CREDENTIALS = True
 
 
 # Application definition
@@ -128,3 +128,14 @@ REST_FRAMEWORK = {
     "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.PageNumberPagination",
     "PAGE_SIZE": 1000,
 }
+
+
+# Email settings
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_HOST = "smtp.gmail.com"
+LOCAL_HOSTNAME = "surfdeveloper@gmail.com"
+EMAIL_PORT = 587  # 465
+EMAIL_HOST_USER = "surfdeveloper@gmail.com"
+EMAIL_HOST_PASSWORD = "vyynzusvjmexilvz"
+EMAIL_USE_TLS = True
+

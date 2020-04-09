@@ -5,8 +5,6 @@ import { FormControl } from '@angular/forms';
 
 
 import { Material } from 'src/app/models/material';
-import { Sail } from 'src/app/models/sail';
-import { Board } from 'src/app/models/board';
 import { CRUDServiceService } from 'src/app/services/crudservice.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MaterialModule } from 'src/app/material.module';
@@ -14,11 +12,11 @@ import { tap } from 'rxjs/operators';
 
 
 
-
 @Component({
   selector: 'app-crudform',
   templateUrl: './crudform.component.html',
   styleUrls: ['./crudform.component.scss'],
+
 })
 
 
@@ -110,6 +108,26 @@ export class CRUDFormComponent implements OnInit {
 
   }
 
+
+  sendReport(reportType: string, fromDate?, tillDate?) {
+    console.log('sent');
+    if (reportType == 'custom') {
+      if (fromDate == '') {
+        this.openSnack('You must choose first date or check "Today" to send report from today.')
+      } else if (tillDate == '') {
+        this.openSnack('You must choose last date or check "Today" to send report from today.')
+      }
+      else {
+        this._http.sendReport(fromDate, tillDate);
+      }
+
+    } else {
+      this._http.sendReport();
+    }
+
+  }
+
+
   openSnack(message: string) { //TODO Change for SnackBar called
     alert(message);
   }
@@ -117,9 +135,9 @@ export class CRUDFormComponent implements OnInit {
 
   //TODO Update [min] on second date picker
   dateFilter2(d: Date) {
-    console.log(this.lastDate);
+    // console.log(this.lastDate);
     this.lastDate = d;
-    console.log(this.lastDate);
+    // console.log(this.lastDate);
 
 
   }

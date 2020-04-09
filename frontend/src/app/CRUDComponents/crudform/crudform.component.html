@@ -37,9 +37,10 @@
                     (click)="rudField.value?checkItem(rudField.value):openSnack('You must check at least one '+material.type+'.')">Check
                     {{material.type}}</button>
                 <button mat-stroked-button matTooltip="Send {{material.type}} to repair"
-                    (click)=repairItem(rudField.value)>Repair
+                    (click)="rudField.value?repairItem(rudField.value):openSnack('You must check at least one '+material.type+'.')">Repair
                     {{material.type}}</button>
-                <button mat-stroked-button matTooltip="Send {{material.type}} to Megastore" (click)=sellItem(rudField.value)>Sell
+                <button mat-stroked-button matTooltip="Send {{material.type}} to Megastore" 
+                (click)="rudField.value?sellItem(rudField.value):openSnack('You must check at least one '+material.type+'.')">Sell
                     {{material.type}}</button>
             </div>
 
@@ -69,16 +70,17 @@
                     <mat-button-toggle matTooltip="Send custom report from choosen days." value="custom">Custom
                     </mat-button-toggle>
                 </mat-button-toggle-group>
-                <button mat-stroked-button (click)=testOnClick() matTooltip="Send report to Megastore.">Send</button>
+                <button mat-stroked-button (click)="report.value=='custom'?sendReport(report.value,fromDate.value, tillDate.value):sendReport(report.value)" matTooltip="Send report to Megastore.">Send</button>
+
                 <!-- testing click!!!!!!!!!! -->
 
 
             </div>
-            <div class=datePickers *ngIf="report.value == 'custom'">
+            <div class=datePickers [ngStyle]="report.value=='custom'?{'visibility':'visible'}:{'visibility':'hidden'}">
 
                 <mat-form-field matTooltip='First day of report.' class="reportPeriod">
                     <mat-label>First day</mat-label>
-                    <input matInput #pickerInput (dateInput)=dateFilter2(pickerInput.value) [max]=today
+                    <input matInput #fromDate (dateInput)=dateFilter2(fromDate.value) [max]=today
                         [matDatepicker]="startPicker">
                     <mat-datepicker-toggle matSuffix [for]="startPicker"></mat-datepicker-toggle>
                     <mat-datepicker touchUi #startPicker></mat-datepicker>
@@ -86,15 +88,16 @@
 
                 <!-- [matDatepickerFilter]="dateFilter" -->
 
-                <mat-form-field #pickerInput2 matTooltip='Last day of report.' class="reportPeriod">
+                <mat-form-field matTooltip='Last day of report.' class="reportPeriod">
 
                     <mat-label>Last day</mat-label>
-                    <input matInput [min]=lastDate [max]=today [matDatepicker]="lastPicker">
+                    <input matInput #tillDate [min]=lastDate [max]=today [matDatepicker]="lastPicker">
                     <mat-datepicker-toggle matSuffix [for]="lastPicker"></mat-datepicker-toggle>
                     <mat-datepicker touchUi #lastPicker></mat-datepicker>
                 </mat-form-field>
 
             </div>
+
         </div>
     </div>
 

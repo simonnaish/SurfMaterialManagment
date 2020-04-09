@@ -5,7 +5,7 @@ import { catchError, tap, retry } from 'rxjs/operators';
 
 import { Sail } from 'src/app/models/sail';
 import { Board } from '../models/board';
-import { getLocaleFirstDayOfWeek } from '@angular/common';
+import { NONE_TYPE } from '@angular/compiler';
 
 
 @Injectable({
@@ -17,14 +17,13 @@ export class CRUDServiceService {
   }
 
   localUrl = 'assets/temporaryDB/';
-  onlineUrl = 'http://127.0.0.1:8000/';
+  onlineUrl = 'http://127.0.0.1:8000/'; //'http://simonnaish.pythonanywhere.com/'  // 
 
 
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
       'Accept': 'application/json',
-      fromString: "_page=1&_limit=1",
       'Access-Control-Allow-Origin': '*'
     })
   }
@@ -99,14 +98,21 @@ export class CRUDServiceService {
   }
 
 
-
-  loadAccessories(): Observable<any[]> {
-    return this.http.get<any[]>(this.localUrl + 'accessories.json', this.httpOptions).pipe(tap(
-      data => console.log('Accessories loaded'),
-      error => console.log(error)
-    ));
+  //send report 
+  sendReport(fromDate?, tillDate?){
+    if (fromDate){
+      return this.http.post<any>(this.onlineUrl+'report/', {'from_date':fromDate, 'till_date':tillDate}).subscribe(
+        ()=>console.log('correct'+fromDate+' '+tillDate),
+        error=>console.log(error)
+      );
+    }else{
+      return this.http.get<any>(this.onlineUrl+'report/').subscribe(
+        ()=>console.log('correct'),
+        error=>console.log(error)
+      );
+    }
+    
   }
-
 
   //test
   loadTest(): any {
