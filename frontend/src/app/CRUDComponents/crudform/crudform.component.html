@@ -17,9 +17,9 @@
         <div class=rudForm>
             <mat-form-field>
                 <mat-label>{{material.type}}s</mat-label>
-                <mat-select #rudField matTooltip='Check one or more {{material.type}}s' [formControl]="items" multiple
+                <mat-select  #rudField matTooltip='Check one or more {{material.type}}s' [formControl]="items" multiple
                     matBadge="{{(materialList$ |async)?.count}}" matBadgePosition="before" matBadgeOverlap="false">
-                    <mat-select-trigger>
+                    <mat-select-trigger >
                         {{items.value ? items.value[0] : ''}}
                         <span *ngIf="items.value?.length > 1" class="mat-selector">
                             (+{{items.value.length - 1}} {{items.value?.length === 2 ? 'other' : 'others'}})

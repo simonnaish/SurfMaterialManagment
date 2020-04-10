@@ -13,6 +13,8 @@ export class GeneralComponent implements OnInit {
   amounts: Map<string, number>;
   urls: {};
 
+  recentlyReceived:any;
+  recentlyGone:any;
 
   accessoriesUrl = 'accessories/?type='
 
@@ -27,7 +29,8 @@ export class GeneralComponent implements OnInit {
     this.setUrls();
     this.setAmounts();
 
-    this.getLastMovement();
+    this.loadLastMovements();
+
   }
 
   //set URLs map for setAmounts()
@@ -56,6 +59,21 @@ export class GeneralComponent implements OnInit {
     }
   }
 
+
+//load last movements
+  loadLastMovements(){
+    this.recentlyReceived=this._http.loadRecentlyReceived();
+    this.recentlyGone=this._http.loadRecentlyGone();
+  }
+
+
+
+
+
+
+
+
+
   //get today date YYYY-MM-DD - 1week
   getToday() {
     let date = new Date();
@@ -75,6 +93,8 @@ export class GeneralComponent implements OnInit {
 
     return lastWeek.join('-');
   }
+
+
 
   getLastMovement() {
     let lastMovements = []

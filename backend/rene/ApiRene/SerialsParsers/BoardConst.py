@@ -174,5 +174,5 @@ model_to_dict = {
     "cc9": cc9_volume,
     "c9": cc9_volume,
     "uwp": uwp_volume,
-    "uwp": uwp9_volume,
+    "uwp9": uwp9_volume,
 }

@@ -50,7 +50,7 @@ def set_volume(serial):
 
 
 def check_number(serial):
-    if len(serial) < 5:
+    if len(serial) < 4:
         return ErrorMessages.too_short_serial_error
     elif len(serial) > 6:
         return ErrorMessages.too_long_serial_error

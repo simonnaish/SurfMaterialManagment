@@ -39,9 +39,15 @@
             <mat-list>
                 <h2>Last movements:</h2>
                 <mat-list-item>Recently recieved:</mat-list-item>
-                
+                <span *ngFor="let list of recentlyReceived | async">
+                    <h3 *ngFor="let item of list">{{item}}
+                    </h3>
+                </span>
                 <mat-list-item>Recently sent away:</mat-list-item>
-                
+                <span *ngFor="let list of recentlyGone | async">
+                    <h3 *ngFor="let item of list">{{item}}
+                    </h3>
+                </span>
 
             </mat-list>
         </div>

@@ -52,7 +52,6 @@ export class BasicCRUDComponent implements OnInit {
           this._http.loadMaterial(this.apiFilterUrl +'type='+type+ '&model=' + model + '&size=' + this.equipment[type][model][size]).subscribe(
             data => {
               this.sizes.set(type+' '+model + ' ' + this.equipment[type][model][size], data.count)
-              // console.log(data);
             }
           )
         }
@@ -69,16 +68,19 @@ export class BasicCRUDComponent implements OnInit {
   //adding extra <p> with differece between current amount of material and inserted
   //creating list of changes to apply later
   onAmountChange(type: string, model: string, size: string, newAmount: number) {
-    let currentAmount = this.sizes.get(model + ' ' + size)
+    let currentAmount = this.sizes.get(type+' '+model + ' ' + size)
     if (currentAmount == newAmount) {
       this.temporaryChanges.delete(model + ' ' + size)
-      this.changesMap.delete(model + ' ' + size)
+      this.changesMap.delete(type+ ' '+model + ' ' + size)
 
     } else {
       this.temporaryChanges.set(model + ' ' + size, newAmount - currentAmount)
-      this.changesMap.set(model + ' ' + size, { 'type': type, 'model': model, 'size': size, 'amount': newAmount - currentAmount })
+      this.changesMap.set(type+' '+model + ' ' + size, { 'type': type, 'model': model, 'size': size, 'amount': newAmount - currentAmount })
 
     }
+
+    console.log(newAmount)
+    console.log(this.temporaryChanges)
 
   }
 

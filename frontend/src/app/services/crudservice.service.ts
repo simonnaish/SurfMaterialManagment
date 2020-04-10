@@ -17,14 +17,14 @@ export class CRUDServiceService {
   }
 
   localUrl = 'assets/temporaryDB/';
-  onlineUrl = 'http://127.0.0.1:8000/'; //'http://simonnaish.pythonanywhere.com/'  // 
+  onlineUrl = 'http://127.0.0.1:8000/'; //'https://simonnaish.pythonanywhere.com/'  // 
 
 
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
       'Accept': 'application/json',
-      'Access-Control-Allow-Origin': '*'
+      // 'Access-Control-Allow-Origin': '*'
     })
   }
 
@@ -113,6 +113,16 @@ export class CRUDServiceService {
     }
     
   }
+
+  //get last movements
+  loadRecentlyReceived(){
+    return this.http.get<any>(this.onlineUrl+'received')
+
+  }
+  loadRecentlyGone(){
+    return this.http.get<any>(this.onlineUrl+'gone')
+  }
+
 
   //test
   loadTest(): any {

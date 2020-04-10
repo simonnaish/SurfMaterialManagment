@@ -9,6 +9,7 @@ import { CRUDServiceService } from 'src/app/services/crudservice.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MaterialModule } from 'src/app/material.module';
 import { tap } from 'rxjs/operators';
+import { tokenReference } from '@angular/compiler';
 
 
 
@@ -40,7 +41,7 @@ export class CRUDFormComponent implements OnInit {
 
   items = new FormControl();
 
-  today: Date;
+  today:any;
   lastDate: Date;
 
 
@@ -48,12 +49,10 @@ export class CRUDFormComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.today=new Date();
     this.loadMaterial();
   }
 
-  ngOnChange() {
-    // this.loadMaterial();
-  }
 
   loadMaterial() {
     this.materialList$ = this._http.loadMaterial(this.apiUrl);
@@ -135,11 +134,7 @@ export class CRUDFormComponent implements OnInit {
 
   //TODO Update [min] on second date picker
   dateFilter2(d: Date) {
-    // console.log(this.lastDate);
     this.lastDate = d;
-    // console.log(this.lastDate);
-
-
   }
 
   getStatusClass(id: any) {
