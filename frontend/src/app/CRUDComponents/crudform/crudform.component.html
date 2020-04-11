@@ -17,15 +17,16 @@
         <div class=rudForm>
             <mat-form-field>
                 <mat-label>{{material.type}}s</mat-label>
-                <mat-select  #rudField matTooltip='Check one or more {{material.type}}s' [formControl]="items" multiple
+                <mat-select #rudField matTooltip='Check one or more {{material.type}}s' [formControl]="items" multiple
                     matBadge="{{(materialList$ |async)?.count}}" matBadgePosition="before" matBadgeOverlap="false">
-                    <mat-select-trigger >
+                    <mat-select-trigger>
                         {{items.value ? items.value[0] : ''}}
                         <span *ngIf="items.value?.length > 1" class="mat-selector">
                             (+{{items.value.length - 1}} {{items.value?.length === 2 ? 'other' : 'others'}})
                         </span>
                     </mat-select-trigger>
-                    <mat-option matTooltip='Black -> AVAILABLE &#013; &#10; Grey -> REPAIR &#013; &#10; Red -> SOLD' *ngFor="let item of (materialList$ | async)?.results" [value]="item.id">
+                    <mat-option matTooltip='Black -> AVAILABLE &#013; &#10; Grey -> REPAIR &#013; &#10; Red -> SOLD'
+                        *ngFor="let item of (materialList$ | async)?.results" [value]="item.id">
                         <span [ngClass]=getStatusClass(item)>{{item.id}}</span>
 
                     </mat-option>
@@ -39,24 +40,17 @@
                 <button mat-stroked-button matTooltip="Send {{material.type}} to repair"
                     (click)="rudField.value?repairItem(rudField.value):openSnack('You must check at least one '+material.type+'.')">Repair
                     {{material.type}}</button>
-                <button mat-stroked-button matTooltip="Send {{material.type}} to Megastore" 
-                (click)="rudField.value?sellItem(rudField.value):openSnack('You must check at least one '+material.type+'.')">Sell
+                <button mat-stroked-button matTooltip="Send {{material.type}} to Megastore"
+                    (click)="rudField.value?sellItem(rudField.value):openSnack('You must check at least one '+material.type+'.')">Sell
                     {{material.type}}</button>
             </div>
 
         </div>
 
-        <h2>Print list of {{material.type}}s.</h2>
         <div class='printingForm'>
-            <mat-button-toggle-group value='full' name="List">
-                <mat-button-toggle matTooltip="Print all details about each {{material.type}}" value="full">Full list
-                </mat-button-toggle>
-                <mat-button-toggle matTooltip="Print only serial number to make list shorter." value="only_serials">Only
-                    serials</mat-button-toggle>
-            </mat-button-toggle-group>
-            <button mat-stroked-button
-                matTooltip="Printing list of {{material.type}} currently avaible in the center.">Print list of
-                {{material.type}}s</button>
+            <h2>Show list of {{material.type}}s.</h2>
+            <button mat-stroked-button matTooltip="Printing list of {{material.type}} currently avaible in the center."
+                (click)=printList()>Show</button>
 
         </div>
 
@@ -70,7 +64,9 @@
                     <mat-button-toggle matTooltip="Send custom report from choosen days." value="custom">Custom
                     </mat-button-toggle>
                 </mat-button-toggle-group>
-                <button mat-stroked-button (click)="report.value=='custom'?sendReport(report.value,fromDate.value, tillDate.value):sendReport(report.value)" matTooltip="Send report to Megastore.">Send</button>
+                <button mat-stroked-button
+                    (click)="report.value=='custom'?sendReport(report.value,fromDate.value, tillDate.value):sendReport(report.value)"
+                    matTooltip="Send report to Megastore.">Send</button>
 
                 <!-- testing click!!!!!!!!!! -->
 
@@ -102,7 +98,7 @@
     </div>
 
     <div class=displayDiv>
-        <app-display-form *ngIf='choosenItems!=null' [material]=material [iconUrl]="material.imageUrl"
+        <app-display-form *ngIf='choosenItems!=null' [apiUrl]=apiUrl [material]=material [iconUrl]="material.imageUrl"
             [items]=choosenItems>
         </app-display-form>
 

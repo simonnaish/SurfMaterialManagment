@@ -18,6 +18,8 @@
                     <mat-divider></mat-divider>
                     <mat-list-item>CATEGORY: {{item.category}} </mat-list-item>
                     <mat-divider></mat-divider>
+                    <mat-list-item>BRAND: {{item.brand}}</mat-list-item>
+                    <mat-divider></mat-divider>
                     <mat-list-item>MODEL: {{item.model}}</mat-list-item>
                     <mat-divider></mat-divider>
                     <mat-list-item>Size: {{item.size}}</mat-list-item>
@@ -37,8 +39,9 @@
             
         </mat-card-content>
         <mat-card-actions>
-            <button matTooltip='Send {{material.type}} to repair' mat-button>REPAIR</button>
-            <button matTooltip='Send {{material.type}} to megastore' mat-button>SELL</button>
+            <button matTooltip='Recieve {{material.type}}' (click)="addItem(item.id)" mat-button>RECIEVE</button>
+            <button matTooltip='Send {{material.type}} to repair' (click)="repairItem(item.id)" mat-button>REPAIR</button>
+            <button matTooltip='Send {{material.type}} to megastore' (click)="sellItem(item.id)" mat-button>SELL</button>
         </mat-card-actions>
     </mat-card>
 </mat-tab>

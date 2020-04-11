@@ -18,13 +18,19 @@ import { MatInputModule } from '@angular/material/input';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatListModule } from '@angular/material/list';
 import { MatExpansionModule } from '@angular/material/expansion';
-import {MatDialogModule} from '@angular/material/dialog';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatTableModule } from '@angular/material/table';
+import { MatSortModule } from '@angular/material/sort';
+import { MatTableExporterModule } from 'mat-table-exporter';
+import { CdkTableExporterModule } from 'cdk-table-exporter';
 
 
-import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE} from '@angular/material/core';
+
+
+import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
 import {
-  MomentDateAdapter,
-  MAT_MOMENT_DATE_ADAPTER_OPTIONS,
+    MomentDateAdapter,
+    MAT_MOMENT_DATE_ADAPTER_OPTIONS,
 } from '@angular/material-moment-adapter';
 
 export const DD_MM_YYYY_Format = {
@@ -59,7 +65,10 @@ export const DD_MM_YYYY_Format = {
         MatListModule,
         MatDialogModule,
         MatExpansionModule,
-        // MatDialogConfig
+        MatTableModule,
+        MatSortModule,
+        MatTableExporterModule,
+        CdkTableExporterModule
     ],
     exports: [
         FormsModule,
@@ -79,16 +88,19 @@ export const DD_MM_YYYY_Format = {
         MatListModule,
         MatDialogModule,
         MatExpansionModule,
-        // MatDialogConfig
+        MatTableModule,
+        MatSortModule,
+        MatTableExporterModule,
+        CdkTableExporterModule
     ],
-    providers:[
-    
+    providers: [
+
         {
-          provide: DateAdapter,
-          useClass: MomentDateAdapter,
-          deps: [MAT_DATE_LOCALE, MAT_DATE_FORMATS, MAT_MOMENT_DATE_ADAPTER_OPTIONS]
+            provide: DateAdapter,
+            useClass: MomentDateAdapter,
+            deps: [MAT_DATE_LOCALE, MAT_DATE_FORMATS, MAT_MOMENT_DATE_ADAPTER_OPTIONS]
         },
-        {provide: MAT_DATE_FORMATS, useValue: DD_MM_YYYY_Format}
-      ]
+        { provide: MAT_DATE_FORMATS, useValue: DD_MM_YYYY_Format }
+    ]
 })
 export class MaterialModule { }

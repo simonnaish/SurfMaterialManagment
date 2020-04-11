@@ -1,0 +1,37 @@
+table{
+    width: 70vw !important;
+    background: ghostwhite;
+}
+.mat-sort-header{
+    color:black;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+::ng-deep .mat-dialog-container{
+    background: radial-gradient(ghostwhite, aliceblue) !important;
+    max-height: 90vh;
+}
+
+@media only screen and (max-width: 600px) {
+ 
+    table{
+        width: 100% !important;
+    }
+    ::ng-deep .cdk-overlay-pane{
+        width: 90vh !important;
+        max-width: 90vh !important;
+        align-content: stretch;    
+    }
+}
+
+.saveButton{
+    margin-bottom: 3rem !important;
+    margin-top:1rem;
+    width: 10rem;
+   
+}
+button{
+    border: outset;
+    background: #ffef28;
+    font-size: 1rem;
+}

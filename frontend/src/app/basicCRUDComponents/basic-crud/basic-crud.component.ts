@@ -126,6 +126,7 @@ export class BasicCRUDComponent implements OnInit {
       }
       this.setAmounts();
       this.temporaryChanges=new Map();
+      this.changesMap=new Map();
     }
     )
   }

@@ -8,8 +8,10 @@ import { Material } from 'src/app/models/material';
 import { CRUDServiceService } from 'src/app/services/crudservice.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MaterialModule } from 'src/app/material.module';
-import { tap } from 'rxjs/operators';
+import { tap, finalize } from 'rxjs/operators';
 import { tokenReference } from '@angular/compiler';
+import { MatDialog } from '@angular/material/dialog';
+import { PrintingComponent } from './printing/printing.component';
 
 
 
@@ -45,7 +47,7 @@ export class CRUDFormComponent implements OnInit {
   lastDate: Date;
 
 
-  constructor(private _http: CRUDServiceService) {
+  constructor(private dialog: MatDialog, private _http: CRUDServiceService) {
   }
 
   ngOnInit(): void {
@@ -97,14 +99,44 @@ export class CRUDFormComponent implements OnInit {
   repairItem(items: string[]) {
     items.forEach(item => this._http.repairItem(this.apiUrl, item))
 
+    this.openSnack(items.toString()+' sent to repair.')
+
     this.loadMaterial();
 
   }
 
   sellItem(items: string[]) {
     items.forEach(item => this._http.sellItem(this.apiUrl, item));
+    this.openSnack(items.toString()+' sent to megastore.')
+
     this.loadMaterial();
 
+  }
+
+  printList(){
+    this.openDialog();
+}
+
+  openDialog(): void {
+    const dialogRef = this.dialog.open(PrintingComponent, {
+      data:{'avaibleItems':this.avaibleItems,'repairedItems': this.repairedItems, 'soldItems':this.soldItems}
+    });
+    // dialogRef.afterClosed().subscribe((confirmed: Boolean) => {
+    //   if (confirmed) {
+    //     for (const k of this.changesMap.keys()) {
+    //       if (this.changesMap.get(k).amount > 0) {
+    //         this.addMaterial(this.changesMap.get(k));
+    //       }
+    //       else {
+    //         this.deleteMaterial(this.changesMap.get(k));
+    //       }
+    //     }
+    //   }
+    //   this.setAmounts();
+    //   this.temporaryChanges=new Map();
+    //   this.changesMap=new Map();
+    // }
+    // )
   }
 
 

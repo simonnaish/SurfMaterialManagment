@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Material } from 'src/app/models/material';
+import { CRUDServiceService } from 'src/app/services/crudservice.service';
 
 @Component({
   selector: 'app-display-form',
@@ -13,16 +14,32 @@ export class DisplayFormComponent implements OnInit {
   material: Material;
 
   @Input()
-  items:any[];
+  items: any[];
 
   @Input()
-  iconUrl:string;
+  iconUrl: string;
 
-  constructor() { }
+  @Input()
+  apiUrl:string;
+
+  constructor(private _http:CRUDServiceService) { }
 
   ngOnInit(): void {
-  
-    console.log(this.iconUrl);
+  }
+
+  addItem(id:string){
+    this._http.recieveUsedItem(this.apiUrl, id);    
+    alert(id+' is back in the center.')
+}
+
+  repairItem(id: string) {
+    this._http.repairItem(this.apiUrl, id);
+    alert(id+' sent to repair.')
+  }
+
+  sellItem(id: string) {
+    this._http.sellItem(this.apiUrl, id);
+    alert(id+' sent to megastore.')
   }
 
 }

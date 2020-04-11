@@ -105,6 +105,13 @@ body {
     min-width: 30%;
     max-width: 45%;
   }
+  .printingForm{
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    button{
+      width: 50%;
+    }
+  }
 }
 
 @media only screen and (max-width: 600px) {
