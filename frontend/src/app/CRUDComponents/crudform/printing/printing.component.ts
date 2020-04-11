@@ -51,6 +51,7 @@ export class PrintingComponent implements OnInit {
     this.avaibleItems.paginator = this.avaibleItemsPaginator;
     this.repairedItems.paginator = this.repairedItemsPaginator;
     this.soldItems.paginator = this.soldItemsPaginator;
+    console.log(this.avaibleItems)
   }
 
 

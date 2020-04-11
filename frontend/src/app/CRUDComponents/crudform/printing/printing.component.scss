@@ -10,6 +10,7 @@ table{
 ::ng-deep .mat-dialog-container{
     background: radial-gradient(ghostwhite, aliceblue) !important;
     max-height: 90vh;
+    max-width: 90vh;
 }
 ::ng-deep .mat-paginator-container{
     background: ghostwhite;
@@ -41,4 +42,7 @@ button{
     border: outset;
     background: #ffef28;
     font-size: 1rem;
+}
+.setMargin{
+    margin: 0 auto;
 }
