@@ -15,7 +15,6 @@ from .serializers import (
     accessorie_serializer,
 )
 from . import emails
-import json
 
 
 class sail_view_set(viewsets.ModelViewSet):
@@ -25,6 +24,7 @@ class sail_view_set(viewsets.ModelViewSet):
     filter_fields = [
         "type",
         "category",
+        "brand",
         "model",
         "size",
         "year",
@@ -44,6 +44,7 @@ class sail_view_set(viewsets.ModelViewSet):
                 serial=serial.upper(),
                 type=SailSerial.set_type(serial),
                 category=SailSerial.set_category(serial),
+                brand=SailSerial.set_brand(serial),
                 model=SailSerial.set_model(serial),
                 size=SailSerial.set_size(serial),
                 year=SailSerial.set_year(serial),
@@ -59,6 +60,7 @@ class board_view_set(viewsets.ModelViewSet):
     filter_fields = [
         "type",
         "category",
+        "brand",
         "model",
         "size",
         "year",
@@ -77,6 +79,7 @@ class board_view_set(viewsets.ModelViewSet):
                 serial=serial.upper(),
                 type=BoardSerial.set_type(serial),
                 category=BoardSerial.set_category(serial),
+                brand=BoardSerial.set_brand(serial),
                 model=BoardSerial.set_model(serial),
                 size=BoardSerial.set_volume(serial),
                 year=BoardSerial.set_year(serial),
@@ -152,9 +155,15 @@ def recently_received(request):
 
 @api_view(["GET"])
 def recently_gone(request):
-    sails_set = (Sail.objects.filter(repair=True).order_by("-whenGone")[:3] | Sail.objects.filter(sold=True).order_by("-whenSold")[:3]).values()
+    sails_set = (
+        Sail.objects.filter(repair=True).order_by("-whenGone")[:3]
+        | Sail.objects.filter(sold=True).order_by("-whenSold")[:3]
+    ).values()
 
-    boards_set = (Board.objects.filter(repair=True).order_by("-whenGone")[:3] | Board.objects.filter(sold=True).order_by("-whenSold")[:3]).values()
+    boards_set = (
+        Board.objects.filter(repair=True).order_by("-whenGone")[:3]
+        | Board.objects.filter(sold=True).order_by("-whenSold")[:3]
+    ).values()
     beginners_set = (
         Beginners.objects.filter(gone=True).order_by("-whenGone")[:3].values()
     )
@@ -172,7 +181,7 @@ def recently_gone(request):
                         "%-7s%-16s%-20s%15s"
                         % (
                             element["type"],
-                            (element["model"] + " " + str(element["size"])),
+                            (element["model"] + " " + str(int(element["size"]))),
                             "REPAIR:",
                             element["whenGone"].strftime("%d-%m-%Y"),
                         )
@@ -183,7 +192,7 @@ def recently_gone(request):
                     response_list[counter].append(
                         "%-16s%-20s%15s"
                         % (
-                            (element["model"] + " " + str(element["size"])),
+                            (element["model"] + " " + str(int(element["size"]))),
                             "REPAIR:",
                             element["whenGone"].strftime("%d-%m-%Y"),
                         )
@@ -192,7 +201,7 @@ def recently_gone(request):
                     response_list[counter].append(
                         "%-16s%-20s%15s"
                         % (
-                            str(element["model"] + " " + str(element["size"])),
+                            str(element["model"] + " " + str(int(element["size"]))),
                             "SOLD:",
                             element["whenSold"].strftime("%d-%m-%Y"),
                         )

@@ -5,6 +5,7 @@ class Sail(models.Model):
     serial = models.TextField(primary_key=True, max_length=8)
     type = models.TextField(editable=False, auto_created=True)
     category = models.TextField(editable=False, auto_created=True)
+    brand = models.TextField(editable=False, auto_created=True)
     model = models.TextField(editable=False, auto_created=True)
     size = models.FloatField(editable=False, auto_created=True)
     year = models.IntegerField(editable=False, auto_created=True)
@@ -19,8 +20,9 @@ class Board(models.Model):
     serial = models.TextField(primary_key=True, max_length=6)
     type = models.TextField(editable=False, auto_created=True)
     category = models.TextField(editable=False, auto_created=True)
+    brand = models.TextField(editable=False, auto_created=True)
     model = models.TextField(editable=False, auto_created=True)
-    size = models.FloatField(editable=False, auto_created=True)
+    size = models.IntegerField(editable=False, auto_created=True)
     year = models.IntegerField(editable=False, auto_created=True)
     whenCame = models.DateField(
         auto_now_add=True

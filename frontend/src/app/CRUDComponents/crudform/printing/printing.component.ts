@@ -3,6 +3,7 @@ import { Component, OnInit, Input, Inject, ViewChild } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
+import { MatPaginator } from '@angular/material/paginator';
 
 
 import { CRUDServiceService } from 'src/app/services/crudservice.service';
@@ -21,10 +22,15 @@ export class PrintingComponent implements OnInit {
   repairedItems = new MatTableDataSource(this.data['repairedItems'])
   soldItems = new MatTableDataSource(this.data['soldItems'])
 
-
+  // SORTING TABLES
   @ViewChild('avaibleItemsSort', { static: true }) avaibleItemsSort: MatSort;
   @ViewChild('repairedItemsSort', { static: true }) repairedItemsSort: MatSort;
   @ViewChild('soldItemsSort', { static: true }) soldItemsSort: MatSort;
+
+  //PAGINATOR 
+  @ViewChild('avaibleItemsPaginator', { static: true }) avaibleItemsPaginator: MatPaginator;
+  @ViewChild('repairedItemsPaginator', { static: true }) repairedItemsPaginator: MatPaginator;
+  @ViewChild('soldItemsPaginator', { static: true }) soldItemsPaginator: MatPaginator;
 
 
   constructor(public dialogRef: MatDialogRef<PrintingComponent>,
@@ -41,10 +47,11 @@ export class PrintingComponent implements OnInit {
     this.avaibleItems.sort = this.avaibleItemsSort;
     this.repairedItems.sort = this.repairedItemsSort;
     this.soldItems.sort = this.soldItemsSort;
+
+    this.avaibleItems.paginator = this.avaibleItemsPaginator;
+    this.repairedItems.paginator = this.repairedItemsPaginator;
+    this.soldItems.paginator = this.soldItemsPaginator;
   }
 
-  SaveToFile(){
-
-  }
 
 }

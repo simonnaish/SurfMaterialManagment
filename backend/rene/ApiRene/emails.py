@@ -104,7 +104,7 @@ def get_recently_arrived(from_date, till_date=0):
                         + "\t"
                         + element["model"]
                         + "\t"
-                        + str(element["size"])
+                        + str(int(element["size"]))
                         + "\n"
                     )
                 else:
@@ -113,7 +113,7 @@ def get_recently_arrived(from_date, till_date=0):
                         # + "\t"
                         element["model"]
                         + "\t"
-                        + str(element["size"])
+                        + str(int(element["size"]))
                         + "\n"
                     )
 

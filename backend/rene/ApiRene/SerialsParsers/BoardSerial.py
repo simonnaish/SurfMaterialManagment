@@ -20,7 +20,10 @@ def set_type(serial):
             return k
 
     return "other"
-
+def set_brand(serial):
+    for (k,v) in BoardConst.brands_map.items():
+        if str(serial[:BoardConst.year_last_index]).lower() in v:
+            return k
 
 def set_model(serial):
     return BoardConst.models_map[str(serial[: BoardConst.year_last_index]).lower()]

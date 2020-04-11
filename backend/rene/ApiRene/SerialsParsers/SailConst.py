@@ -6,6 +6,23 @@ size_last_index = -3
 # year final variable to correct when codes in the company will be ready!!!
 year_index = 9
 
+brands_map = {
+    "Severne": [
+        "bl",
+        "blp",
+        "s1",
+        "s1p",
+        "gt",
+        "gtp",
+        "nc",
+        "ncp",
+        "tb",
+        "ovd",
+        "fr",
+        "m3",
+    ]
+}
+
 models_map = {
     "bl": "Blade",
     "blp": "Blade",

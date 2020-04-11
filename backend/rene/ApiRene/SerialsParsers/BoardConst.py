@@ -82,6 +82,41 @@ ymg_volume = [112]
 #
 # Models dictionary
 
+brands_map = {
+    "JP Australia": [
+        "pf",
+        "ssp",
+        "fwp",
+        "fwc",
+        "mg",
+        "mgf",
+        "mgc",
+        "mgp",
+        "sr",
+        "src",
+        "srp",
+        "ygm",
+        "ygf",
+        "uwp",
+    ],
+    "Starboard": [
+        "ig",
+        "flp",
+        "ip",
+        "fo",
+        "fc",
+        "fp",
+        "kp",
+        "kc",
+        "c",
+        "cc",
+        "go",
+        "kfl",
+        "ukp",
+    ],
+    "Severne": ["dnp", "fx"],
+}
+
 models_map = {
     "ig": "Ignite",
     "pf": "Freestyle",

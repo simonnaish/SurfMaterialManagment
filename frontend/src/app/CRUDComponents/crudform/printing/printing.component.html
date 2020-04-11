@@ -43,7 +43,10 @@
         <tr mat-header-row *matHeaderRowDef="displayedAvaibleColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedAvaibleColumns;"></tr>
 
+
     </table>
+    <mat-paginator #avaibleItemsPaginator='matPaginator' [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+
     <button mat-raised-button class=saveButton (click)="exporter.exportTable('csv')">SAVE</button>
 
 
@@ -91,7 +94,10 @@
 
         <tr mat-header-row *matHeaderRowDef="displayedRepairedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedRepairedColumns;"></tr>
+
     </table>
+    <mat-paginator #repairedItemsPaginator='matPaginator' [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+
     <button mat-raised-button class=saveButton (click)="exporter2.exportTable('csv')">SAVE</button>
 
 
@@ -138,11 +144,14 @@
 
         <tr mat-header-row *matHeaderRowDef="displayedSoldColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedSoldColumns;"></tr>
+
     </table>
+    <mat-paginator #soldItemsPaginator='matPaginator' [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+
     <button mat-raised-button class=saveButton (click)="exporter3.exportTable('csv')">SAVE</button>
 
 
     <div mat-dialog-actions>
-        <button class=reject_button mat-raised-button mat-dialog-close >Close</button>
+        <button class=close_button mat-raised-button mat-dialog-close >Close</button>
         <!-- <button class=confirm_button mat-raised-button (click)="SaveToFile()">Save</button> -->
       </div>

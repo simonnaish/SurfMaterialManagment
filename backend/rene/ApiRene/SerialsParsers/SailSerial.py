@@ -17,7 +17,11 @@ def set_type(serial):
             return k
     return "other"
 
-
+def set_brand(serial):
+#     for (k,v) in SailConst.brands_map.items():
+#         if str(serial[:SailConst.serial_last_index]).lower() in v:
+#             return k
+    return "Severne"
 def set_model(serial):
     return SailConst.models_map[str(serial[: SailConst.serial_last_index]).lower()]
 

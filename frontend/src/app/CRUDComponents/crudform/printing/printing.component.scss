@@ -11,6 +11,10 @@ table{
     background: radial-gradient(ghostwhite, aliceblue) !important;
     max-height: 90vh;
 }
+::ng-deep .mat-paginator-container{
+    background: ghostwhite;
+    // border: solid;    
+}
 
 @media only screen and (max-width: 600px) {
  
@@ -29,6 +33,9 @@ table{
     margin-top:1rem;
     width: 10rem;
    
+}
+.close_button{
+    width: 100%;
 }
 button{
     border: outset;
