@@ -17,7 +17,7 @@ export class CRUDServiceService {
   }
 
   localUrl = 'assets/temporaryDB/';
-  onlineUrl =  'https://simonnaish.pythonanywhere.com/'  // 
+  onlineUrl = 'http://127.0.0.1:8000/'  // 'https://simonnaish.pythonanywhere.com/'  // 
 
 
   httpOptions = {
