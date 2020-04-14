@@ -6,11 +6,8 @@
             <mat-expansion-panel-header>
                 <mat-panel-title>
                     {{type.key}}s
-                    <!-- added -s -->
                 </mat-panel-title>
             </mat-expansion-panel-header>
-
-
             <div class=model_column *ngFor="let models of type.value |keyvalue">
                 <h3 #modelLabel>{{models.key}}</h3>
                 <div class=rows>
@@ -29,8 +26,6 @@
                         </div>
                     </div>
                 </div>
-
-
             </div>
         </mat-expansion-panel>
     </mat-accordion>
@@ -38,8 +33,7 @@
 
 
     <div class=buttons>
+        <button mat-raised-button  (click)=printList() matTooltip="Display list of material.">Show list</button>
         <button mat-raised-button (click)=saveChanges() matTooltip="Save changes.">Save</button>
-        <!-- <button mat-stroked-button matTooltip="Send to repair">Repair</button> -->
-        <!-- <button mat-stroked-button matTooltip="Send to Megastore">Sell</button> -->
     </div>
 </body>

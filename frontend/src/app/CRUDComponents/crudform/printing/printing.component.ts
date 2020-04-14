@@ -34,7 +34,7 @@ export class PrintingComponent implements OnInit {
 
 
   constructor(public dialogRef: MatDialogRef<PrintingComponent>,
-    @Inject(MAT_DIALOG_DATA) public data, private _http: CRUDServiceService) {
+    @Inject(MAT_DIALOG_DATA) public data) {
 
   }
   displayedAvaibleColumns: string[] = ['id', 'category', 'brand', 'model', 'type', 'size', 'whenCame']
@@ -51,7 +51,6 @@ export class PrintingComponent implements OnInit {
     this.avaibleItems.paginator = this.avaibleItemsPaginator;
     this.repairedItems.paginator = this.repairedItemsPaginator;
     this.soldItems.paginator = this.soldItemsPaginator;
-    console.log(this.avaibleItems)
   }
 
 

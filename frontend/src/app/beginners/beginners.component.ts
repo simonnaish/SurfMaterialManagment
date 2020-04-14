@@ -25,7 +25,7 @@ export class BeginnersComponent implements OnInit {
 
   loadEquipment() {
     this.equipment = {
-      'Sail': { 'Synergry': [1.2, 2.1, 2.6, 3.1, 3.6, 4.1], 'XS': [2.0, 2.5, 3.0] },
+      'Sail': { 'Synergy': [1.2, 2.1, 2.6, 3.1, 3.6, 4.1], 'XS': [2.0, 2.5, 3.0] },
       'Board': { 'JP Funster': [160, 180, 205, 240], 'JP Explorer': [145, 165, 195], 'Starboard Rio': ['S', 'M', 'L'], 'Starboard Start': ['S', 'M', 'L'] }
     }
   };

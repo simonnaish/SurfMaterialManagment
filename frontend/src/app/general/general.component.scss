@@ -1,4 +1,12 @@
 body {
+    padding:1rem;
+
+
+    h1{
+        font-size: 3rem;
+        line-height: 4rem;
+    }
+
     .container {
         display: flex;
         flex-direction: row;

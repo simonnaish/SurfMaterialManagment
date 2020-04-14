@@ -7,6 +7,7 @@ import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation
 import { map, tap, finalize, toArray } from 'rxjs/operators';
 import { CRUDServiceService } from 'src/app/services/crudservice.service';
 import { BeginnersComponent } from 'src/app/beginners/beginners.component';
+import { BasicPrintingComponent } from '../basic-printing/basic-printing.component';
 // import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 
 @Component({
@@ -25,12 +26,17 @@ export class BasicCRUDComponent implements OnInit {
   equipment: any;
 
   //Temporary changes kept before save
+  //tCh for current change material
   temporaryChanges: any = new Map();
+  //chMap for confirmation request
   changesMap = new Map();
 
+  //created for pritList Dialog
+  materialList: {}[];
+
   @Input()
-  apiFilterUrl:string;
-  
+  apiFilterUrl: string;
+
   sizes = new Map();
 
 
@@ -45,17 +51,16 @@ export class BasicCRUDComponent implements OnInit {
   }
 
   setAmounts() {
-    console.log('enteret setAmounts()')
     for (let type in this.equipment) {
       for (let model in this.equipment[type]) {
         for (let size in this.equipment[type][model]) {
-          this._http.loadMaterial(this.apiFilterUrl +'type='+type+ '&model=' + model + '&size=' + this.equipment[type][model][size]).subscribe(
+          this._http.loadMaterial(this.apiFilterUrl + 'type=' + type + '&model=' + model + '&size=' + this.equipment[type][model][size]).subscribe(
             data => {
-              this.sizes.set(type+' '+model + ' ' + this.equipment[type][model][size], data.count)
+              this.sizes.set(type + ' ' + model + ' ' + this.equipment[type][model][size], data.count)
             }
           )
         }
-        
+
       }
     }
   }
@@ -68,14 +73,14 @@ export class BasicCRUDComponent implements OnInit {
   //adding extra <p> with differece between current amount of material and inserted
   //creating list of changes to apply later
   onAmountChange(type: string, model: string, size: string, newAmount: number) {
-    let currentAmount = this.sizes.get(type+' '+model + ' ' + size)
+    let currentAmount = this.sizes.get(type + ' ' + model + ' ' + size)
     if (currentAmount == newAmount) {
       this.temporaryChanges.delete(model + ' ' + size)
-      this.changesMap.delete(type+ ' '+model + ' ' + size)
+      this.changesMap.delete(type + ' ' + model + ' ' + size)
 
     } else {
       this.temporaryChanges.set(model + ' ' + size, newAmount - currentAmount)
-      this.changesMap.set(type+' '+model + ' ' + size, { 'type': type, 'model': model, 'size': size, 'amount': newAmount - currentAmount })
+      this.changesMap.set(type + ' ' + model + ' ' + size, { 'type': type, 'model': model, 'size': size, 'amount': newAmount - currentAmount })
 
     }
 
@@ -125,11 +130,39 @@ export class BasicCRUDComponent implements OnInit {
         }
       }
       this.setAmounts();
-      this.temporaryChanges=new Map();
-      this.changesMap=new Map();
+      this.temporaryChanges = new Map();
+      this.changesMap = new Map();
     }
     )
   }
+
+  printList() {
+    this.openListDialog();
+  }
+
+  openListDialog(): void {
+    this.materialList = this.setFullMaterialList();
+    const dialogRef = this.dialog.open(BasicPrintingComponent, {
+        data:{'equipmentList':this.materialList}
+      });
+
+  }
+  setFullMaterialList(): {}[] {
+    let temporaryList = []
+    for (let k in this.equipment) {
+      for (let m in this.equipment[k]) {
+        for (let s of this.equipment[k][m]) {
+          let stringKey = k + ' ' + m + ' ' + s
+          let amount = this.sizes.get(stringKey)
+          temporaryList.push({ 'type': k, 'model': m, 'size': s, 'amount': amount })
+        }
+      }
+
+    }
+    console.log(temporaryList);
+    return temporaryList;
+  }
+
 
 
   //Add material

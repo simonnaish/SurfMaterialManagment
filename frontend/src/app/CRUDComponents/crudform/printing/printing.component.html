@@ -146,14 +146,13 @@
         <tr mat-row *matRowDef="let row; columns: displayedSoldColumns;"></tr>
 
     </table>
-    <mat-paginator #soldItemsPaginator='matPaginator' [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+    <mat-paginator #soldItemsPaginator='matPaginator' [pageSizeOptions]="[5, 10, 20, 50, 100]" showFirstLastButtons></mat-paginator>
 
     <button mat-raised-button class=saveButton (click)="exporter3.exportTable('csv')">SAVE</button>
 
 
     <div mat-dialog-actions>
         <button class=close_button mat-raised-button mat-dialog-close >Close</button>
-        <!-- <button class=confirm_button mat-raised-button (click)="SaveToFile()">Save</button> -->
       </div>
 
     </div>

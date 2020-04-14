@@ -121,22 +121,7 @@ export class CRUDFormComponent implements OnInit {
     const dialogRef = this.dialog.open(PrintingComponent, {
       data:{'avaibleItems':this.avaibleItems,'repairedItems': this.repairedItems, 'soldItems':this.soldItems}
     });
-    // dialogRef.afterClosed().subscribe((confirmed: Boolean) => {
-    //   if (confirmed) {
-    //     for (const k of this.changesMap.keys()) {
-    //       if (this.changesMap.get(k).amount > 0) {
-    //         this.addMaterial(this.changesMap.get(k));
-    //       }
-    //       else {
-    //         this.deleteMaterial(this.changesMap.get(k));
-    //       }
-    //     }
-    //   }
-    //   this.setAmounts();
-    //   this.temporaryChanges=new Map();
-    //   this.changesMap=new Map();
-    // }
-    // )
+
   }
 
 
