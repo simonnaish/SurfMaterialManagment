@@ -21,7 +21,6 @@ import { ConfirmationDialogComponent } from './basicCRUDComponents/confirmation-
 import { PrintingComponent } from './CRUDComponents/crudform/printing/printing.component';
 import { BasicPrintingComponent } from './basicCRUDComponents/basic-printing/basic-printing.component';
 
-// import {Material} from 'src/app/models/material';
 
 
 @NgModule({

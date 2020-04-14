@@ -1,30 +1,18 @@
 <header>
   <div class=logos>
-  <a href="https://www.rene-egli.com/" target="_blank" ><img alt="Rene Egli LOGO" class="logo" src="./assets/img/reneegli_logo.png"></a>
-  <h1>René Egli DataBase</h1>
-  <!-- <div class="login"> -->
-      <!-- {% if user.is_authenticated %} -->
-   <!-- <li>User: {{ user.get_username }}</li> -->
-   <!-- <li><a href="{% url 'logout'%}?next={{request.path}}">Logout</a></li> -->
- <!-- {% else %} -->
-   <!-- <li><a href="{% url 'login'%}?next={{request.path}}">Login</a></li> -->
- <!-- {% endif %} -->
-<!-- </ul> -->
-<!-- </div> -->
-</div>
-<div class=tabs>
-<nav mat-tab-nav-bar>
-  <a mat-tab-link
-  *ngFor="let link of navLinks"
-  [routerLink]="link.link"
-  [matTooltip]="link.detail"
-  routerLinkActive #rla="routerLinkActive"
-  [routerLinkActiveOptions]="{exact:true}"
-  [active]="rla.isActive">
-  {{link.label}}
-  </a>
-  </nav>
-</div>
+    <a href="https://www.rene-egli.com/" target="_blank"><img alt="Rene Egli LOGO" class="logo"
+        src="./assets/img/reneegli_logo.png"></a>
+    <h1>René Egli DataBase</h1>
+
+  </div>
+  <div class=tabs>
+    <nav mat-tab-nav-bar>
+      <a mat-tab-link *ngFor="let link of navLinks" [routerLink]="link.link" [matTooltip]="link.detail" routerLinkActive
+        #rla="routerLinkActive" [routerLinkActiveOptions]="{exact:true}" [active]="rla.isActive">
+        {{link.label}}
+      </a>
+    </nav>
+  </div>
 </header>
 
 <router-outlet></router-outlet>
@@ -37,4 +25,3 @@
   <a class="fa fa-instagram" href="http://www.instagram.com/szymonkhal/" target="_blank"></a>
   <a class="fa fa-facebook" href="https://www.facebook.com/szymon.dyda" target="_blank"></a>
 </footer>
-

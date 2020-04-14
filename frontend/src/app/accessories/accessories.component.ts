@@ -21,13 +21,14 @@ export class AccessoriesComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadEquipment();
-    
+
   }
 
+  //load list of avaible material
   loadEquipment() {
     this.equipment = {
-      'Wetsuit': { 'Unisex': ['XXS', 'XS', 'XS', 'S', 'M', 'L', 'XL', 'XXL', 'XXXL'], 'Man': ['XXS', 'XS', 'XS', 'S', 'M', 'L', 'XL', 'XXL', 'XXXL'], 'Woman': ['XXS', 'XS', 'XS', 'S', 'M', 'L', 'XL', 'XXL', 'XXXL'], 'Kid':[6,8,10,12,14] },
-      'Harness': { 'Mystic': ['XS', 'S', 'M', 'L', 'XL', 'XXL'],'NP': ['XS', 'S', 'M', 'L', 'XL', 'XXL'] },
+      'Wetsuit': { 'Unisex': ['XXS', 'XS', 'XS', 'S', 'M', 'L', 'XL', 'XXL', 'XXXL'], 'Man': ['XXS', 'XS', 'XS', 'S', 'M', 'L', 'XL', 'XXL', 'XXXL'], 'Woman': ['XXS', 'XS', 'XS', 'S', 'M', 'L', 'XL', 'XXL', 'XXXL'], 'Kid': [6, 8, 10, 12, 14] },
+      'Harness': { 'Mystic': ['XS', 'S', 'M', 'L', 'XL', 'XXL'], 'NP': ['XS', 'S', 'M', 'L', 'XL', 'XXL'] },
       'Harness Lines': { 'Severne': ['22"-28"', '28"-32"'] },
       'Boom': { 'Severne Metal': ['140-190', '170-220'], 'Severne Enigma': ['140-190', '170-220'], 'Beginner': ['custom'] },
       'Mast': { 'Severne Gorilla': [340, 370, 400, 430, 460, 490], 'Severne Blue': [340, 370, 400, 430, 460, 490], 'Beginner': ['custom'] },

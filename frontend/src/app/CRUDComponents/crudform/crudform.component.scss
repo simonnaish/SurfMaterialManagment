@@ -7,6 +7,12 @@ body {
   flex-direction: row;
   justify-content: space-evenly;
 
+  button:hover {
+    background: linear-gradient(90deg, cadetblue, transparent) !important;
+    opacity: 1;
+    transition: all 0.3s ease;
+  }
+
   .crudDiv {
     max-width: 45%;
     display: flex;
@@ -76,9 +82,6 @@ body {
         opacity: 0.75;
         font-size: 0.75rem;
         text-align: center;
-
-
-     
       }
     }
 
@@ -105,10 +108,10 @@ body {
     min-width: 30%;
     max-width: 45%;
   }
-  .printingForm{
+  .printingForm {
     margin-top: 1rem;
     margin-bottom: 1rem;
-    button{
+    button {
       width: 50%;
     }
   }
@@ -120,7 +123,7 @@ body {
     flex-direction: column;
     // justify-content: space-evenly;
     width: 100%;
-    padding:3rem;
+    padding: 3rem;
 
     .crudDiv {
       max-width: 100%;
@@ -128,14 +131,13 @@ body {
       display: flex;
       flex-direction: column;
 
-      .rudForm{
+      .rudForm {
         display: flex;
         flex-direction: column;
-        .buttons{
+        .buttons {
           display: flex;
           flex-direction: row;
           justify-content: flex-end;
-          
         }
       }
     }
@@ -143,27 +145,21 @@ body {
     .displayDiv {
       max-width: 100%;
     }
-    // .addForm,
-    // .rudForm,
-    // .printingForm {
-    //   display: flex;
-    //   justify-content: space-between;
-    // }
   }
   ::ng-deep .mat-select-panel {
     position: fixed;
     bottom: 0;
     left: 0;
     height: 300px;
-    width: 100%; 
+    width: 100%;
   }
 }
 
-.repair{
-  color:grey;
-}
-.sold{
-  color:red;
-}
+//crudform.component.getClass
 
-
+.repair {
+  color: grey;
+}
+.sold {
+  color: red;
+}

@@ -23,6 +23,7 @@ export class BeginnersComponent implements OnInit {
     this.loadEquipment();
   }
 
+  //load list of all vaible material
   loadEquipment() {
     this.equipment = {
       'Sail': { 'Synergy': [1.2, 2.1, 2.6, 3.1, 3.6, 4.1], 'XS': [2.0, 2.5, 3.0] },

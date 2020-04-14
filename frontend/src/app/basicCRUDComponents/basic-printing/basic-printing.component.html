@@ -1,4 +1,5 @@
-<table mat-table matTableExporter #exporter=matTableExporter [dataSource]=dataSource matSort #listSort="matSort" class="mat-elevation-z8">
+<table mat-table matTableExporter #exporter=matTableExporter [dataSource]=dataSource matSort #listSort="matSort"
+    class="mat-elevation-z8">
 
     <ng-container matColumnDef="type">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>TYPE </th>
@@ -27,10 +28,11 @@
 
 
 </table>
-<mat-paginator #listPaginator='matPaginator' [pageSizeOptions]="[5, 10, 20, 50, 100]" showFirstLastButtons></mat-paginator>
+<mat-paginator #listPaginator='matPaginator' [pageSizeOptions]="[5, 10, 20, 50, 100]" showFirstLastButtons>
+</mat-paginator>
 
 <button mat-raised-button class=saveButton (click)="exporter.exportTable('csv')">SAVE</button>
 
 <div mat-dialog-actions>
-    <button class=close_button mat-raised-button mat-dialog-close >Close</button>
-  </div>
+    <button class=close_button mat-raised-button mat-dialog-close>Close</button>
+</div>

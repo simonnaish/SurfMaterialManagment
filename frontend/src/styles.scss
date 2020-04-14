@@ -1,35 +1,54 @@
 /* You can add global styles to this file, and also import other style files */
 
 $primary: #ffef28; //footer and header
-$secondary:#8adfe7;  /* body color */
-$third: rgba(0,0,0,.87);         /* font color, alt=purple */
-$fourth: black;   
-$fifth: aliceblue;  
-$sixth: ghostwhite; 
+$secondary: #8adfe7; /* body color */
+$third: rgba(0, 0, 0, 0.87); /* font color, alt=purple */
+$fourth: black;
+$fifth: aliceblue;
+$sixth: ghostwhite;
 
-html, body { height: max-content;  }
-body { margin: 0;  font-family: Roboto, "Helvetica Neue", sans-serif; background: $secondary;}
-header, footer {width: 100vw; padding: 0rem; background: $primary;}
-footer{position: sticky; position: -webkit-sticky; /* Safari */}
+html,
+body {
+    height: max-content;
+}
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    background: $secondary;
+}
+header,
+footer {
+    width: 100vw;
+    padding: 0rem;
+    background: $primary;
+}
+footer {
+    position: sticky;
+    position: -webkit-sticky; /* Safari */
+}
 
-h1{text-align: center; font-weight: bold;}
+h1 {
+    text-align: center;
+    font-weight: bold;
+}
 
-@media only screen and (max-width: 992px){
-    *{
+@media only screen and (max-width: 992px) {
+    * {
         font-size: 15px;
     }
 }
 
-@media only screen and (max-width: 600px){
-    header, footer{
+@media only screen and (max-width: 600px) {
+    header,
+    footer {
         min-width: fit-content;
         width: 100%;
     }
-    *{
-    font-size: 12px;
+    * {
+        font-size: 12px;
     }
-    body{
-        width:100%;
+    body {
+        width: 100%;
     }
     .mat-tooltip {
         font-size: 12px;
@@ -37,11 +56,5 @@ h1{text-align: center; font-weight: bold;}
 }
 .mat-tooltip {
     font-size: 16px;
-    white-space: pre-line; 
-}
-
-button:hover{
-    background: cadetblue;
-    opacity:1;
-    transition:all 0.3s ease;
+    white-space: pre-line;
 }

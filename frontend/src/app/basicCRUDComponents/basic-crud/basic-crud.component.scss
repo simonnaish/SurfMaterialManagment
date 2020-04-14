@@ -9,21 +9,21 @@ body {
                     font-size: 1.5rem;
                 }
             }
-            .model_column{
+            .model_column {
                 margin-bottom: 2rem;
-                h3{
+                h3 {
                     margin-left: 3rem;
                     font-weight: 500;
                 }
-                .rows{
+                .rows {
                     display: inline-flex;
 
-                    .sizes{
+                    .sizes {
                         display: flex;
                         flex-direction: column;
                         font-weight: bold;
                         // text-align: center;
-                        .difference{
+                        .difference {
                             display: flex;
                             flex-direction: row;
                             margin-right: 1rem;
@@ -33,38 +33,42 @@ body {
                                 padding: 0.5rem;
                                 max-width: 3rem;
                             }
-                            p{
+                            p {
                                 margin-left: 0.5rem;
-                            width: 1.5rem;
-                            height: 1.5rem;
+                                width: 1.5rem;
+                                height: 1.5rem;
+                            }
                         }
-                    }
                     }
                 }
             }
         }
     }
 
-    
     .buttons {
         margin-top: 3rem;
         display: grid;
         grid-auto-flow: column;
-        button{
+        button {
             background: aliceblue;
             border: aliceblue outset;
             height: 3.5rem;
             opacity: 0.75;
             text-transform: uppercase;
             // letter-spacing: 0.2rem;
-            font-size: 2rem;    
+            font-size: 2rem;
         }
-
+        button:hover {
+            background: linear-gradient(90deg, dodgerblue, aliceblue) !important;
+            opacity: 1;
+            transition: all 0.3s ease;
+        }
     }
 }
 
 //ngStyle classes
 
+//change <p>
 .positiveDifference {
     visibility: visible;
     color: green;
@@ -77,6 +81,7 @@ body {
     color: red;
 }
 
+//first and last mat-panel shape
 .mat-accordion .mat-expansion-panel.firstHeader {
     border-top-left-radius: 2rem;
     border-top-right-radius: 2rem;

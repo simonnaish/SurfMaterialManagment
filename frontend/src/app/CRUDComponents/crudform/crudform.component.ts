@@ -32,7 +32,10 @@ export class CRUDFormComponent implements OnInit {
   @Input()
   apiUrl: string;
 
+  //Observable with currently avaible material
   materialList$: Observable<any[]>;
+
+  //lists of segregated material for ngStyle and dialog with list of material
   avaibleItems: any[] = [];
   repairedItems: any[] = [];
   soldItems: any[] = [];
@@ -41,9 +44,13 @@ export class CRUDFormComponent implements OnInit {
   @Output()
   choosenItems: any;
 
+
+  //formControl from template
   items = new FormControl();
 
-  today:any;
+  //today date for date picked [max]
+  today: any;
+  //lastDate set after picking first date, set [min] for second datepicker
   lastDate: Date;
 
 
@@ -51,11 +58,12 @@ export class CRUDFormComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.today=new Date();
+    this.today = new Date();
     this.loadMaterial();
   }
 
 
+  //load observable and sort material for avaible/sold/repaired lists
   loadMaterial() {
     this.materialList$ = this._http.loadMaterial(this.apiUrl);
     this._http.loadMaterial(this.apiUrl).forEach(iter => iter.results.forEach(item => {
@@ -70,6 +78,7 @@ export class CRUDFormComponent implements OnInit {
     }));
   }
 
+  //check item/items and pass it to displayCrudForm
   checkItem(items: string[]) {
     var temporaryItem = [];
 
@@ -80,6 +89,8 @@ export class CRUDFormComponent implements OnInit {
     this.choosenItems = temporaryItem;
   }
 
+
+  //check if item is avaible in database=>send PUT request, if not=>send POST
   addItem(item: string) {
     let temporaryList = this.soldItems.concat(this.avaibleItems).concat(this.repairedItems);
     let found: boolean = false;
@@ -96,35 +107,39 @@ export class CRUDFormComponent implements OnInit {
     }
   }
 
+  //send PUT request. Sending material to repair
   repairItem(items: string[]) {
     items.forEach(item => this._http.repairItem(this.apiUrl, item))
 
-    this.openSnack(items.toString()+' sent to repair.')
+    this.openSnack(items.toString() + ' sent to repair.')
 
     this.loadMaterial();
 
   }
 
+  //send PUT request. Sending material to megastore
   sellItem(items: string[]) {
     items.forEach(item => this._http.sellItem(this.apiUrl, item));
-    this.openSnack(items.toString()+' sent to megastore.')
+    this.openSnack(items.toString() + ' sent to megastore.')
 
     this.loadMaterial();
 
   }
 
-  printList(){
+  //openDialog with all material. save to file option
+  printList() {
     this.openDialog();
-}
+  }
 
   openDialog(): void {
     const dialogRef = this.dialog.open(PrintingComponent, {
-      data:{'avaibleItems':this.avaibleItems,'repairedItems': this.repairedItems, 'soldItems':this.soldItems}
+      data: { 'avaibleItems': this.avaibleItems, 'repairedItems': this.repairedItems, 'soldItems': this.soldItems }
     });
 
   }
 
 
+  //Send daily report or custom report if fromDate and tillDate avaible. Else=>alert
   sendReport(reportType: string, fromDate?, tillDate?) {
     console.log('sent');
     if (reportType == 'custom') {
@@ -149,11 +164,13 @@ export class CRUDFormComponent implements OnInit {
   }
 
 
-  //TODO Update [min] on second date picker
+  //set [min] for second picker when first date set
   dateFilter2(d: Date) {
     this.lastDate = d;
   }
 
+
+  //set ngClass(color) depend if material is in avaible/repair/sold
   getStatusClass(id: any) {
     if (id.repair == true) {
       return 'repair'
@@ -163,10 +180,6 @@ export class CRUDFormComponent implements OnInit {
   }
 
 
-  testOnClick() {
-    // console.log(this.datesForm.value);
-
-  }
 
 }
 

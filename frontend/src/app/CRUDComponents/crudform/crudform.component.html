@@ -1,6 +1,4 @@
 <body>
-    <!-- <img [src]=material.imageUrl [alt]=material.imageAlt> -->
-    <!-- <label>Manage your sails database by typing {{material.type}} number and pressing right button.</label> -->
     <div class=crudDiv>
         <h2>Add new {{material.type}} to database.</h2>
         <div class=addForm>
@@ -68,7 +66,6 @@
                     (click)="report.value=='custom'?sendReport(report.value,fromDate.value, tillDate.value):sendReport(report.value)"
                     matTooltip="Send report to Megastore.">Send</button>
 
-                <!-- testing click!!!!!!!!!! -->
 
 
             </div>
@@ -81,8 +78,6 @@
                     <mat-datepicker-toggle matSuffix [for]="startPicker"></mat-datepicker-toggle>
                     <mat-datepicker touchUi #startPicker></mat-datepicker>
                 </mat-form-field>
-
-                <!-- [matDatepickerFilter]="dateFilter" -->
 
                 <mat-form-field matTooltip='Last day of report.' class="reportPeriod">
 

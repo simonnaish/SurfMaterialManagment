@@ -20,14 +20,14 @@ export class BasicPrintingComponent implements OnInit {
   // SORTING TABLES
   @ViewChild('listSort', { static: true }) listSort: MatSort;
 
-   //PAGINATOR 
-   @ViewChild('listPaginator', { static: true }) listPaginator: MatPaginator;
+  //PAGINATOR 
+  @ViewChild('listPaginator', { static: true }) listPaginator: MatPaginator;
 
 
   constructor(public dialogRef: MatDialogRef<BasicPrintingComponent>,
     @Inject(MAT_DIALOG_DATA) public data) {
-     }
-     displayedColumns: string[] = ['type', 'model', 'size', 'amount']
+  }
+  displayedColumns: string[] = ['type', 'model', 'size', 'amount']
 
 
   ngOnInit(): void {

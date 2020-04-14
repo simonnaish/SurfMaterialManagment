@@ -1,5 +1,7 @@
-    <div class=setMargin><!-- AVAIBLE EQUIPMENT TABLE -->
-    <table mat-table matTableExporter #exporter=matTableExporter [dataSource]=avaibleItems matSort #avaibleItemsSort="matSort" class="mat-elevation-z8">
+<div class=setMargin>
+    <!-- AVAIBLE EQUIPMENT TABLE -->
+    <table mat-table matTableExporter #exporter=matTableExporter [dataSource]=avaibleItems matSort
+        #avaibleItemsSort="matSort" class="mat-elevation-z8">
 
         <ng-container matColumnDef="id">
             <th mat-header-cell *matHeaderCellDef mat-sort-header>ID </th>
@@ -45,13 +47,15 @@
 
 
     </table>
-    <mat-paginator #avaibleItemsPaginator='matPaginator' [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+    <mat-paginator #avaibleItemsPaginator='matPaginator' [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons>
+    </mat-paginator>
 
     <button mat-raised-button class=saveButton (click)="exporter.exportTable('csv')">SAVE</button>
 
 
     <!-- REPAIRED EQUIPMENT TABLE -->
-    <table matTableExporter #exporter2=matTableExporter mat-table [dataSource]=repairedItems matSort #repairedItemsSort="matSort" class="mat-elevation-z8">
+    <table matTableExporter #exporter2=matTableExporter mat-table [dataSource]=repairedItems matSort
+        #repairedItemsSort="matSort" class="mat-elevation-z8">
 
         <ng-container matColumnDef="id">
             <th mat-header-cell *matHeaderCellDef mat-sort-header>ID </th>
@@ -96,13 +100,15 @@
         <tr mat-row *matRowDef="let row; columns: displayedRepairedColumns;"></tr>
 
     </table>
-    <mat-paginator #repairedItemsPaginator='matPaginator' [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+    <mat-paginator #repairedItemsPaginator='matPaginator' [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons>
+    </mat-paginator>
 
     <button mat-raised-button class=saveButton (click)="exporter2.exportTable('csv')">SAVE</button>
 
 
     <!-- SOLD EQUIPMENT TABLE -->
-    <table matTableExporter #exporter3=matTableExporter mat-table [dataSource]=soldItems matSort #soldItemsSort="matSort" class="mat-elevation-z8">
+    <table matTableExporter #exporter3=matTableExporter mat-table [dataSource]=soldItems matSort
+        #soldItemsSort="matSort" class="mat-elevation-z8">
 
         <ng-container matColumnDef="id">
             <th mat-header-cell *matHeaderCellDef mat-sort-header>ID </th>
@@ -146,13 +152,14 @@
         <tr mat-row *matRowDef="let row; columns: displayedSoldColumns;"></tr>
 
     </table>
-    <mat-paginator #soldItemsPaginator='matPaginator' [pageSizeOptions]="[5, 10, 20, 50, 100]" showFirstLastButtons></mat-paginator>
+    <mat-paginator #soldItemsPaginator='matPaginator' [pageSizeOptions]="[5, 10, 20, 50, 100]" showFirstLastButtons>
+    </mat-paginator>
 
     <button mat-raised-button class=saveButton (click)="exporter3.exportTable('csv')">SAVE</button>
 
 
     <div mat-dialog-actions>
-        <button class=close_button mat-raised-button mat-dialog-close >Close</button>
-      </div>
-
+        <button class=close_button mat-raised-button mat-dialog-close>Close</button>
     </div>
+
+</div>

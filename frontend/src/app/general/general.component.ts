@@ -10,11 +10,16 @@ import { tap, subscribeOn } from 'rxjs/operators';
 })
 export class GeneralComponent implements OnInit {
 
+
+  //general amount of material depend on type and category
   amounts: Map<string, number>;
+
+  //urls to fint last movements and amount  of material
   urls: {};
 
-  recentlyReceived:any;
-  recentlyGone:any;
+  //lists with last movement(3items for each category)
+  recentlyReceived: any;
+  recentlyGone: any;
 
   accessoriesUrl = 'accessories/?type='
 
@@ -60,10 +65,10 @@ export class GeneralComponent implements OnInit {
   }
 
 
-//load last movements
-  loadLastMovements(){
-    this.recentlyReceived=this._http.loadRecentlyReceived();
-    this.recentlyGone=this._http.loadRecentlyGone();
+  //load last movements
+  loadLastMovements() {
+    this.recentlyReceived = this._http.loadRecentlyReceived();
+    this.recentlyGone = this._http.loadRecentlyGone();
   }
 
 

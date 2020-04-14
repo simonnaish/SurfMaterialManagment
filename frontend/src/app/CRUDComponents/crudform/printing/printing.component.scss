@@ -1,49 +1,52 @@
-table{
+table {
     width: 70vw !important;
     background: ghostwhite;
 }
-.mat-sort-header{
-    color:black;
+.mat-sort-header {
+    color: black;
     font-size: 1.2rem;
     font-weight: bold;
 }
-::ng-deep .mat-dialog-container{
+::ng-deep .mat-dialog-container {
     background: radial-gradient(ghostwhite, aliceblue) !important;
     max-height: 90vh;
     max-width: 100%;
 }
-::ng-deep .mat-paginator-container{
+::ng-deep .mat-paginator-container {
     background: ghostwhite;
-    // border: solid;    
+    // border: solid;
 }
 
 @media only screen and (max-width: 600px) {
-    
-    table{
+    table {
         min-width: 60%;
         max-width: 100% !important;
     }
-    ::ng-deep .cdk-overlay-pane{
+    ::ng-deep .cdk-overlay-pane {
         min-width: 60% !important;
         max-width: 100% !important;
-        // align-content: stretch;    
+        // align-content: stretch;
     }
 }
 
-.saveButton{
+.saveButton {
     margin-bottom: 3rem !important;
-    margin-top:1rem;
+    margin-top: 1rem;
     width: 10rem;
-   
 }
-.close_button{
+.close_button {
     width: 100%;
 }
-button{
+button {
     border: outset;
     background: #ffef28;
     font-size: 1rem;
 }
-.setMargin{
+.setMargin {
     margin: 0 auto;
+}
+button:hover {
+    background: linear-gradient(90deg, chocolate, #ffef28) !important;
+    opacity: 1;
+    transition: all 0.3s ease;
 }

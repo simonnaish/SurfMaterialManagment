@@ -1,8 +1,7 @@
 body {
-    padding:1rem;
+    padding: 1rem;
 
-
-    h1{
+    h1 {
         font-size: 3rem;
         line-height: 4rem;
     }
@@ -27,24 +26,12 @@ body {
             height: fit-content;
             justify-content: space-between;
 
-            mat-list-item{
+            mat-list-item {
                 margin-left: 2rem;
             }
-            h3{
+            h3 {
                 margin-left: 6rem;
             }
         }
     }
-    // @media only screen and (max-width: 600px) {
-    //     .container {
-    //         display: flex;
-    //         flex-direction: row;
-    //         justify-content: space-evenly;
-    //         margin: 5rem;
-
-    //         mat-list {
-    //             min-width: 40hv;
-    //         }
-    //     }
-    // }
 }

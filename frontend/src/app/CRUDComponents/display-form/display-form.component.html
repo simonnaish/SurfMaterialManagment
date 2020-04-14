@@ -1,50 +1,52 @@
 <body>
 
     <mat-tab-group class=mat-tab-header>
-        <mat-tab class=tabs   *ngFor="let item of items" label={{item.id}}>
+        <mat-tab class=tabs *ngFor="let item of items" label={{item.id}}>
 
-    <mat-card class="detail-card">
-        <mat-card-header>
-            <img mat-card-avatar src={{iconUrl}} class="header-image">
-            <mat-card-title>Details: {{item.id}}</mat-card-title>
-            <mat-card-subtitle>{{item.type}}</mat-card-subtitle>
-        </mat-card-header>
-        <!-- <img mat-card-image src="./assets/img/redback.png" alt="sailImage"> -->
-        
-        <mat-card-content>
-            
-                <mat-list>
-                    <mat-list-item>SERIAL: {{item.id}}</mat-list-item>
-                    <mat-divider></mat-divider>
-                    <mat-list-item>CATEGORY: {{item.category}} </mat-list-item>
-                    <mat-divider></mat-divider>
-                    <mat-list-item>BRAND: {{item.brand}}</mat-list-item>
-                    <mat-divider></mat-divider>
-                    <mat-list-item>MODEL: {{item.model}}</mat-list-item>
-                    <mat-divider></mat-divider>
-                    <mat-list-item>Size: {{item.size}}</mat-list-item>
-                    <mat-divider></mat-divider>
-                    <mat-list-item>YEAR: {{item.year}}</mat-list-item>
-                    <mat-divider></mat-divider>
-                    <mat-list-item>RECIEVED: {{item.whenCame}}</mat-list-item>
-                    <div *ngIf='item.repair==true'>
+            <mat-card class="detail-card">
+                <mat-card-header>
+                    <img mat-card-avatar src={{iconUrl}} class="header-image">
+                    <mat-card-title>Details: {{item.id}}</mat-card-title>
+                    <mat-card-subtitle>{{item.type}}</mat-card-subtitle>
+                </mat-card-header>
+
+                <mat-card-content>
+
+                    <mat-list>
+                        <mat-list-item>SERIAL: {{item.id}}</mat-list-item>
                         <mat-divider></mat-divider>
-                        <mat-list-item>SENT AWAY: {{item.whenGone}}</mat-list-item>
-                    </div>
-                    <div *ngIf='item.sold==true'>
+                        <mat-list-item>CATEGORY: {{item.category}} </mat-list-item>
                         <mat-divider></mat-divider>
-                        <mat-list-item>SOLD: {{item.whenSold}}</mat-list-item>
-                    </div>
-                </mat-list>
-            
-        </mat-card-content>
-        <mat-card-actions>
-            <button matTooltip='Recieve {{material.type}}' (click)="addItem(item.id)" mat-button>RECIEVE</button>
-            <button matTooltip='Send {{material.type}} to repair' (click)="repairItem(item.id)" mat-button>REPAIR</button>
-            <button matTooltip='Send {{material.type}} to megastore' (click)="sellItem(item.id)" mat-button>SELL</button>
-        </mat-card-actions>
-    </mat-card>
-</mat-tab>
-</mat-tab-group>
+                        <mat-list-item>BRAND: {{item.brand}}</mat-list-item>
+                        <mat-divider></mat-divider>
+                        <mat-list-item>MODEL: {{item.model}}</mat-list-item>
+                        <mat-divider></mat-divider>
+                        <mat-list-item>Size: {{item.size}}</mat-list-item>
+                        <mat-divider></mat-divider>
+                        <mat-list-item>YEAR: {{item.year}}</mat-list-item>
+                        <mat-divider></mat-divider>
+                        <mat-list-item>RECIEVED: {{item.whenCame}}</mat-list-item>
+                        <div *ngIf='item.repair==true'>
+                            <mat-divider></mat-divider>
+                            <mat-list-item>SENT AWAY: {{item.whenGone}}</mat-list-item>
+                        </div>
+                        <div *ngIf='item.sold==true'>
+                            <mat-divider></mat-divider>
+                            <mat-list-item>SOLD: {{item.whenSold}}</mat-list-item>
+                        </div>
+                    </mat-list>
+
+                </mat-card-content>
+                <mat-card-actions>
+                    <button matTooltip='Recieve {{material.type}}' (click)="addItem(item.id)"
+                        mat-button>RECIEVE</button>
+                    <button matTooltip='Send {{material.type}} to repair' (click)="repairItem(item.id)"
+                        mat-button>REPAIR</button>
+                    <button matTooltip='Send {{material.type}} to megastore' (click)="sellItem(item.id)"
+                        mat-button>SELL</button>
+                </mat-card-actions>
+            </mat-card>
+        </mat-tab>
+    </mat-tab-group>
 
 </body>

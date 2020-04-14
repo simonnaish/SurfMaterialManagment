@@ -37,6 +37,8 @@ export class BasicCRUDComponent implements OnInit {
   @Input()
   apiFilterUrl: string;
 
+
+  //list with amount of equipment for each item
   sizes = new Map();
 
 
@@ -50,6 +52,7 @@ export class BasicCRUDComponent implements OnInit {
     this.setAmounts();
   }
 
+  //set current amount for each material to size<Map>
   setAmounts() {
     for (let type in this.equipment) {
       for (let model in this.equipment[type]) {
@@ -83,9 +86,6 @@ export class BasicCRUDComponent implements OnInit {
       this.changesMap.set(type + ' ' + model + ' ' + size, { 'type': type, 'model': model, 'size': size, 'amount': newAmount - currentAmount })
 
     }
-
-    console.log(newAmount)
-    console.log(this.temporaryChanges)
 
   }
 
@@ -136,17 +136,21 @@ export class BasicCRUDComponent implements OnInit {
     )
   }
 
+  //open dialog with material list
   printList() {
     this.openListDialog();
   }
 
+  //opening dialog with list of all avaible material with amount  and possibility to save it to file
   openListDialog(): void {
     this.materialList = this.setFullMaterialList();
     const dialogRef = this.dialog.open(BasicPrintingComponent, {
-        data:{'equipmentList':this.materialList}
-      });
+      data: { 'equipmentList': this.materialList }
+    });
 
   }
+
+  //return list of maps for all avaible material, exportable to file
   setFullMaterialList(): {}[] {
     let temporaryList = []
     for (let k in this.equipment) {
@@ -159,7 +163,6 @@ export class BasicCRUDComponent implements OnInit {
       }
 
     }
-    console.log(temporaryList);
     return temporaryList;
   }
 

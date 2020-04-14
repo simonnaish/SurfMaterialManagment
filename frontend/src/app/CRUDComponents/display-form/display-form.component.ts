@@ -20,26 +20,30 @@ export class DisplayFormComponent implements OnInit {
   iconUrl: string;
 
   @Input()
-  apiUrl:string;
+  apiUrl: string;
 
-  constructor(private _http:CRUDServiceService) { }
+  constructor(private _http: CRUDServiceService) { }
 
   ngOnInit(): void {
   }
 
-  addItem(id:string){
-    this._http.recieveUsedItem(this.apiUrl, id);    
-    alert(id+' is back in the center.')
-}
 
-  repairItem(id: string) {
-    this._http.repairItem(this.apiUrl, id);
-    alert(id+' sent to repair.')
+  //send PUT request from service. Receive material.
+  addItem(id: string) {
+    this._http.recieveUsedItem(this.apiUrl, id);
+    alert(id + ' is back in the center.')
   }
 
+  //send PUT request from service. Send to taller
+  repairItem(id: string) {
+    this._http.repairItem(this.apiUrl, id);
+    alert(id + ' sent to repair.')
+  }
+
+  //send PUT request from service. Send to megastore.
   sellItem(id: string) {
     this._http.sellItem(this.apiUrl, id);
-    alert(id+' sent to megastore.')
+    alert(id + ' sent to megastore.')
   }
 
 }

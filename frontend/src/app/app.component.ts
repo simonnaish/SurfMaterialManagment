@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {Router } from '@angular/router'
+import { Router } from '@angular/router'
 
 
 import { MAT_TOOLTIP_DEFAULT_OPTIONS, MatTooltipDefaultOptions } from '@angular/material/tooltip';
@@ -14,7 +14,7 @@ const MatTooltipCustomOptions: MatTooltipDefaultOptions = {
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
-  providers:[{
+  providers: [{
     provide: MAT_TOOLTIP_DEFAULT_OPTIONS, useValue: MatTooltipCustomOptions
 
   }]
@@ -22,10 +22,10 @@ const MatTooltipCustomOptions: MatTooltipDefaultOptions = {
 
 export class AppComponent {
   title = 'rene';
-  navLinks: any [];
+  navLinks: any[];
   // activeLinkIndex=-1;
-  constructor(private router: Router){
-    this.navLinks=[
+  constructor(private router: Router) {
+    this.navLinks = [
       {
         label: 'General',
         link: '/',
@@ -34,25 +34,25 @@ export class AppComponent {
       },
       {
         label: 'Sails',
-        link:'/sails',
+        link: '/sails',
         index: 1,
         detail: 'Manage sails...'
       },
       {
         label: 'Boards',
-        link:'/boards',
+        link: '/boards',
         index: 2,
         detail: 'Manage boards...'
       },
       {
         label: 'Beginners',
-        link:'/beginners',
+        link: '/beginners',
         index: 3,
         detail: 'Manage beginners material...'
       },
       {
         label: 'Accessories',
-        link:'/accessories',
+        link: '/accessories',
         index: 4,
         detail: 'Manage accessories...'
       }

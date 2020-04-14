@@ -23,8 +23,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableExporterModule } from 'mat-table-exporter';
 import { CdkTableExporterModule } from 'cdk-table-exporter';
-import {MatPaginatorModule} from '@angular/material/paginator/';
-// import {MatTableDataSource} from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator/';
 
 
 
@@ -72,7 +71,6 @@ export const DD_MM_YYYY_Format = {
         MatTableExporterModule,
         CdkTableExporterModule,
         MatPaginatorModule,
-        // MatTableDataSource
     ],
     exports: [
         FormsModule,
@@ -97,7 +95,6 @@ export const DD_MM_YYYY_Format = {
         MatTableExporterModule,
         CdkTableExporterModule,
         MatPaginatorModule,
-        // MatTableDataSource
     ],
     providers: [
 
