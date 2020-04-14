@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
-import { Observable, throwError } from 'rxjs';
-import { catchError, tap, retry } from 'rxjs/operators';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import {  tap } from 'rxjs/operators';
+
 
 
 @Injectable({
@@ -94,14 +94,14 @@ export class CRUDServiceService {
 
 
   //send report 
-  sendReport(fromDate?, tillDate?) {
-    if (fromDate & tillDate) {
-      return this.http.post<any>(this.onlineUrl + 'report/', { 'from_date': fromDate, 'till_date': tillDate }).subscribe(
+  sendReport(whatMaterial, fromDate?, tillDate?) {
+    if (fromDate) {
+      return this.http.post<any>(this.onlineUrl + 'report/', {'what_material':whatMaterial, 'from_date': fromDate, 'till_date': tillDate }).subscribe(
         () => console.log('correct' + fromDate + ' ' + tillDate),
         error => console.log(error)
       );
     } else {
-      return this.http.get<any>(this.onlineUrl + 'report/').subscribe(
+      return this.http.post<any>(this.onlineUrl + 'report/', {'what_material':whatMaterial}).subscribe(
         () => console.log('correct'),
         error => console.log(error)
       );

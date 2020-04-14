@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { CRUDServiceService } from '../services/crudservice.service';
-import { empty, Observable } from 'rxjs';
-import { tap, subscribeOn } from 'rxjs/operators';
+
+import { materialLoaders } from '../reuseable/materialLoader';
+
+
 
 @Component({
   selector: 'app-general',
@@ -21,14 +23,35 @@ export class GeneralComponent implements OnInit {
   recentlyReceived: any;
   recentlyGone: any;
 
+
+  //today date for date picked [max]
+  today: any;
+  //lastDate set after picking first date, set [min] for second datepicker
+  lastDate: Date;
+
+
+  //checkboxes to list
+  listSails=true
+  listBoards=true
+  listBeginners=true
+  listAccessories=true
+
+  //checkboxes for report
+  reportSails=true
+  reportBoards=true
+  reportBeginners=true
+  reportAccessories=true
+
+
   accessoriesUrl = 'accessories/?type='
 
-  constructor(private _http: CRUDServiceService) {
+  constructor(private _http: CRUDServiceService, private _loader:materialLoaders) {
 
 
   }
 
   ngOnInit(): void {
+    this.today = new Date();
 
     this.amounts = new Map();
     this.setUrls();
@@ -72,13 +95,6 @@ export class GeneralComponent implements OnInit {
   }
 
 
-
-
-
-
-
-
-
   //get today date YYYY-MM-DD - 1week
   getToday() {
     let date = new Date();
@@ -111,9 +127,69 @@ export class GeneralComponent implements OnInit {
     }
   }
 
-
-  testing() {
-
-
+  printList(){
+    let whatMaterial=[]
+    if(this.listSails){
+      whatMaterial.push('sail')
+      var sailsLists=this._loader.loadMaterial('sails/')
+    }
+    if(this.listBoards){
+      whatMaterial.push('board')
+      var boardsLists=this._loader.loadMaterial('boards/')
+    }
+    if(this.listBeginners){whatMaterial.push('beginners')}
+    if(this.listAccessories){whatMaterial.push('accessories')}
+    console.log(sailsLists)
+    console.log(boardsLists)
+    
   }
+
+  setMaterial(apiUrl){
+    let repairedItems=[]
+    let soldItems=[]
+    let avaibleItems=[]
+    this._http.loadMaterial(apiUrl).forEach(iter => iter.results.forEach(item => {
+      if (item.repair == true) {
+        repairedItems.push(item);
+      }
+      else if (item.sold == true) {
+        soldItems.push(item)
+      } else {
+        avaibleItems.push(item);
+      }
+    }));
+    return[avaibleItems, repairedItems, soldItems]
+  }
+
+  // setBasicMaterial
+
+
+  sendReport(value, fromDate?, tillDate?) {
+    let whatMaterial=[]
+    if(this.reportSails){whatMaterial.push('sail')}
+    if(this.reportBoards){whatMaterial.push('board')}
+    if(this.reportBeginners){whatMaterial.push('beginners')}
+    if(this.reportAccessories){whatMaterial.push('accessories')}
+
+    if(value=='custom'){
+      if (fromDate == '') {
+        alert('You must choose first date or check "Today" to send report from today.')
+      } else if (tillDate == '') {
+        alert('You must choose last date or check "Today" to send report from today.')
+      }
+      else {
+        this._http.sendReport(whatMaterial, fromDate, tillDate)
+      }
+      // console.log(value, whatMaterial, fromDate, tillDate)
+    }
+    else{
+      this._http.sendReport(whatMaterial)
+    }
+  }
+  //set [min] for second picker when first date set
+  dateFilter2(d: Date) {
+    this.lastDate = d;
+  }
+
+
 }

@@ -20,6 +20,8 @@ import { BasicCRUDComponent } from './basicCRUDComponents/basic-crud/basic-crud.
 import { ConfirmationDialogComponent } from './basicCRUDComponents/confirmation-dialog/confirmation-dialog.component';
 import { PrintingComponent } from './CRUDComponents/crudform/printing/printing.component';
 import { BasicPrintingComponent } from './basicCRUDComponents/basic-printing/basic-printing.component';
+import { GeneralPrintingComponent } from './general/general-printing/general-printing.component';
+import { materialLoaders } from './reuseable/materialLoader';
 
 
 
@@ -36,14 +38,19 @@ import { BasicPrintingComponent } from './basicCRUDComponents/basic-printing/bas
     BasicCRUDComponent,
     ConfirmationDialogComponent,
     PrintingComponent,
-    BasicPrintingComponent
+    BasicPrintingComponent,
+    GeneralPrintingComponent,
+    
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MaterialModule,
-    HttpClientModule
+    HttpClientModule,
+    materialLoaders
+
   ],
   providers: [],
   bootstrap: [AppComponent]

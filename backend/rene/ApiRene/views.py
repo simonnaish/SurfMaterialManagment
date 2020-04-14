@@ -1,3 +1,4 @@
+import json
 from datetime import date
 
 from rest_framework import viewsets
@@ -103,7 +104,7 @@ class accessories_view_set(viewsets.ModelViewSet):
     filter_fields = ["id", "type", "model", "size", "whenCame", "whenGone", "gone"]
 
 
-@api_view(["GET", "POST"])
+@api_view(["POST"])
 def report_view(request):
 
     if emails.send_report_ssl(request):

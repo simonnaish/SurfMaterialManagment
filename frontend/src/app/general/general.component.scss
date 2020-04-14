@@ -1,17 +1,35 @@
 body {
-    padding: 1rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
 
     h1 {
         font-size: 3rem;
         line-height: 4rem;
+    }
+    button,
+    .mat-button-toggle {
+        background: aliceblue;
+        opacity: 0.75;
+        border: aliceblue;
+    }
+    .checkBoxes {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 1rem;
+    }
+
+    button:hover {
+        background: linear-gradient(90deg, cadetblue, transparent) !important;
+        opacity: 1;
+        transition: all 0.3s ease;
     }
 
     .container {
         display: flex;
         flex-direction: row;
         justify-content: space-between;
-        margin-left: 5rem;
-        margin-right: 5rem;
         margin-top: 5rem;
         margin-bottom: 5rem;
 
@@ -32,6 +50,52 @@ body {
             h3 {
                 margin-left: 6rem;
             }
+        }
+    }
+
+    .generalActions {
+        background: radial-gradient(transparent, ivory);
+        padding: 2rem;
+        border: outset;
+        border-radius: 2rem;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+
+        min-width: 80%;
+        max-width: 90%;
+        .reportsForm {
+            width: 40%;
+            display: flex;
+            flex-direction: column;
+            .mat-button-toggle-checked {
+                background: #ffef28;
+                opacity: 0.9;
+            }
+            .datePickers {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-evenly;
+                mat-form-field {
+                    justify-content: space-around;
+                    width: 45%;
+                }
+            }
+            .buttons {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                @media only screen and (max-width: 600px) {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
+                }
+            }
+        }
+        .listsForm {
+            width: 40%;
+            display: flex;
+            flex-direction: column;
         }
     }
 }

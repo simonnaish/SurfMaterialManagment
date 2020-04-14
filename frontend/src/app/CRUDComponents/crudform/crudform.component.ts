@@ -141,7 +141,7 @@ export class CRUDFormComponent implements OnInit {
 
   //Send daily report or custom report if fromDate and tillDate avaible. Else=>alert
   sendReport(reportType: string, fromDate?, tillDate?) {
-    console.log('sent');
+    
     if (reportType == 'custom') {
       if (fromDate == '') {
         this.openSnack('You must choose first date or check "Today" to send report from today.')
@@ -149,11 +149,11 @@ export class CRUDFormComponent implements OnInit {
         this.openSnack('You must choose last date or check "Today" to send report from today.')
       }
       else {
-        this._http.sendReport(fromDate, tillDate);
+        this._http.sendReport(this.material.type.toLowerCase(), fromDate, tillDate);
       }
 
     } else {
-      this._http.sendReport();
+      this._http.sendReport(this.material.type.toLowerCase());
     }
 
   }

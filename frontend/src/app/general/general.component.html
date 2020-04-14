@@ -1,5 +1,64 @@
 <body>
     <h1>Welcome!</h1>
+
+    <div class=generalActions>
+        <div class=listsForm>
+            <h3>Lists </h3>
+            <div class=checkBoxes>
+                <h2>Show list of:</h2>
+                <mat-checkbox [(ngModel)]='listSails' >Sails</mat-checkbox>
+                <mat-checkbox [(ngModel)]='listBoards' > Boards</mat-checkbox>
+                <mat-checkbox [(ngModel)]='listBeginners' >Beginners</mat-checkbox>
+                <mat-checkbox [(ngModel)]='listAccessories' >Accessories</mat-checkbox>
+            </div>
+            <button mat-raised-button (click)='printList()' matTooltip='Show list of material'>Show</button>
+        </div>
+
+        <div class=reportsForm>
+            <h3>Reports</h3>
+            <div class=checkBoxes>
+                <h2>Send report of:</h2>
+                <mat-checkbox [(ngModel)]='reportSails'>Sails</mat-checkbox>
+                <mat-checkbox [(ngModel)]='reportBoards'> Boards</mat-checkbox>
+                <mat-checkbox [(ngModel)]='reportBeginners'>Beginners</mat-checkbox>
+                <mat-checkbox [(ngModel)]='reportAccessories'>Accessories</mat-checkbox>
+            </div>
+            <div class=buttons>
+                <mat-button-toggle-group value='today' #report="matButtonToggleGroup" name="report">
+                    <mat-button-toggle matTooltip="Send report from today." value="today">Today
+                    </mat-button-toggle>
+                    <mat-button-toggle matTooltip="Send custom report from choosen days." value="custom">Custom
+                    </mat-button-toggle>
+                </mat-button-toggle-group>
+                <button mat-stroked-button
+                    (click)="report.value=='custom'?sendReport(report.value,fromDate.value, tillDate.value):sendReport(report.value)"
+                    matTooltip="Send report to Megastore.">Send</button>
+
+
+
+            </div>
+            <div class=datePickers [ngStyle]="report.value=='custom'?{'visibility':'visible'}:{'visibility':'hidden'}">
+
+                <mat-form-field matTooltip='First day of report.' class="reportPeriod">
+                    <mat-label>First day</mat-label>
+                    <input matInput #fromDate (dateInput)=dateFilter2(fromDate.value) [max]=today
+                        [matDatepicker]="startPicker">
+                    <mat-datepicker-toggle matSuffix [for]="startPicker"></mat-datepicker-toggle>
+                    <mat-datepicker touchUi #startPicker></mat-datepicker>
+                </mat-form-field>
+
+                <mat-form-field matTooltip='Last day of report.' class="reportPeriod">
+
+                    <mat-label>Last day</mat-label>
+                    <input matInput #tillDate [min]=lastDate [max]=today [matDatepicker]="lastPicker">
+                    <mat-datepicker-toggle matSuffix [for]="lastPicker"></mat-datepicker-toggle>
+                    <mat-datepicker touchUi #lastPicker></mat-datepicker>
+                </mat-form-field>
+
+            </div>
+        </div>
+    </div>
+
     <span *ngIf="amounts">
         <div class=container>
             <mat-list>

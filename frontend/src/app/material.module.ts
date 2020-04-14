@@ -24,6 +24,8 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatTableExporterModule } from 'mat-table-exporter';
 import { CdkTableExporterModule } from 'cdk-table-exporter';
 import { MatPaginatorModule } from '@angular/material/paginator/';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+
 
 
 
@@ -71,6 +73,8 @@ export const DD_MM_YYYY_Format = {
         MatTableExporterModule,
         CdkTableExporterModule,
         MatPaginatorModule,
+        MatCheckboxModule,
+        
     ],
     exports: [
         FormsModule,
@@ -95,6 +99,7 @@ export const DD_MM_YYYY_Format = {
         MatTableExporterModule,
         CdkTableExporterModule,
         MatPaginatorModule,
+        MatCheckboxModule,
     ],
     providers: [
 
