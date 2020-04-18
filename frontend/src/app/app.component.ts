@@ -61,9 +61,9 @@ export class AppComponent {
     ]
   }
 
-  loginStatus = 'LOGIN'
-
-
+  
+  
+  loginStatus = 'LOG IN'
   //open login dialog or logout user
   loginUser() {
     if (active == false) {
@@ -72,14 +72,14 @@ export class AppComponent {
       dialogRef.afterClosed().subscribe((confirmed: Boolean) => {
         if (confirmed) {
           active = true
-          this.loginStatus = 'LOGOUT'
+          this.loginStatus = 'LOG OUT'
         }
       })
 
 
     } else {
       active = false
-      this.loginStatus = 'LOGIN'
+      this.loginStatus = 'LOG IN'
     }
     console.log(active)
   }
