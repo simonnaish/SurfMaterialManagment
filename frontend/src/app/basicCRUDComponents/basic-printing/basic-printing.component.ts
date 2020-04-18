@@ -14,26 +14,15 @@ import { MatPaginator } from '@angular/material/paginator';
 })
 export class BasicPrintingComponent implements OnInit {
 
-  dataSource = new MatTableDataSource(this.data['equipmentList'])
 
-
-  // SORTING TABLES
-  @ViewChild('listSort', { static: true }) listSort: MatSort;
-
-  //PAGINATOR 
-  @ViewChild('listPaginator', { static: true }) listPaginator: MatPaginator;
 
 
   constructor(public dialogRef: MatDialogRef<BasicPrintingComponent>,
     @Inject(MAT_DIALOG_DATA) public data) {
   }
-  displayedColumns: string[] = ['type', 'model', 'size', 'amount']
 
 
   ngOnInit(): void {
-    this.dataSource.sort = this.listSort;
-
-    this.dataSource.paginator = this.listPaginator;
-  }
+    }
 
 }

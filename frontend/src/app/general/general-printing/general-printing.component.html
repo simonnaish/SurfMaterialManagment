@@ -1,1 +1,17 @@
-<p>general-printing works!</p>
+<span *ngIf='sailsData'>
+    <h4>SAILS</h4>
+    <app-printing-template [data]='sailsData' ></app-printing-template>
+</span>
+<span *ngIf='boardsData'>
+    <h4>BOARDS</h4>
+    <app-printing-template [data]=boardsData ></app-printing-template>
+</span>
+
+<span *ngIf='beginnersData'>
+    <h4>ACCESSORIES</h4>
+    <app-basic-printing-template [data]=beginnersData></app-basic-printing-template>
+</span>
+<span *ngIf='accessoriesData'>
+    <h4>BEGINNERS</h4>
+    <app-basic-printing-template [data]=accessoriesData></app-basic-printing-template>
+</span>

@@ -1,0 +1,50 @@
+table {
+    width: 70vw !important;
+    background: ghostwhite;
+}
+.mat-sort-header {
+    color: black;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+::ng-deep .mat-dialog-container {
+    background: radial-gradient(ghostwhite, aliceblue) !important;
+    max-height: 90vh;
+    max-width: 100%;
+}
+::ng-deep .mat-paginator-container {
+    background: ghostwhite;
+    // border: solid;
+}
+
+@media only screen and (max-width: 600px) {
+    table {
+        min-width: 60%;
+        max-width: 100% !important;
+    }
+    ::ng-deep .cdk-overlay-pane {
+        min-width: 60% !important;
+        max-width: 100% !important;
+        // align-content: stretch;
+    }
+}
+
+.saveButton {
+    margin-bottom: 3rem !important;
+    margin-top: 1rem;
+    width: 10rem;
+}
+.close_button {
+    width: 100%;
+}
+button {
+    border: outset;
+    background: #ffef28;
+    font-size: 1rem;
+}
+
+button:hover {
+    background: linear-gradient(90deg, chocolate, #ffef28) !important;
+    opacity: 1;
+    transition: all 0.3s ease;
+}

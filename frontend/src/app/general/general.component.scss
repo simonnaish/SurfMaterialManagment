@@ -91,11 +91,30 @@ body {
                     justify-content: space-between;
                 }
             }
+            .checkBoxes {
+                font-size: 1.1rem;
+            }
         }
         .listsForm {
             width: 40%;
             display: flex;
             flex-direction: column;
+
+            .checkBoxes {
+                font-size: 1.1rem;
+                .checkGroup {
+                    font-size: 0.8rem;
+                    margin-left: 2rem;
+                }
+            }
         }
     }
+}
+
+
+.visibleCheckGroup{
+    visibility: visible;
+}
+::ng-deep .unvisibleCheckGroup{
+    visibility: hidden !important;
 }

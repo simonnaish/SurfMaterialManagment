@@ -1,7 +1,18 @@
-import { Component, OnInit } from '@angular/core';
-import { CRUDServiceService } from '../services/crudservice.service';
+import { Component, OnInit, Input, Output } from '@angular/core';
 
+
+import { MatDialog } from '@angular/material/dialog';
+import { FormControl } from '@angular/forms';
+
+
+
+import { CRUDServiceService } from '../services/crudservice.service';
 import { materialLoaders } from '../reuseable/materialLoader';
+import { GeneralPrintingComponent } from './general-printing/general-printing.component';
+
+import {GENERAL_URLS} from '../reuseable/constants'
+
+
 
 
 
@@ -31,21 +42,34 @@ export class GeneralComponent implements OnInit {
 
 
   //checkboxes to list
-  listSails=true
-  listBoards=true
-  listBeginners=true
-  listAccessories=true
+  listSails = true
+  availableSails = true
+  repairedSails = true
+  soldSails = false
+
+
+  listBoards = true
+  availableBoards = true
+  repairedBoards = true
+  soldBoards = false
+
+  listBeginners = true
+  // availableBeginners = true
+  // soldBeginners = false
+
+  listAccessories = true
+  // availableAccessories = true
+  // soldAccessories = false
 
   //checkboxes for report
-  reportSails=true
-  reportBoards=true
-  reportBeginners=true
-  reportAccessories=true
+  reportSails = true
+  reportBoards = true
+  reportBeginners = true
+  reportAccessories = true
 
 
-  accessoriesUrl = 'accessories/?type='
 
-  constructor(private _http: CRUDServiceService, private _loader:materialLoaders) {
+  constructor(private _http: CRUDServiceService, private _loader: materialLoaders, private dialog: MatDialog) {
 
 
   }
@@ -63,21 +87,7 @@ export class GeneralComponent implements OnInit {
 
   //set URLs map for setAmounts()
   setUrls() {
-    this.urls = {
-      sails: 'sails/', worldCupSails: 'sails/?category=world%20cup', premiumSails: 'sails/?category=premium', boards: 'boards/',
-      premiumBoards: 'boards/?category=premium', worldCupBoards: 'boards/?category=world%20cup', sportBoards: 'boards/?category=sport',
-      beginnerBoards: 'beginners/?type=Board', beginnerSails: 'beginners/?type=Sail',
-      masts: this.accessoriesUrl + 'Mast', worldCupMasts: this.accessoriesUrl + 'Mast&model=Severne Gorilla', premiumMasts: this.accessoriesUrl + 'Mast&model=Severne Blue',
-      beginnerMasts: this.accessoriesUrl + 'Mast&model=Beginner',
-      booms: this.accessoriesUrl + 'Boom', premiumBooms: this.accessoriesUrl + 'Boom&model=Severne Enigma', worldCupBooms: this.accessoriesUrl + 'Boom&model=Severne Enigma',
-      beginnerBooms: this.accessoriesUrl + 'Boom&model=Beginner',
-      extensions: this.accessoriesUrl + 'Extension',
-      mastBases: this.accessoriesUrl + 'Mast%20Base',
-      wetsuits: this.accessoriesUrl + 'Wetsuit', unisexWetsuits: this.accessoriesUrl + 'Wetsuit&model=Unisex', manWetsuits: this.accessoriesUrl + 'Wetsuit&model=Man',
-      womanWetsuits: this.accessoriesUrl + 'Wetsuit&model=Woman', kidWetsuits: this.accessoriesUrl + 'Wetsuit&model=Kid',
-      harnesses: this.accessoriesUrl + 'Harness',
-      harnesLines: this.accessoriesUrl + 'Harness%20Lines'
-    }
+    this.urls = GENERAL_URLS;
   }
 
   //set amounts of equipment to display
@@ -127,51 +137,63 @@ export class GeneralComponent implements OnInit {
     }
   }
 
-  printList(){
-    let whatMaterial=[]
-    if(this.listSails){
-      whatMaterial.push('sail')
-      var sailsLists=this._loader.loadMaterial('sails/')
+
+  printList() {
+    let datas={}
+    if (this.listSails) {
+      let fullSailsList = this._loader.loadMaterial('sails/');
+      
+      if (this.availableSails) {
+        var availableSailsList = fullSailsList[0]
+      }
+      if (this.repairedSails) {
+        var repairedSailsList = fullSailsList[1]
+      }
+      if (this.soldSails) {
+        var soldSailsList = fullSailsList[2]
+      }
+      datas['sailsData']={ 'availableItems': availableSailsList, 'repairedItems': repairedSailsList, 'soldItems': soldSailsList }
     }
-    if(this.listBoards){
-      whatMaterial.push('board')
-      var boardsLists=this._loader.loadMaterial('boards/')
+    if (this.listBoards) {
+      let fullBoardsList = this._loader.loadMaterial('boards/');
+      if (this.availableBoards) {
+        var availableBoardsList = fullBoardsList[0]
+      }
+      if (this.repairedBoards) {
+        var repairedBoardsList = fullBoardsList[1]
+      }
+      if (this.soldBoards) {
+        var soldBoardsList = fullBoardsList[2]
+
+      }
+      datas['boardsData']= { 'availableItems': availableBoardsList, 'repairedItems': repairedBoardsList, 'soldItems': soldBoardsList }
+
     }
-    if(this.listBeginners){whatMaterial.push('beginners')}
-    if(this.listAccessories){whatMaterial.push('accessories')}
-    console.log(sailsLists)
-    console.log(boardsLists)
+    if(this.listBeginners){
+      let fullBeginnersList=this._loader.loadBasicMaterial('beginners');
+      datas['beginnersData']={'equipmentList':fullBeginnersList};
+    }
+    if(this.listAccessories){
+      let fullAccessoriesList=this._loader.loadBasicMaterial('accessories');
+      datas['accessoriesData']={'equipmentList':fullAccessoriesList};
+    }
     
-  }
-
-  setMaterial(apiUrl){
-    let repairedItems=[]
-    let soldItems=[]
-    let avaibleItems=[]
-    this._http.loadMaterial(apiUrl).forEach(iter => iter.results.forEach(item => {
-      if (item.repair == true) {
-        repairedItems.push(item);
+    const dialogRef = this.dialog.open(GeneralPrintingComponent, {
+      data: {
+        datas
       }
-      else if (item.sold == true) {
-        soldItems.push(item)
-      } else {
-        avaibleItems.push(item);
-      }
-    }));
-    return[avaibleItems, repairedItems, soldItems]
+    });
+
   }
-
-  // setBasicMaterial
-
 
   sendReport(value, fromDate?, tillDate?) {
-    let whatMaterial=[]
-    if(this.reportSails){whatMaterial.push('sail')}
-    if(this.reportBoards){whatMaterial.push('board')}
-    if(this.reportBeginners){whatMaterial.push('beginners')}
-    if(this.reportAccessories){whatMaterial.push('accessories')}
+    let whatMaterial = []
+    if (this.reportSails) { whatMaterial.push('sail') }
+    if (this.reportBoards) { whatMaterial.push('board') }
+    if (this.reportBeginners) { whatMaterial.push('beginners') }
+    if (this.reportAccessories) { whatMaterial.push('accessories') }
 
-    if(value=='custom'){
+    if (value == 'custom') {
       if (fromDate == '') {
         alert('You must choose first date or check "Today" to send report from today.')
       } else if (tillDate == '') {
@@ -182,13 +204,32 @@ export class GeneralComponent implements OnInit {
       }
       // console.log(value, whatMaterial, fromDate, tillDate)
     }
-    else{
+    else {
       this._http.sendReport(whatMaterial)
     }
   }
   //set [min] for second picker when first date set
   dateFilter2(d: Date) {
     this.lastDate = d;
+  }
+
+
+  //set up visibility of checkGroups
+  getSailsGroupClass() {
+    return this.getGroupClass(this.listSails);
+  }
+  getBoardsGroupClass() {
+    return this.getGroupClass(this.listBoards);
+  }
+
+
+  getGroupClass(field: boolean) {
+    if (field == true) {
+      return 'visibleCheckGroup'
+    }
+    else {
+      return 'unvisibleCheckGroup'
+    }
   }
 
 

@@ -13,6 +13,10 @@ import { tokenReference } from '@angular/compiler';
 import { MatDialog } from '@angular/material/dialog';
 import { PrintingComponent } from './printing/printing.component';
 
+import { materialLoaders } from 'src/app/reuseable/materialLoader';
+import { PrintingTemplateComponent } from 'src/app/reuseable/printing-template/printing-template.component';
+
+
 
 
 @Component({
@@ -36,7 +40,7 @@ export class CRUDFormComponent implements OnInit {
   materialList$: Observable<any[]>;
 
   //lists of segregated material for ngStyle and dialog with list of material
-  avaibleItems: any[] = [];
+  availableItems: any[] = [];
   repairedItems: any[] = [];
   soldItems: any[] = [];
 
@@ -54,7 +58,7 @@ export class CRUDFormComponent implements OnInit {
   lastDate: Date;
 
 
-  constructor(private dialog: MatDialog, private _http: CRUDServiceService) {
+  constructor(private dialog: MatDialog, private _http: CRUDServiceService, private _loader: materialLoaders) {
   }
 
   ngOnInit(): void {
@@ -66,16 +70,11 @@ export class CRUDFormComponent implements OnInit {
   //load observable and sort material for avaible/sold/repaired lists
   loadMaterial() {
     this.materialList$ = this._http.loadMaterial(this.apiUrl);
-    this._http.loadMaterial(this.apiUrl).forEach(iter => iter.results.forEach(item => {
-      if (item.repair == true) {
-        this.repairedItems.push(item);
-      }
-      else if (item.sold == true) {
-        this.soldItems.push(item)
-      } else {
-        this.avaibleItems.push(item);
-      }
-    }));
+    let lists=this._loader.loadMaterial(this.apiUrl);
+    this.availableItems=lists[0]
+    this.repairedItems=lists[1]
+    this.soldItems=lists[2]
+    
   }
 
   //check item/items and pass it to displayCrudForm
@@ -92,7 +91,7 @@ export class CRUDFormComponent implements OnInit {
 
   //check if item is avaible in database=>send PUT request, if not=>send POST
   addItem(item: string) {
-    let temporaryList = this.soldItems.concat(this.avaibleItems).concat(this.repairedItems);
+    let temporaryList = this.soldItems.concat(this.availableItems).concat(this.repairedItems);
     let found: boolean = false;
     temporaryList.forEach(iter => {
       if (iter.id == item) {
@@ -133,9 +132,8 @@ export class CRUDFormComponent implements OnInit {
 
   openDialog(): void {
     const dialogRef = this.dialog.open(PrintingComponent, {
-      data: { 'avaibleItems': this.avaibleItems, 'repairedItems': this.repairedItems, 'soldItems': this.soldItems }
+      data: { 'availableItems': this.availableItems, 'repairedItems': this.repairedItems, 'soldItems': this.soldItems }
     });
-
   }
 
 

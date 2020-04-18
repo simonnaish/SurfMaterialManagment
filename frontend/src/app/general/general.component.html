@@ -6,10 +6,23 @@
             <h3>Lists </h3>
             <div class=checkBoxes>
                 <h2>Show list of:</h2>
-                <mat-checkbox [(ngModel)]='listSails' >Sails</mat-checkbox>
-                <mat-checkbox [(ngModel)]='listBoards' > Boards</mat-checkbox>
-                <mat-checkbox [(ngModel)]='listBeginners' >Beginners</mat-checkbox>
-                <mat-checkbox [(ngModel)]='listAccessories' >Accessories</mat-checkbox>
+                <mat-checkbox id=sailsGroup [(ngModel)]='listSails'>Sails</mat-checkbox>
+                <div [ngClass]="getSailsGroupClass()">
+                    <mat-checkbox class=checkGroup [(ngModel)]='availableSails'>Available</mat-checkbox>
+                    <mat-checkbox class=checkGroup [(ngModel)]='repairedSails'>Repaired</mat-checkbox>
+                    <mat-checkbox class=checkGroup [(ngModel)]='soldSails'>Sold</mat-checkbox>
+                </div>
+                <mat-checkbox [(ngModel)]='listBoards'> Boards</mat-checkbox>
+                <div [ngClass]=getBoardsGroupClass()>
+                    <mat-checkbox class=checkGroup [(ngModel)]='availableBoards'>Available</mat-checkbox>
+                    <mat-checkbox class=checkGroup [(ngModel)]='repairedBoards'>Repaired</mat-checkbox>
+                    <mat-checkbox class=checkGroup [(ngModel)]='soldBoards'>Sold</mat-checkbox>
+                </div>
+                <mat-checkbox [(ngModel)]='listBeginners'>Beginners</mat-checkbox>
+
+                <mat-checkbox [(ngModel)]='listAccessories'>Accessories</mat-checkbox>
+
+
             </div>
             <button mat-raised-button (click)='printList()' matTooltip='Show list of material'>Show</button>
         </div>

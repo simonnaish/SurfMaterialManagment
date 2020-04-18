@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { CRUDServiceService } from '../services/crudservice.service';
-import { Observable } from 'rxjs';
+
+import { BEGINNERS } from '../reuseable/constants'
 
 @Component({
   selector: 'app-beginners',
@@ -25,10 +25,11 @@ export class BeginnersComponent implements OnInit {
 
   //load list of all vaible material
   loadEquipment() {
-    this.equipment = {
-      'Sail': { 'Synergy': [1.2, 2.1, 2.6, 3.1, 3.6, 4.1], 'XS': [2.0, 2.5, 3.0] },
-      'Board': { 'JP Funster': [160, 180, 205, 240], 'JP Explorer': [145, 165, 195], 'Starboard Rio': ['S', 'M', 'L'], 'Starboard Start': ['S', 'M', 'L'] }
-    }
+    this.equipment = BEGINNERS
+    // {
+    // 'Sail': { 'Synergy': [1.2, 2.1, 2.6, 3.1, 3.6, 4.1], 'XS': [2.0, 2.5, 3.0] },
+    // 'Board': { 'JP Funster': [160, 180, 205, 240], 'JP Explorer': [145, 165, 195], 'Starboard Rio': ['S', 'M', 'L'], 'Starboard Start': ['S', 'M', 'L'] }
+    // }
   };
 
 

@@ -22,6 +22,8 @@ import { PrintingComponent } from './CRUDComponents/crudform/printing/printing.c
 import { BasicPrintingComponent } from './basicCRUDComponents/basic-printing/basic-printing.component';
 import { GeneralPrintingComponent } from './general/general-printing/general-printing.component';
 import { materialLoaders } from './reuseable/materialLoader';
+import { PrintingTemplateComponent } from './reuseable/printing-template/printing-template.component';
+import { BasicPrintingTemplateComponent } from './reuseable/basic-printing-template/basic-printing-template.component';
 
 
 
@@ -40,6 +42,8 @@ import { materialLoaders } from './reuseable/materialLoader';
     PrintingComponent,
     BasicPrintingComponent,
     GeneralPrintingComponent,
+    PrintingTemplateComponent,
+    BasicPrintingTemplateComponent,
     
 
   ],
