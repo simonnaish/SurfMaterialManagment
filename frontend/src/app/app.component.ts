@@ -3,12 +3,15 @@ import { Router } from '@angular/router'
 
 
 import { MAT_TOOLTIP_DEFAULT_OPTIONS, MatTooltipDefaultOptions } from '@angular/material/tooltip';
+import { MatDialog } from '@angular/material/dialog';
 
+import { LoginDialogComponent } from './login-dialog/login-dialog.component';
 const MatTooltipCustomOptions: MatTooltipDefaultOptions = {
   showDelay: 800,
   hideDelay: 500,
   touchendHideDelay: 500,
 };
+export var active = false;
 
 @Component({
   selector: 'app-root',
@@ -19,12 +22,11 @@ const MatTooltipCustomOptions: MatTooltipDefaultOptions = {
 
   }]
 })
-
 export class AppComponent {
   title = 'rene';
   navLinks: any[];
   // activeLinkIndex=-1;
-  constructor(private router: Router) {
+  constructor(private router: Router, private dialog: MatDialog) {
     this.navLinks = [
       {
         label: 'General',
@@ -57,5 +59,37 @@ export class AppComponent {
         detail: 'Manage accessories...'
       }
     ]
+  }
+
+  loginStatus = 'LOGIN'
+
+
+  //open login dialog or logout user
+  loginUser() {
+    if (active == false) {
+      const dialogRef = this.dialog.open(LoginDialogComponent);
+
+      dialogRef.afterClosed().subscribe((confirmed: Boolean) => {
+        if (confirmed) {
+          active = true
+          this.loginStatus = 'LOGOUT'
+        }
+      })
+
+
+    } else {
+      active = false
+      this.loginStatus = 'LOGIN'
+    }
+    console.log(active)
+  }
+
+  //set up different color depend if user in logged
+  getLoginButtonBackground(){
+    if(active==true){
+      return 'logoutButton'
+    }else{
+      return 'loginButton'
+    }
   }
 }

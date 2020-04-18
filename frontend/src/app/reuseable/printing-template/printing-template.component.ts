@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, ViewChild, Inject } from '@angular/core';
-import { MatTableDataSource } from '@angular/material/table';
+import { MatTableDataSource, MatTable } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
@@ -14,6 +14,20 @@ export class PrintingTemplateComponent implements OnInit {
 
   @Input()
   data: []
+
+
+  // SORTING TABLES
+  @ViewChild('availableItemsSort', { static: true }) availableItemsSort: MatSort;
+  @ViewChild('repairedItemsSort', { static: true }) repairedItemsSort: MatSort;
+  @ViewChild('soldItemsSort', { static: true }) soldItemsSort: MatSort;
+
+  //PAGINATOR 
+  @ViewChild('availableItemsPaginator', { static: true }) availableItemsPaginator: MatPaginator;
+  @ViewChild('repairedItemsPaginator', { static: true }) repairedItemsPaginator: MatPaginator;
+  @ViewChild('soldItemsPaginator', { static: true }) soldItemsPaginator: MatPaginator;
+
+  
+
 
   availableItems
   repairedItems
@@ -50,31 +64,15 @@ export class PrintingTemplateComponent implements OnInit {
     this.soldItems.paginator = this.soldItemsPaginator;
 
   }
-  // SORTING TABLES
-  @ViewChild('availableItemsSort', { static: true }) availableItemsSort: MatSort;
-  @ViewChild('repairedItemsSort', { static: true }) repairedItemsSort: MatSort;
-  @ViewChild('soldItemsSort', { static: true }) soldItemsSort: MatSort;
+  
 
-  //PAGINATOR 
-  @ViewChild('availableItemsPaginator', { static: true }) availableItemsPaginator: MatPaginator;
-  @ViewChild('repairedItemsPaginator', { static: true }) repairedItemsPaginator: MatPaginator;
-  @ViewChild('soldItemsPaginator', { static: true }) soldItemsPaginator: MatPaginator;
-
-
-  checkLength(list: []) {
-    if (list.length > 0) {
-      return true
-    } else {
-      return false
-    }
-  }
-
-  checkVisibility(list: []) {
-    if (list.length > 0) {
-      return 'visible'
-    }else{
-      return 'hidden'
-    }
-  }
+  //TODO: hide table if list is empty
+  // checkVisibility(list: []) {
+  //   if (list.length > 0) {
+  //     return 'visible'
+  //   }else{
+  //     return 'hidden'
+  //   }
+  // }
 
 }

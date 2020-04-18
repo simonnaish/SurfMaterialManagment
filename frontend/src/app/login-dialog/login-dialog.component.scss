@@ -1,0 +1,36 @@
+body {
+    height: 20vh;
+    width: 30vh;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 2rem;
+    align-items: center;
+    label {
+        font-size: 1.2rem;
+        width: 10rem;
+    }
+    input {
+        line-height: 2rem;
+        width: 10rem;
+    }
+
+    .mat-dialog-actions {
+        align-self: center;
+        justify-content: space-evenly;
+        button {
+            border: outset;
+            background: #ffef28;
+            font-size: 1rem;
+        }
+        button:hover {
+            background: linear-gradient(90deg, chocolate, #ffef28) !important;
+            opacity: 1;
+            transition: all 0.3s ease;
+        }
+    }
+    background: ghostwhite;
+}
+::ng-deep .mat-dialog-container {
+    background: ghostwhite;
+}

@@ -24,6 +24,7 @@ import { GeneralPrintingComponent } from './general/general-printing/general-pri
 import { materialLoaders } from './reuseable/materialLoader';
 import { PrintingTemplateComponent } from './reuseable/printing-template/printing-template.component';
 import { BasicPrintingTemplateComponent } from './reuseable/basic-printing-template/basic-printing-template.component';
+import { LoginDialogComponent } from './login-dialog/login-dialog.component';
 
 
 
@@ -44,6 +45,7 @@ import { BasicPrintingTemplateComponent } from './reuseable/basic-printing-templ
     GeneralPrintingComponent,
     PrintingTemplateComponent,
     BasicPrintingTemplateComponent,
+    LoginDialogComponent,
     
 
   ],
