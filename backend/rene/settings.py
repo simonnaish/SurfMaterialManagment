@@ -142,3 +142,4 @@ EMAIL_PORT = 587  # 465
 EMAIL_HOST_USER = "surfdeveloper@gmail.com"
 EMAIL_HOST_PASSWORD = "vyynzusvjmexilvz"
 EMAIL_USE_TLS = True
+# ugyxzeiygzsealim
