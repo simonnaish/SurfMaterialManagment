@@ -54,23 +54,6 @@ export class BasicCRUDComponent implements OnInit {
     this.sizes=this._loader.setAmounts(this.apiFilterUrl, this.equipment);
   }
 
-  // //set current amount for each material to size<Map>
-  // setAmounts() {
-  //   for (let type in this.equipment) {
-  //     for (let model in this.equipment[type]) {
-  //       for (let size in this.equipment[type][model]) {
-  //         this._http.loadMaterial(this.apiFilterUrl + 'type=' + type + '&model=' + model + '&size=' + this.equipment[type][model][size]).subscribe(
-  //           data => {
-  //             this.sizes.set(type + ' ' + model + ' ' + this.equipment[type][model][size], data.count)
-  //           }
-  //         )
-  //       }
-
-  //     }
-  //   }
-  // }
-
-
   amount: number = 0;
 
 
@@ -151,24 +134,6 @@ export class BasicCRUDComponent implements OnInit {
     });
 
   }
-
-  // //return list of maps for all avaible material, exportable to file
-  // setFullMaterialList(): {}[] {
-  //   let temporaryList = []
-  //   for (let k in this.equipment) {
-  //     for (let m in this.equipment[k]) {
-  //       for (let s of this.equipment[k][m]) {
-  //         let stringKey = k + ' ' + m + ' ' + s
-  //         let amount = this.sizes.get(stringKey)
-  //         temporaryList.push({ 'type': k, 'model': m, 'size': s, 'amount': amount })
-  //       }
-  //     }
-
-  //   }
-  //   return temporaryList;
-  // }
-
-
 
   //Add material
   addMaterial(item: any) {

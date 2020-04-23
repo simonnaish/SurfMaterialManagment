@@ -1,0 +1,10 @@
+<body>
+    <label for=usernameInput>Username</label>
+    <input required #usernameInput type="text" placeholder=username>
+    <label for=passwordInput>Password</label>
+    <input required #passwordInput type="password" placeholder='password'>
+    <div mat-dialog-actions>
+        <button class=reject_button mat-raised-button mat-dialog-close>Close</button>
+        <button class=confirm_button mat-raised-button (click)="onYesClick(usernameInput.value, passwordInput.value)">Login</button>
+    </div>
+</body>

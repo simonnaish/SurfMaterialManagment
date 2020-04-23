@@ -138,6 +138,7 @@ export class GeneralComponent implements OnInit {
   }
 
 
+  //open dialog with tables of choosen material
   printList() {
     let datas={}
     if (this.listSails) {
@@ -186,6 +187,7 @@ export class GeneralComponent implements OnInit {
 
   }
 
+  //send email report of choosen material movement from today or custom period 
   sendReport(value, fromDate?, tillDate?) {
     let whatMaterial = []
     if (this.reportSails) { whatMaterial.push('sail') }

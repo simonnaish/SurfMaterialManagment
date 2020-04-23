@@ -2,7 +2,7 @@
     <!-- AVAIBLE EQUIPMENT TABLE -->
     <div  [ngStyle]="{'visibility': availableItems?'visible':'hidden'}" >
 
-    <table  mat-table matTableExporter #exporter=matTableExporter [dataSource]=availableItems matSort
+    <table   mat-table matTableExporter #exporter=matTableExporter [dataSource]=availableItems matSort
         #availableItemsSort="matSort" class="mat-elevation-z8">
 
         <ng-container matColumnDef="id">

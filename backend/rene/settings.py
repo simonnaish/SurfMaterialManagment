@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "rest_framework",
+    "rest_framework.authtoken",
     "rene",
     # "rene.ApiRene.SerialsParsers",
 ]
@@ -127,6 +128,9 @@ STATIC_URL = "/static/"
 REST_FRAMEWORK = {
     "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.PageNumberPagination",
     "PAGE_SIZE": 1000,
+    "DEFAULT_AUTHENTICATION_CLASSES": [
+        "rest_framework.authentication.TokenAuthentication",
+    ],
 }
 
 
@@ -138,3 +142,4 @@ EMAIL_PORT = 587  # 465
 EMAIL_HOST_USER = "surfdeveloper@gmail.com"
 EMAIL_HOST_PASSWORD = "vyynzusvjmexilvz"
 EMAIL_USE_TLS = True
+# ugyxzeiygzsealim

@@ -2,7 +2,8 @@ import json
 from datetime import date
 
 from rest_framework import viewsets
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view, permission_classes
+from rest_framework.permissions import IsAuthenticated, IsAuthenticatedOrReadOnly
 from rest_framework.response import Response
 
 from url_filter.integrations.drf import DjangoFilterBackend
@@ -19,6 +20,8 @@ from . import emails
 
 
 class sail_view_set(viewsets.ModelViewSet):
+    permission_classes = (IsAuthenticatedOrReadOnly,)
+
     queryset = Sail.objects.all().order_by("sold", "repair", "serial")
     serializer_class = sail_serializer
     filter_backends = [DjangoFilterBackend]
@@ -55,6 +58,8 @@ class sail_view_set(viewsets.ModelViewSet):
 
 
 class board_view_set(viewsets.ModelViewSet):
+    permission_classes = (IsAuthenticatedOrReadOnly,)
+
     queryset = Board.objects.all().order_by("sold", "repair", "serial")
     serializer_class = board_serializer
     filter_backends = [DjangoFilterBackend]
@@ -90,6 +95,8 @@ class board_view_set(viewsets.ModelViewSet):
 
 
 class beginners_view_set(viewsets.ModelViewSet):
+    permission_classes = (IsAuthenticatedOrReadOnly,)
+
     queryset = Beginners.objects.all().order_by("type", "model", "size")
 
     serializer_class = beginner_serializer
@@ -98,6 +105,8 @@ class beginners_view_set(viewsets.ModelViewSet):
 
 
 class accessories_view_set(viewsets.ModelViewSet):
+    permission_classes = (IsAuthenticatedOrReadOnly,)
+
     queryset = Accessoriess.objects.all().order_by("type", "model", "size")
     serializer_class = accessorie_serializer
     filter_backends = [DjangoFilterBackend]
@@ -105,6 +114,7 @@ class accessories_view_set(viewsets.ModelViewSet):
 
 
 @api_view(["POST"])
+@permission_classes([IsAuthenticated])
 def report_view(request):
 
     if emails.send_report_ssl(request):

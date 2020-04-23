@@ -16,9 +16,17 @@ def send_report_ssl(request):  # make a new one in Django way
     if "from_date" in parsed_request_body.keys():
         from_date = parsed_request_body.get("from_date")
         till_date = parsed_request_body.get("till_date")
-        email_content = get_recently_arrived(what_material, from_date, till_date)
+        email_content = (
+            "ARRIVED\n"
+            + get_recently_arrived("whenCame", what_material, from_date, till_date)
+            + "\n\nSENT TO REPAIR\n"
+            + get_recently_arrived("whenGone", what_material, from_date, till_date)
+            + "\n\nSENT TO MEGASTORE\n"
+            + get_recently_arrived("whenSold", what_material, from_date, till_date)
+
+        )
     else:
-        email_content = get_recently_arrived(what_material, today)
+        email_content = get_recently_arrived("whenCame", what_material, today)
 
     if "from_date" in parsed_request_body.keys():
         try:
@@ -39,76 +47,180 @@ def send_report_ssl(request):  # make a new one in Django way
             return False
 
 
-def get_recently_arrived(what_material, from_date, till_date=0):
+def get_recently_arrived(mode, what_material, from_date, till_date=0):
     sets_list = []
     type_key_list = []
     if till_date == 0:
         if "sail" in what_material:
-            sail_set = (
-                Sail.objects.filter(whenCame=from_date)
-                .values()
-                .order_by("model", "size")
-            )
+            if mode=='whenCame':
+                sail_set = (
+                    Sail.objects.filter(whenCame=from_date)
+                    .values()
+                    .order_by("model", "size")
+                )
+            elif mode=='whenGone':
+                sail_set = (
+                    Sail.objects.filter(whenGone=from_date)
+                        .values()
+                        .order_by("model", "size")
+                )
+            else:
+                sail_set = (
+                    Sail.objects.filter(whenSold=from_date)
+                        .values()
+                        .order_by("model", "size")
+                )
             sets_list.append(sail_set)
             type_key_list.append("Sails")
         if "board" in what_material:
-            board_set = (
-                Board.objects.filter(whenCame=from_date)
-                .values()
-                .order_by("model", "size")
-            )
+            if mode=='whenCame':
+                board_set = (
+                    Board.objects.filter(whenCame=from_date)
+                    .values()
+                    .order_by("model", "size")
+                )
+            elif mode=='whenGone':
+                board_set = (
+                    Board.objects.filter(whenGone=from_date)
+                    .values()
+                    .order_by("model", "size")
+                )
+            else:
+                board_set = (
+                    Board.objects.filter(whenSold=from_date)
+                    .values()
+                    .order_by("model", "size")
+                )
             sets_list.append(board_set)
             type_key_list.append("Boards")
         if "beginners" in what_material:
-            beginner_set = (
-                Beginners.objects.filter(whenCame=from_date)
-                .values()
-                .order_by("model", "size")
-            )
+            if mode=='whenCame':
+                beginner_set = (
+                    Beginners.objects.filter(whenCame=from_date)
+                    .values()
+                    .order_by("model", "size")
+                )
+            elif mode=='whenGone':
+                beginner_set = (
+                    Beginners.objects.filter(whenGone=from_date)
+                        .values()
+                        .order_by("model", "size")
+                )
+            else:
+                beginner_set = (
+                    Beginners.objects.filter(whenSold=from_date)
+                        .values()
+                        .order_by("model", "size")
+                )
             sets_list.append(beginner_set)
             type_key_list.append("Beginners material")
         if "accessories" in what_material:
-            accessories_set = (
-                Accessoriess.objects.filter(whenCame=from_date)
-                .values()
-                .order_by("model", "size")
-            )
+            if mode=='whenCame':
+                accessories_set = (
+                    Accessoriess.objects.filter(whenCame=from_date)
+                    .values()
+                    .order_by("model", "size")
+                )
+            elif mode=='whenGone':
+                accessories_set = (
+                    Accessoriess.objects.filter(whenGone=from_date)
+                        .values()
+                        .order_by("model", "size")
+                )
+            else:
+                accessories_set = (
+                    Accessoriess.objects.filter(whenSold=from_date)
+                        .values()
+                        .order_by("model", "size")
+                )
             sets_list.append(accessories_set)
             type_key_list.append("Accessories")
     else:
         if "sail" in what_material:
-            sail_set = (
-                Sail.objects.filter(whenCame__range=[from_date, till_date])
-                .order_by("whenCame", "model", "size")
-                .values()
-            )
+            if mode=='whenCame':
+                sail_set = (
+                    Sail.objects.filter(whenCame__range=[from_date, till_date])
+                    .order_by("whenCame", "model", "size")
+                    .values()
+                )
+            elif mode=='whenGone':
+                sail_set = (
+                    Sail.objects.filter(whenGone__range=[from_date, till_date])
+                        .order_by("whenGone", "model", "size")
+                        .values()
+                )
+            else:
+                sail_set = (
+                    Sail.objects.filter(whenSold__range=[from_date, till_date])
+                        .order_by("whenSold", "model", "size")
+                        .values()
+                )
             sets_list.append(sail_set)
             type_key_list.append("Sails")
 
         if "board" in what_material:
-            board_set = (
-                Board.objects.filter(whenCame__range=[from_date, till_date])
-                .order_by("whenCame", "model", "size")
-                .values()
-            )
+            if mode=='whenCame':
+                board_set = (
+                    Board.objects.filter(whenCame__range=[from_date, till_date])
+                    .order_by("whenCame", "model", "size")
+                    .values()
+                )
+            elif mode=='whenGone':
+                board_set = (
+                    Board.objects.filter(whenGone__range=[from_date, till_date])
+                        .order_by("whenGone", "model", "size")
+                        .values()
+                )
+            else:
+                board_set = (
+                    Board.objects.filter(whenSold__range=[from_date, till_date])
+                        .order_by("whenSold", "model", "size")
+                        .values()
+                )
             sets_list.append(board_set)
             type_key_list.append("Boards")
 
         if "beginners" in what_material:
-            beginner_set = (
-                Beginners.objects.filter(whenCame__range=[from_date, till_date])
-                .order_by("whenCame", "model", "size")
-                .values()
-            )
+            if mode=='whenCame':
+                beginner_set = (
+                    Beginners.objects.filter(whenCame__range=[from_date, till_date])
+                    .order_by("whenCame", "model", "size")
+                    .values()
+                )
+            elif mode=='whenGone':
+                beginner_set = (
+                    Beginners.objects.filter(whenGone__range=[from_date, till_date])
+                        .order_by("whenGone", "model", "size")
+                        .values()
+                )
+            else:
+                beginner_set = (
+                    Beginners.objects.filter(whenSold__range=[from_date, till_date])
+                        .order_by("whenSold", "model", "size")
+                        .values()
+                )
             sets_list.append(beginner_set)
             type_key_list.append("Beginners material")
 
         if "accessories" in what_material:
-            accessories_set = (
-                Accessoriess.objects.filter(whenCame__range=[from_date, till_date])
-                .order_by("whenCame", "model", "size")
-                .values()
-            )
+            if mode=='whenCame':
+                accessories_set = (
+                    Accessoriess.objects.filter(whenCame__range=[from_date, till_date])
+                    .order_by("whenCame", "model", "size")
+                    .values()
+                )
+            elif mode=='whenGone':
+                accessories_set = (
+                    Accessoriess.objects.filter(whenGone__range=[from_date, till_date])
+                        .order_by("whenGone", "model", "size")
+                        .values()
+                )
+            else:
+                accessories_set = (
+                    Accessoriess.objects.filter(whenSold__range=[from_date, till_date])
+                        .order_by("whenSold", "model", "size")
+                        .values()
+                )
             sets_list.append(accessories_set)
             type_key_list.append("Accessories")
     string_to_send = ""
@@ -127,11 +239,25 @@ def get_recently_arrived(what_material, from_date, till_date=0):
                 string_to_send += type_key_list[counter] + ":\n"
                 date_list = []
                 for counter2, element in enumerate(item):
-                    if element["whenCame"] not in date_list:
-                        date_list.append(element["whenCame"])
-                        if counter2 != 0:
-                            string_to_send += "\n"
-                        string_to_send += "\t\tDay: " + str(element["whenCame"]) + "\n"
+                    if mode=='whenCame':
+                        if element["whenCame"] not in date_list:
+                            date_list.append(element["whenCame"])
+                            if counter2 != 0:
+                                string_to_send += "\n"
+                            string_to_send += "\t\tDay: " + str(element["whenCame"]) + "\n"
+                    elif mode=='whenGone':
+                        if element["whenGone"] not in date_list:
+                            date_list.append(element["whenGone"])
+                            if counter2 != 0:
+                                string_to_send += "\n"
+                            string_to_send += "\t\tDay: " + str(element["whenGone"]) + "\n"
+                    else:
+                        if element["whenSold"] not in date_list:
+                            date_list.append(element["whenSold"])
+                            if counter2 != 0:
+                                string_to_send += "\n"
+                            string_to_send += "\t\tDay: " + str(element["whenSold"]) + "\n"
+
                     if counter in [2, 3]:
                         string_to_send += (
                             element["type"]
